@@ -13,6 +13,7 @@ export class AppComponent {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  listL=false;
   createUser=false;
 
   constructor(private tokenStorageService: TokenStorageService, private auth: AuthService) { }
@@ -26,6 +27,7 @@ export class AppComponent {
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.createUser = this.roles.includes('ROLE_ADMIN');
+      this.listL = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
       this.username = user.username;

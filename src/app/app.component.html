@@ -5,8 +5,8 @@
       <li class="nav-item">
         <a href="/home" class="nav-link" *ngIf="!isLoggedIn" routerLink="home">Inicio</a>
       </li>
-      <li class="nav-item">
-        <a href="/laboratorios" class="nav-link" *ngIf="!isLoggedIn" routerLink="laboratorios">Labos</a>
+      <li class="nav-item" *ngIf="listL">
+        <a href="/laboratorios" class="nav-link"  routerLink="laboratorios">Labos</a>
       </li>
 
       <li class="nav-item" *ngIf="showAdminBoard">
