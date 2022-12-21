@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 
 const TOKEN_HEADER_KEY = 'Authorization';
-const AUTH_API = 'https://botics.loca.lt/api/v1/admin/';
+const AUTH_API = 'http://localhost:8080/api/v1/admin/';
 
 
 @Injectable({
