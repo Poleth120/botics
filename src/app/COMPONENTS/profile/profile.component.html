@@ -1,0 +1,14 @@
+<table mat-table class="mat-elevation-z8">
+
+  <!-- Name Column -->
+  <div *ngFor="let computer of computers">
+    <ng-container matColumnDef="hostName">
+      <th mat-header-cell> {{ computer.hostName }}</th>
+      <td mat-cell *matCellDef="let computer"> {{ computer.hostName }} </td>
+    </ng-container>
+  </div>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
