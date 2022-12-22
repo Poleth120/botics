@@ -4,13 +4,12 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 
 const TOKEN_HEADER_KEY = 'Authorization';
-const AUTH_API = 'http://localhost:8080/api/v1/admin/';
-
+const AUTH_API = 'https://botics.loca.lt/api/v1/admin/';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ComputerService {
+export class AdminService {
   constructor(private http: HttpClient, private token: TokenStorageService) {}
 
   tokens = this.token?.getToken();
@@ -18,7 +17,11 @@ export class ComputerService {
     headers: new HttpHeaders({'Authorization': 'Bearer '+this.tokens,  'Content-Type': 'application/json',  'Bypass-Tunnel-Reminder': 'njkjjk'})
   };
 
-  index(): Observable<any> {
+  labIndex(): Observable<any> {
+    return this.http.get(AUTH_API + 'lab/index', this.httpOptions);
+  }
+
+  computerIndex(): Observable<any> {
     return this.http.get(AUTH_API + 'computer/index', this.httpOptions);
   }
 }
