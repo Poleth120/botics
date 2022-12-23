@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-home',
@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomeComponent {
   content?: string;
+
 
   constructor(private userService: UserService) { }
 

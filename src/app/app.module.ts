@@ -12,12 +12,38 @@ import { ProfileComponent } from './COMPONENTS/profile/profile.component';
 import { BoardAdminComponent } from './COMPONENTS/board-admin/board-admin.component';
 import { BoardModeratorComponent } from './COMPONENTS/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './COMPONENTS/board-user/board-user.component';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListLComponent } from './COMPONENTS/list-l/list-l.component';
-import { CreateUserComponent } from './COMPONENTS/create-user/create-user.component';@NgModule({
+import { CreateUserComponent } from './COMPONENTS/create-user/create-user.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ListCComponent } from './COMPONENTS/list-c/list-c.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatButtonModule } from "@angular/material/button";
+import { SidenavComponent } from './COMPONENTS/sidenav/sidenav.component';
+import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
+import { SidebarComponent } from './COMPONENTS/sidebar/sidebar.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import  {PerfectScrollbarModule}  from 'ngx-perfect-scrollbar';
+import  {PERFECT_SCROLLBAR_CONFIG}  from 'ngx-perfect-scrollbar';
+import {PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
+
+@NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
@@ -28,7 +54,10 @@ import { CreateUserComponent } from './COMPONENTS/create-user/create-user.compon
     BoardModeratorComponent,
     BoardUserComponent,
     ListLComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ListCComponent,
+    SidenavComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,10 +67,23 @@ import { CreateUserComponent } from './COMPONENTS/create-user/create-user.compon
     MatRadioModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatTableModule
-
+    MatTableModule,
+    MatPaginatorModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatListModule,
+    MatButtonModule,
+    SidebarModule,
+    BsDropdownModule.forRoot(),
+    PerfectScrollbarModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatSelectModule,
+    MatDatepickerModule
   ],
-  providers: [],
+  providers: [{provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

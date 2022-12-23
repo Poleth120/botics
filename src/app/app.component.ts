@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { AuthService } from './services/auth.service';
+import { SidebarService } from './COMPONENTS/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   private roles: string[] = [];
@@ -16,7 +17,7 @@ export class AppComponent {
   listL=false;
   createUser=false;
 
-  constructor(private tokenStorageService: TokenStorageService, private auth: AuthService) { }
+  constructor(private sidebarservice: SidebarService, private tokenStorageService: TokenStorageService, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -34,6 +35,14 @@ export class AppComponent {
     }
   }
 
+  public isExpanded = false;
+
+  public toggleMenu() {
+    this.isExpanded = !this.isExpanded;
+  }
+
+
+
   logout(): void {
     this.tokenStorageService.signOut();
     this.auth.logout().subscribe({
@@ -43,4 +52,19 @@ export class AppComponent {
     });
     window.location.reload();
   }
+
+  toggleSidebar() {
+    this.sidebarservice.setSidebarState(!this.sidebarservice.getSidebarState());
+  }
+  toggleBackgroundImage() {
+    this.sidebarservice.hasBackgroundImage = !this.sidebarservice.hasBackgroundImage;
+  }
+  getSideBarState() {
+    return this.sidebarservice.getSidebarState();
+  }
+
+  hideSidebar() {
+    this.sidebarservice.setSidebarState(true);
+  }
+
 }

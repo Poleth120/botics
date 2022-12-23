@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 
 interface Lab{
@@ -14,7 +15,7 @@ interface Lab{
   styleUrls: ['./list-l.component.css']
 })
 export class ListLComponent implements OnInit{
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService, private router: Router) {
 
   }
 
@@ -24,12 +25,6 @@ export class ListLComponent implements OnInit{
     this.adminService.labIndex().subscribe((data) => {
       this.labs = data
     });
-  }
-
-
-
-
-  getLabs(): void {
-
+    console.log(this.labs)
   }
 }

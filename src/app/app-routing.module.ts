@@ -10,6 +10,7 @@ import { BoardModeratorComponent } from './COMPONENTS/board-moderator/board-mode
 import { BoardAdminComponent } from './COMPONENTS/board-admin/board-admin.component';
 import { CreateUserComponent } from './COMPONENTS/create-user/create-user.component';
 import { ListLComponent } from './COMPONENTS/list-l/list-l.component';
+import { ListCComponent } from './COMPONENTS/list-c/list-c.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent },
   { path: 'crear-nuevo-usuario', component: CreateUserComponent },
   { path: 'laboratorios', component: ListLComponent },
+  { path: 'laboratorios/lab-computadoras', component: ListCComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
