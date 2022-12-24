@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { ComputerService } from 'src/app/services/computer.service';
-import { TokenStorageService } from 'src/app/services/token-storage.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,16 +7,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
-  form: FormGroup = new FormGroup({});
-  constructor(private fb: FormBuilder,
-    private token: TokenStorageService,
-    private computerService: ComputerService
+  constructor(private profileService: ProfileService
   ) {}
 
-  model: any = {};
-  onSubmit() {
-    console.log(this.model);
-  }
+  profile: any;
+
   ngOnInit(): void {
+    this.profileService.getProfile().subscribe((data) => {
+      this.profile = data
+    })
   }
 }

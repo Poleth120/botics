@@ -1,7 +1,0 @@
-{
-  "/api/*": {
-  "target": "https://botics.loca.lt",
-  "secure": false,
-  "logLevel": "debug"
-  }
-}

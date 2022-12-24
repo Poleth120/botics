@@ -22,16 +22,17 @@ import { ProfileService } from 'src/app/services/profile.service';
   ],
 })
 export class SidebarComponent implements OnInit {
-  menus: any[];
+  menus!: any[];
   profile: any;
   constructor(public sidebarservice: SidebarService, private profileService: ProfileService) {
-    this.menus = sidebarservice.getMenuList();
+
   }
 
   ngOnInit() {
     this.profileService.getProfile().subscribe((data) => {
       console.log(data)
       this.profile = data
+      this.menus = this.sidebarservice.getMenuList(this.profile.roles[0].name);
     })
   }
 

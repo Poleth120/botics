@@ -52,12 +52,12 @@
                       </ul>
                     </nav>
                   </div>
-                  <div class="content-container">
-                    <router-outlet></router-outlet>
-                  </div>
                 </div>
           </div>
       </div>
       <div class="overlay" (click)="toggleSidebar()" [ngClass]="{'show' : !getSideBarState()}"></div>
-  </main>
+      <div class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
 </div>

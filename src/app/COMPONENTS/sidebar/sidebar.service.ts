@@ -6,115 +6,113 @@ import { Injectable } from '@angular/core';
 export class SidebarService {
   toggled = true;
   _hasBackgroundImage = true;
-  menus = [
+  menusAdmin = [
     {
-      title: 'general',
-      type: 'header'
-    },
-    {
-      title: 'Dashboard',
-      icon: 'fa fa-tachometer-alt',
+      title: 'Laboratorios',
+      icon: 'fa fa-desktop',
       active: false,
       type: 'dropdown',
-      badge: {
-        text: 'New ',
-        class: 'badge-warning'
-      },
       submenus: [
         {
-          title: 'Dashboard 1',
-          badge: {
-            text: 'Pro ',
-            class: 'badge-success'
-          }
+          title: 'Laboratorio SMD',
         },
         {
-          title: 'Dashboard 2'
+          title: 'Laboratorio 14'
         },
         {
-          title: 'Dashboard 3'
+          title: 'Laboratorio 15'
+        },
+        {
+          title: 'Laboratorio 16'
+        },
+        {
+          title: 'Laboratorio 22A'
+        },
+        {
+          title: 'Laboratorio 22B'
+        },
+      ]
+    },
+    {
+      title: 'Pasantes',
+      icon: 'fa fa-users',
+      active: false,
+      type: 'dropdown',
+      submenus: [
+        {
+          title: 'Listar',
+        },
+        {
+          title: 'Resgistrar'
         }
       ]
     },
     {
-      title: 'E-commerce',
-      icon: 'fa fa-shopping-cart',
+      title: 'Administración',
+      icon: 'fa fa-tasks',
       active: false,
       type: 'dropdown',
-      badge: {
-        text: '3',
-        class: 'badge-danger'
-      },
       submenus: [
         {
-          title: 'Products',
+          title: 'Comentarios/sugerencias',
         },
         {
-          title: 'Orders'
+          title: 'Tickets de asistencia'
         },
         {
-          title: 'Credit cart'
+          title: 'Reservas'
         }
       ]
     },
     {
-      title: 'Components',
-      icon: 'far fa-gem',
+      title: 'Inventarios',
+      icon: 'fa fa-cubes',
       active: false,
       type: 'dropdown',
       submenus: [
         {
-          title: 'General',
+          title: 'Computadoras'
         },
         {
-          title: 'Panels'
+          title: 'Reporte',
         },
         {
-          title: 'Tables'
+          title: 'Historial'
+        }
+      ]
+    }
+  ];
+  menusPasante = [
+    {
+      title: 'Tickets',
+      icon: 'fa fa-ticket',
+      active: false,
+      type: 'dropdown',
+      submenus: [
+        {
+          title: 'Listar',
         },
         {
-          title: 'Icons'
-        },
-        {
-          title: 'Forms'
+          title: 'Responder'
         }
       ]
     },
     {
-      title: 'Charts',
-      icon: 'fa fa-chart-line',
+      title: 'Reservas',
+      icon: 'fa fa-calendar',
       active: false,
       type: 'dropdown',
       submenus: [
         {
-          title: 'Pie chart',
+          title: 'Listar',
         },
         {
-          title: 'Line chart'
-        },
-        {
-          title: 'Bar chart'
-        },
-        {
-          title: 'Histogram'
-        }
-      ]
-    },
-    {
-      title: 'Maps',
-      icon: 'fa fa-globe',
-      active: false,
-      type: 'dropdown',
-      submenus: [
-        {
-          title: 'Google maps',
-        },
-        {
-          title: 'Open street map'
+          title: 'Responder'
         }
       ]
     },
   ];
+  noMenus = [];
   constructor() { }
 
   toggle() {
@@ -129,8 +127,19 @@ export class SidebarService {
     this.toggled = state;
   }
 
-  getMenuList() {
-    return this.menus;
+  getMenuList(role: string) {
+    switch(role) {
+      case role = 'ROLE_ADMIN': {
+        return this.menusAdmin;
+      }
+      case role = 'ROLE_PASANTE': {
+        return this.menusPasante;
+      }
+      default: {
+        return this.noMenus;
+      }
+    }
+
   }
 
   get hasBackgroundImage() {

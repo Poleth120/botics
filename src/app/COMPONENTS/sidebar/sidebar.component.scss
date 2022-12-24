@@ -194,7 +194,7 @@
         >a:after {
           font-family: "Font Awesome 5 Free";
           font-weight: 900;
-          content: "\f105";
+          content: "\>";
           display: inline-block;
           font-style: normal;
           font-variant: normal;
@@ -224,7 +224,7 @@
 
             a {
               &:before {
-                content: "\f111";
+                content: "\*";
                 font-family: "Font Awesome 5 Free";
                 font-weight: 400;
                 font-style: normal;
