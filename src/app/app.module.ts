@@ -26,18 +26,17 @@ import { MatListModule } from "@angular/material/list";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatButtonModule } from "@angular/material/button";
 import { SidenavComponent } from './COMPONENTS/sidenav/sidenav.component';
-import { SidebarModule } from '@syncfusion/ej2-angular-navigations';
 import { SidebarComponent } from './COMPONENTS/sidebar/sidebar.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import  {PerfectScrollbarModule}  from 'ngx-perfect-scrollbar';
 import  {PERFECT_SCROLLBAR_CONFIG}  from 'ngx-perfect-scrollbar';
 import {PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -69,18 +68,17 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSidenavModule,
     MatIconModule,
     MatTooltipModule,
     MatListModule,
     MatButtonModule,
-    SidebarModule,
     BsDropdownModule.forRoot(),
     PerfectScrollbarModule,
     MatFormFieldModule,
     MatCardModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatNativeDateModule,
+    MatFormFieldModule
   ],
   providers: [{provide: PERFECT_SCROLLBAR_CONFIG,
     useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG}],

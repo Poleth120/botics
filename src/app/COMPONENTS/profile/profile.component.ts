@@ -20,18 +20,5 @@ export class ProfileComponent {
     console.log(this.model);
   }
   ngOnInit(): void {
-    this.form = this.fb.group({
-      name: [null, [Validators.required, Validators.minLength(10)]],
-      email: [null, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      dob: [null, [Validators.required]],
-      address: [null],
-      country: [null],
-      gender: [null]
-    });
-  }
-
-
-  saveDetails(form: any) {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(form.value, null, 4));
   }
 }
