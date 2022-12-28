@@ -27,4 +27,16 @@ export class AdminService {
   computerIndexLab(idlab: number): Observable<any> {
     return this.http.get(ADMIN_API + 'computer/index/' + idlab, this.httpOptions);
   }
+
+  computerEnable(idComputer: number): Observable<any> {
+    return this.http.put(ADMIN_API + 'computer/enable/' + idComputer, '', this.httpOptions);
+  }
+
+  computerDisable(idComputer: number): Observable<any> {
+    return this.http.put(ADMIN_API + 'computer/disable/' + idComputer, '', this.httpOptions);
+  }
+
+  computerDelete(hostName: string): Observable<any> {
+    return this.http.delete(ADMIN_API + 'computer/delete/' + hostName, this.httpOptions);
+  }
 }

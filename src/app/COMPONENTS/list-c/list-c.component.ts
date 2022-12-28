@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
@@ -33,7 +34,7 @@ export class ListCComponent implements OnInit{
   constructor (private router: ActivatedRoute, private adminService: AdminService) {}
   labId!: any | number;
 
-  displayedColumns: string[] = ['Id', 'Host Name', 'Código de bien CPU', 'Código de bien Monitor'];
+  displayedColumns: string[] = ['Id', 'Host Name', 'Código de bien CPU', 'Código de bien Monitor', 'Estado', 'Acciones'];
 
   computers: any;
 
@@ -46,6 +47,7 @@ export class ListCComponent implements OnInit{
         this.labId = params;
       }
     );
+
     this.adminService.computerIndexLab(this.labId['id']).subscribe((data) => {
       console.log(data)
       this.computers = new MatTableDataSource<Computer>(data)
@@ -53,5 +55,23 @@ export class ListCComponent implements OnInit{
 
     })
 
+  }
+
+  toggleChange(event: MatSlideToggleChange, id: number) {
+    if (event.checked) {
+      this.adminService.computerEnable(id).subscribe(() => {
+        this.ngOnInit()
+      });
+    } else {
+      this.adminService.computerDisable(id).subscribe(() => {
+        this.ngOnInit()
+      });
+    }
+  }
+
+  delete(hostName: string) {
+    this.adminService.computerDelete(hostName).subscribe(() => {
+      this.ngOnInit()
+    });
   }
 }
