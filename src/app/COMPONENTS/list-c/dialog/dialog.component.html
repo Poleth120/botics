@@ -1,0 +1,116 @@
+<h1 mat-dialog-title>{{ data.hostName }}</h1>
+<div mat-dialog-content>
+  <div class="tab-content pt-3">
+    <div class="tab-pane active">
+      <form class="form" novalidate="">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Serial del teclado</label>
+                  <input class="form-control" type="text" name="name" placeholder="Serial Teclado"
+                    value="{{ data?.serialKeyboard }}" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Código de bien CPU</label>
+                  <input class="form-control" type="text" name="username" placeholder="Código CPU"
+                    value="{{ data?.codeCpu }}" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Código de bien Monitor</label>
+                  <input class="form-control" type="text" placeholder="Código Monitor"
+                    value="{{ data?.codeMonitor }}" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Código de bien Teclado</label>
+                  <input class="form-control" type="text" placeholder="Código Teclado"
+                    value="{{ data?.codeKeyboard }}" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Modelo</label>
+                  <input class="form-control" type="text" placeholder="Modelo"
+                    value="{{ data?.model }}" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Disco duro</label>
+                  <input class="form-control" type="text" placeholder="Capacidad"
+                    value="{{ data?.hardDrive }}" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>RAM</label>
+                  <input class="form-control" type="text" placeholder="Cantidad"
+                    value="{{ data?.ram }}" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Procesador</label>
+                  <input class="form-control" type="text" placeholder="Procesador"
+                    value="{{ data?.processor }}" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Sistema operativo</label>
+                  <input class="form-control" type="text" placeholder="Sistema operativo"
+                    value="{{ data?.operativeSystem }}" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Detalles</label>
+                  <textarea class="form-control" type="text" placeholder="Detalles"
+                    value="{{ data?.details }}" disabled>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Observaciones</label>
+                  <textarea class="form-control" type="text" placeholder="Observaciones"
+                    value="{{ data?.observations }}" disabled>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button cdkFocusInitial>Ok</button>
+</div>

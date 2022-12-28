@@ -4,6 +4,8 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
 
 export interface Computer {
   id: number;
@@ -31,7 +33,8 @@ export interface Computer {
   styleUrls: ['./list-c.component.css']
 })
 export class ListCComponent implements OnInit{
-  constructor (private router: ActivatedRoute, private adminService: AdminService) {}
+  constructor (private router: ActivatedRoute, private adminService: AdminService,
+    private matDialog: MatDialog) {}
   labId!: any | number;
 
   displayedColumns: string[] = ['Id', 'Host Name', 'Código de bien CPU', 'Código de bien Monitor', 'Estado', 'Acciones'];
@@ -55,6 +58,11 @@ export class ListCComponent implements OnInit{
 
     })
 
+  }
+
+  openDialoge(computer: any) {
+    console.log(computer)
+    const dialogReference = this.matDialog.open(DialogComponent, {data: computer})
   }
 
   toggleChange(event: MatSlideToggleChange, id: number) {

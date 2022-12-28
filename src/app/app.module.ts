@@ -31,6 +31,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import  {PerfectScrollbarModule}  from 'ngx-perfect-scrollbar';
@@ -38,6 +39,7 @@ import  {PERFECT_SCROLLBAR_CONFIG}  from 'ngx-perfect-scrollbar';
 import {PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { DialogComponent } from './COMPONENTS/list-c/dialog/dialog.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -58,6 +60,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ListCComponent,
     SidenavComponent,
     SidebarComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +83,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatSelectModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   providers: [{provide: PERFECT_SCROLLBAR_CONFIG,
     useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG}],
