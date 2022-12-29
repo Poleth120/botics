@@ -24,6 +24,11 @@ export class AdminService {
     return this.http.get(ADMIN_API + 'computer/index', this.httpOptions);
   }
 
+  computerSave(computer: any): Observable<any> {
+    console.log(computer)
+    return this.http.post(ADMIN_API + 'computer/save', computer, this.httpOptions)
+  }
+
   computerIndexLab(idlab: number): Observable<any> {
     return this.http.get(ADMIN_API + 'computer/index/' + idlab, this.httpOptions);
   }
@@ -34,6 +39,18 @@ export class AdminService {
 
   computerDisable(idComputer: number): Observable<any> {
     return this.http.put(ADMIN_API + 'computer/disable/' + idComputer, '', this.httpOptions);
+  }
+
+  computerAssign(idLab: number, idComputer: number): Observable<any> {
+    return this.http.put(ADMIN_API + 'computer/assign/' + idLab + '/' + idComputer, '', this.httpOptions);
+  }
+
+  computerUnAssign(idLab: number, idComputer: number, changeDetails: string): Observable<any> {
+    return this.http.put(ADMIN_API + 'computer/unassign/' + idLab + '/' + idComputer + '?changeDetails=' + changeDetails, '', this.httpOptions);
+  }
+
+  computerReAssign(idLab1: number, idLab2:number, idComputer: number): Observable<any> {
+    return this.http.put(ADMIN_API + 'computer/reassign/' + idLab1 + '/' + idLab2 + '/' + idComputer, '', this.httpOptions);
   }
 
   computerDelete(hostName: string): Observable<any> {

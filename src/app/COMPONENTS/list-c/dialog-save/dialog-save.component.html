@@ -1,11 +1,11 @@
-<h1 mat-dialog-title *ngIf="data.data?.hostName">{{ data.data.hostName }}</h1>
+<h1 mat-dialog-title>Crear Computadora</h1>
 <div mat-dialog-content>
   <div class="tab-content pt-3">
     <div class="tab-pane active">
       <form class="form" novalidate="">
         <div class="row">
           <div class="col">
-            <div class="row" *ngIf="!data.data?.hostName">
+            <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Nombre de Host</label>
@@ -14,7 +14,7 @@
                 </div>
               </div>
             </div>
-            <div class="row" *ngIf="!data.data?.serialCpu">
+            <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Serial del CPU</label>
@@ -23,7 +23,7 @@
                 </div>
               </div>
             </div>
-            <div class="row" *ngIf="!data.data?.serialMonitor">
+            <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Serial del Monitor</label>

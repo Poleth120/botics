@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'crear-nuevo-usuario', component: CreateUserComponent },
   { path: 'laboratorios', component: ListLComponent },
   { path: 'laboratorios/lab-computadoras', component: ListCComponent },
+  { path: 'lab-computadoras', component: ListCComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

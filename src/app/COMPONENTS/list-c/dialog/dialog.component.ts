@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-dialog',
@@ -12,8 +13,6 @@ export class DialogComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
-
   }
 
   onNoClick(): void {
