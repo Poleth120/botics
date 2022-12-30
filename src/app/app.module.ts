@@ -41,6 +41,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DialogComponent } from './COMPONENTS/list-c/dialog/dialog.component';
 import { DialogSaveComponent } from './COMPONENTS/list-c/dialog-save/dialog-save.component';
+import { DialogLabComponent } from './COMPONENTS/list-c/dialog-lab/dialog-lab.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -63,6 +64,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     SidebarComponent,
     DialogComponent,
     DialogSaveComponent,
+    DialogLabComponent,
   ],
   imports: [
     BrowserModule,

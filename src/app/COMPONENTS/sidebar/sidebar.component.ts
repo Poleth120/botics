@@ -8,6 +8,7 @@ import {
 } from '@angular/animations';
 import { SidebarService } from './sidebar.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import { ListCComponent } from '../list-c/list-c.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -24,7 +25,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class SidebarComponent implements OnInit {
   menus!: any[];
   profile: any;
-  constructor(public sidebarservice: SidebarService, private profileService: ProfileService) {
+  constructor(public sidebarservice: SidebarService, private profileService: ProfileService, public listC: ListCComponent) {
 
   }
 
@@ -38,6 +39,10 @@ export class SidebarComponent implements OnInit {
 
   getSideBarState() {
     return this.sidebarservice.getSidebarState();
+  }
+
+  reloadList(id: number) {
+    this.listC.refreshComponent(id)
   }
 
   toggle(currentMenu: any) {

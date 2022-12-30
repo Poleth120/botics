@@ -1,12 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Injectable, ChangeDetectorRef, Inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogSaveComponent } from './dialog-save/dialog-save.component';
+import { DialogLabComponent } from './dialog-lab/dialog-lab.component';
 
 export interface Computer {
   id: number;
@@ -47,19 +48,26 @@ export interface ComputerC {
   labReference: number;
 }
 
+
 @Component({
   selector: 'app-list-c',
   templateUrl: './list-c.component.html',
   styleUrls: ['./list-c.component.css'],
 })
+@Injectable({
+  providedIn: 'root'
+})
 export class ListCComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private adminService: AdminService,
-    private matDialog: MatDialog
-  ) {}
+    private matDialog: MatDialog,
+    private routerF: Router,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {this.FLAG = true}
   labId!: any | number;
 
+  FLAG: boolean
   displayedColumns: string[] = [
     'Id',
     'Host Name',
@@ -69,7 +77,7 @@ export class ListCComponent implements OnInit {
     'Acciones',
   ];
 
-  computers: any;
+  computers =  new MatTableDataSource<Computer>([]);
 
   computer: ComputerC = {
     hostName: null,
@@ -91,28 +99,41 @@ export class ListCComponent implements OnInit {
   };
 
   computerSave: any;
+  computersSub: any;
+  routerSub: any;
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit() {
-    this.router.queryParams.subscribe((params) => {
+    this.computersSub?.unsubscribe()
+    this.routerSub?.unsubscribe()
+    this.computers =  new MatTableDataSource<Computer>([]);
+    this.routerSub = this.router.queryParams.subscribe((params) => {
       console.log(JSON.stringify(params));
       this.labId = params;
     });
-
+    console.log(this.labId)
     if (!this.labId.id) {
-      this.adminService.computerIndex().subscribe((data) => {
+      this.computersSub = this.adminService.computerIndex().subscribe((data) => {
         console.log(data);
-        this.computers = new MatTableDataSource<Computer>(data);
+        this.computers = data as MatTableDataSource<Computer>;
         this.computers.paginator = this.paginator;
       });
     } else {
-      this.adminService.computerIndexLab(this.labId['id']).subscribe((data) => {
+      this.computersSub = this.adminService.computerIndexLab(this.labId['id']).subscribe((data) => {
         console.log(data);
-        this.computers = new MatTableDataSource<Computer>(data);
+        this.computers = data as MatTableDataSource<Computer>;
         this.computers.paginator = this.paginator;
+        console.log(this.computers);
       });
     }
+  }
+
+  refreshComponent(id: number) {
+    this.computersSub?.unsubscribe()
+    this.routerSub?.unsubscribe()
+    this.routerF.navigate(['laboratorios/lab-computadoras'], { queryParams: { id: id }})
   }
 
   openDialogeShow(computer: any) {
@@ -154,6 +175,21 @@ export class ListCComponent implements OnInit {
         });
       }
     });
+  }
+
+  openDialogeChange(idComputer: number) {
+    const dialogReference = this.matDialog.open(DialogLabComponent,
+      { data: { idComputer: idComputer, idLab1: this.labId.id, idLab2: 0}});
+      dialogReference.afterClosed().subscribe((result) => {
+        if (result === undefined) {
+          this.ngOnInit();
+        } else {
+          this.adminService.computerReAssign(result.idLab1, result.idLab2, result.idComputer, "cambio")
+          .subscribe(() => {
+            this.ngOnInit();
+          })
+        }
+      })
   }
 
   toggleChange(event: MatSlideToggleChange, id: number) {

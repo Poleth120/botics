@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 
-const ADMIN_API = 'https://botics.loca.lt/api/v1/admin/';
+const ADMIN_API = 'https://boticssys.loca.lt/api/v1/admin/';
 
 @Injectable({
   providedIn: 'root'
@@ -49,8 +49,8 @@ export class AdminService {
     return this.http.put(ADMIN_API + 'computer/unassign/' + idLab + '/' + idComputer + '?changeDetails=' + changeDetails, '', this.httpOptions);
   }
 
-  computerReAssign(idLab1: number, idLab2:number, idComputer: number): Observable<any> {
-    return this.http.put(ADMIN_API + 'computer/reassign/' + idLab1 + '/' + idLab2 + '/' + idComputer, '', this.httpOptions);
+  computerReAssign(idLab1: number, idLab2:number, idComputer: number, changeDetails: string): Observable<any> {
+    return this.http.put(ADMIN_API + 'computer/reassign/' + idLab1 + '/' + idLab2 + '/' + idComputer + '?changeDetails=' + changeDetails, '', this.httpOptions);
   }
 
   computerDelete(hostName: string): Observable<any> {

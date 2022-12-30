@@ -15,21 +15,33 @@ export class SidebarService {
       submenus: [
         {
           title: 'Laboratorio SMD',
+          route: 'laboratorios/lab-computadoras',
+          param: { id: 1 }
         },
         {
-          title: 'Laboratorio 14'
+          title: 'Laboratorio 14',
+          route: 'laboratorios/lab-computadoras',
+          param: { id: 2 }
         },
         {
-          title: 'Laboratorio 15'
+          title: 'Laboratorio 15',
+          route: 'laboratorios/lab-computadoras',
+          param: { id: 3 }
         },
         {
-          title: 'Laboratorio 16'
+          title: 'Laboratorio 16',
+          route: 'laboratorios/lab-computadoras',
+          param: { id: 4 }
         },
         {
-          title: 'Laboratorio 22A'
+          title: 'Laboratorio 22A',
+          route: 'laboratorios/lab-computadoras',
+          param: { id: 5 }
         },
         {
-          title: 'Laboratorio 22B'
+          title: 'Laboratorio 22B',
+          route: 'laboratorios/lab-computadoras',
+          param: { id: 6 }
         },
       ]
     },

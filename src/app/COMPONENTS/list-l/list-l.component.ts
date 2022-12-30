@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 
-interface Lab{
+export interface Lab{
   id: number;
   name: string;
   state: boolean;

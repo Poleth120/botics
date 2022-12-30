@@ -36,7 +36,7 @@
         <button mat-icon-button color="blank" (click)="openDialogeEdit(element)"><mat-icon>edit</mat-icon></button>
         <button mat-icon-button color="warn" (click)="delete(element.id, element.hostName)"><mat-icon>delete_forever</mat-icon></button>
         <button mat-button color="accent" (click)="unassign(element.id)">Desasignar</button>
-        <button mat-button color="accent">Cambiar</button>
+        <button mat-button color="accent" (click)="openDialogeChange(element.id)">Cambiar</button>
       </td>
     </ng-container>
 
