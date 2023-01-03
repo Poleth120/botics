@@ -70,10 +70,12 @@ export class SidebarService {
           route: 'admin-comentarios',
         },
         {
-          title: 'Tickets de asistencia'
+          title: 'Tickets de asistencia',
+          route: 'admin-tickets'
         },
         {
-          title: 'Reservas'
+          title: 'Reservas',
+          route: 'admin-reserves'
         }
       ]
     },
@@ -84,7 +86,8 @@ export class SidebarService {
       type: 'dropdown',
       submenus: [
         {
-          title: 'Computadoras'
+          title: 'Computadoras',
+          route: 'lab-computadoras'
         },
         {
           title: 'Reporte',

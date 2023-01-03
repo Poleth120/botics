@@ -51,6 +51,10 @@ import { DialogCommentComponent } from './COMPONENTS/comments/dialog-comment/dia
 
 
 import {MatTabsModule} from '@angular/material/tabs';
+import { TicketsComponent } from './COMPONENTS/tickets/tickets.component';
+import { DialogTicketComponent } from './COMPONENTS/tickets/dialog-ticket/dialog-ticket.component';
+import { ReservesComponent } from './COMPONENTS/reserves/reserves.component';
+import { DialogReserveComponent } from './COMPONENTS/reserves/dialog-reserve/dialog-reserve.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -78,6 +82,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ListUserComponent,
     CommentsComponent,
     DialogCommentComponent,
+    TicketsComponent,
+    DialogTicketComponent,
+    ReservesComponent,
+    DialogReserveComponent,
   ],
   imports: [
     BrowserModule,

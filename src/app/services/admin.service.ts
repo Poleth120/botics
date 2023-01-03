@@ -67,4 +67,12 @@ export class AdminService {
   commentIndex(): Observable<any> {
     return this.http.get(ADMIN_API + 'commentary/index', this.httpOptions)
   }
+
+  ticketIndex(): Observable<any> {
+    return this.http.get(ADMIN_API + 'ticket/index', this.httpOptions)
+  }
+
+  reserveIndex(): Observable<any> {
+    return this.http.get(ADMIN_API + 'reserve/index', this.httpOptions)
+  }
 }

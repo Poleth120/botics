@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Comentario Id: {{ data?.id }}</h1>
+<h1 mat-dialog-title>Ticket Id: {{ data?.id }}</h1>
 <div mat-dialog-content>
   <mat-tab-group animationDuration="0ms">
     <mat-tab label="Comentario">
@@ -21,9 +21,9 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-group">
-                        <label>Mensaje</label>
-                        <textarea class="form-control" type="text" name="observations" placeholder="Observaciones"
-                          value="{{ data?.message }}" [(ngModel)]="data.message" [readonly]="true"></textarea>
+                        <label>Descripción</label>
+                        <textarea class="form-control" type="text" name="description" placeholder="Descripciones"
+                          value="{{ data?.description }}" [(ngModel)]="data.description" [readonly]="true"></textarea>
                       </div>
                     </div>
                   </div>
