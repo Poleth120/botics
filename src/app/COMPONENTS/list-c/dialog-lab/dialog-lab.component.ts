@@ -3,7 +3,8 @@ import { AdminService } from 'src/app/services/admin.service';
 import { Lab } from '../../list-l/list-l.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogChangeComponent } from '../dialog-change/dialog-change.component';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class DialogLabComponent {
   constructor(private adminService: AdminService,
     public dialogRef: MatDialogRef<DialogLabComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
+    @Inject(MAT_DIALOG_DATA) public data: any, private matDialog: MatDialog) {}
 
   labs = new MatTableDataSource<Lab>([]);
 
@@ -31,14 +32,19 @@ export class DialogLabComponent {
       data.splice(this.data.idLab1 - 1, 1)
       this.labs = data as MatTableDataSource<Lab>;
       this.labs.paginator = this.paginator;
-      console.log(data)
     });
 
   }
 
   select(idLab: number) {
-    this.data.idLab2 = idLab
-    console.log(this.data.idLab2)
+    const dialogReference = this.matDialog.open(DialogChangeComponent, { data: this.data })
+    dialogReference.afterClosed().subscribe((result) => {
+      if (result) {
+        this.data.idLab2 = idLab
+        console.log(result)
+        this.dialogRef.close(result)
+      }
+    })
   }
 
   onNoClick(): void {

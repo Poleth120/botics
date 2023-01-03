@@ -67,6 +67,7 @@ export class SidebarService {
       submenus: [
         {
           title: 'Comentarios/sugerencias',
+          route: 'admin-comentarios',
         },
         {
           title: 'Tickets de asistencia'

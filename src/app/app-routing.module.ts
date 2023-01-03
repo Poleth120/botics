@@ -13,6 +13,8 @@ import { ListLComponent } from './COMPONENTS/list-l/list-l.component';
 import { ListCComponent } from './COMPONENTS/list-c/list-c.component';
 import { ListUserComponent } from './COMPONENTS/list-user/list-user.component';
 
+import { CommentsComponent } from './COMPONENTS/comments/comments.component';
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -21,6 +23,7 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
+  { path: 'admin-comentarios', component: CommentsComponent },
   { path: 'crear-nuevo-usuario', component: CreateUserComponent },
   { path: 'listar-nuevo-usuario', component: ListUserComponent },
   { path: 'laboratorios', component: ListLComponent },
