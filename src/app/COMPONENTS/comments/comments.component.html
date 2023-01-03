@@ -29,7 +29,7 @@
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-mini-fab color="primary">
+        <button mat-mini-fab color="primary" (click)="commentDetails()">
           <mat-icon>comment</mat-icon>
         </button>
       </td>
