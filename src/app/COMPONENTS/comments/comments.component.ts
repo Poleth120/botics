@@ -19,7 +19,6 @@ export class CommentsComponent {
     'Last Name',
     'Email',
     'Role',
-    'Estado',
     'Acciones',
   ];
 
@@ -36,8 +35,8 @@ export class CommentsComponent {
 
   }
 
-  commentDetails() {
-    this.matDialog.open(DialogCommentComponent, {data: this.commentsD})
+  commentDetails(comment: any) {
+    this.matDialog.open(DialogCommentComponent, {data: comment})
   }
 
 
