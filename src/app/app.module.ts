@@ -42,7 +42,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { DialogComponent } from './COMPONENTS/list-c/dialog/dialog.component';
 import { DialogSaveComponent } from './COMPONENTS/list-c/dialog-save/dialog-save.component';
 import { DialogLabComponent } from './COMPONENTS/list-c/dialog-lab/dialog-lab.component';
+<<<<<<< HEAD
 import { DialogChangeComponent } from './COMPONENTS/list-c/dialog-change/dialog-change.component';
+=======
+import { ListUserComponent } from './COMPONENTS/list-user/list-user.component';
+>>>>>>> 970f6dd680e6c173bd1ba6f9a28258dccc5ca641
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -67,6 +71,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DialogSaveComponent,
     DialogLabComponent,
     DialogChangeComponent,
+    ListUserComponent,
   ],
   imports: [
     BrowserModule,
