@@ -56,4 +56,8 @@ export class AdminService {
   computerDelete(hostName: string): Observable<any> {
     return this.http.delete(ADMIN_API + 'computer/delete/' + hostName, this.httpOptions);
   }
+
+  commentIndex(): Observable<any> {
+    return this.http.get(ADMIN_API + 'commentary/index', this.httpOptions)
+  }
 }

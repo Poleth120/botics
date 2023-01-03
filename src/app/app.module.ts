@@ -46,6 +46,8 @@ import { DialogLabComponent } from './COMPONENTS/list-c/dialog-lab/dialog-lab.co
 import { DialogChangeComponent } from './COMPONENTS/list-c/dialog-change/dialog-change.component';
 
 import { ListUserComponent } from './COMPONENTS/list-user/list-user.component';
+import { CommentsComponent } from './COMPONENTS/comments/comments.component';
+import { DialogCommentComponent } from './COMPONENTS/comments/dialog-comment/dialog-comment.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -72,6 +74,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DialogLabComponent,
     DialogChangeComponent,
     ListUserComponent,
+    CommentsComponent,
+    DialogCommentComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Injectable, ChangeDetectorRef, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, Injectable, ChangeDetectorRef, Inject, SimpleChanges, Input, OnChanges } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatTableDataSource } from '@angular/material/table';
@@ -58,15 +58,20 @@ export interface ComputerC {
 @Injectable({
   providedIn: 'root'
 })
-export class ListCComponent implements OnInit {
+export class ListCComponent implements OnInit, OnChanges  {
   constructor(
     private router: ActivatedRoute,
     private adminService: AdminService,
     private matDialog: MatDialog,
     private routerF: Router,
     private changeDetectorRef: ChangeDetectorRef
-  ) {this.FLAG = true}
-  labId!: any | number;
+  ) {this.FLAG = true
+    this.routerSub = this.router.queryParams.subscribe((params) => {
+
+      console.log(params);
+      this.labId = params;
+    });}
+  @Input() labId: any = {id: 0};
 
   FLAG: boolean
   displayedColumns: string[] = [
@@ -110,10 +115,6 @@ export class ListCComponent implements OnInit {
     this.computersSub?.unsubscribe()
     this.routerSub?.unsubscribe()
     this.computers =  new MatTableDataSource<Computer>([]);
-    this.routerSub = this.router.queryParams.subscribe((params) => {
-      console.log(JSON.stringify(params));
-      this.labId = params;
-    });
     console.log(this.labId)
     if (!this.labId.id) {
       this.computersSub = this.adminService.computerIndex().subscribe((data) => {
@@ -129,6 +130,11 @@ export class ListCComponent implements OnInit {
         console.log(this.computers);
       });
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+
   }
 
   refreshComponent(id: number) {

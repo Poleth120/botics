@@ -13,7 +13,7 @@
           <span class="user-name">
             <strong>{{ profile?.username }}</strong>
           </span>
-          <span class="user-role" *ngFor="let role of profile.roles">{{ role.name }}</span>
+          <span class="user-role" *ngFor="let role of profile?.roles">{{ role?.name }}</span>
           <span class="user-role">
             <i class="fa fa-circle"></i>
             <span *ngIf="profile?.extension">Ext: {{ profile?.extension }}</span>
@@ -43,8 +43,8 @@
             </a>
             <div *ngIf="menu.type === 'dropdown'" class="sidebar-submenu" [@slide]="getState(menu)">
               <ul>
-                <li *ngFor="let submenu of menu.submenus">
-                  <a class="linki" (click)="reloadList(submenu.param.id)"> {{submenu.title}}
+                <li *ngFor="let submenu of menu?.submenus">
+                  <a class="linki" [routerLink]="[submenu?.route]" [queryParams]="{ id: submenu?.param?.id }"> {{submenu.title}}
                     <span *ngIf="submenu.badge" class="badge badge-pill" [ngClass]="submenu.badge.class">{{submenu.badge.text}}</span>
                   </a>
                 </li>
