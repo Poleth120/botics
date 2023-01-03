@@ -11,6 +11,7 @@ import { BoardAdminComponent } from './COMPONENTS/board-admin/board-admin.compon
 import { CreateUserComponent } from './COMPONENTS/create-user/create-user.component';
 import { ListLComponent } from './COMPONENTS/list-l/list-l.component';
 import { ListCComponent } from './COMPONENTS/list-c/list-c.component';
+import { ListUserComponent } from './COMPONENTS/list-user/list-user.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'crear-nuevo-usuario', component: CreateUserComponent },
+  { path: 'listar-nuevo-usuario', component: ListUserComponent },
   { path: 'laboratorios', component: ListLComponent },
   { path: 'laboratorios/lab-computadoras', component: ListCComponent },
   { path: 'lab-computadoras', component: ListCComponent },
