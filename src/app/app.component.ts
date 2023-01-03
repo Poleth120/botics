@@ -16,6 +16,7 @@ export class AppComponent {
   username?: string;
   listL=false;
   createUser=false;
+  listUser=false;
 
   constructor(private sidebarservice: SidebarService, private tokenStorageService: TokenStorageService, private auth: AuthService) { }
 
@@ -29,6 +30,7 @@ export class AppComponent {
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.createUser = this.roles.includes('ROLE_ADMIN');
       this.listL = this.roles.includes('ROLE_ADMIN');
+      this.listUser = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
       this.username = user.username;

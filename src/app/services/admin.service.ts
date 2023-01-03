@@ -56,6 +56,13 @@ export class AdminService {
   computerDelete(hostName: string): Observable<any> {
     return this.http.delete(ADMIN_API + 'computer/delete/' + hostName, this.httpOptions);
   }
+  register( username: string, email: string, role: any[], password: string): Observable<any> {
+    console.log(role)
+    let jsonO = {username: username, email: email, role: role, password: password}
+    console.log(JSON.stringify( jsonO))
+    return this.http.post(ADMIN_API + 'intern/save', jsonO, this.httpOptions);
+  }
+
 
   commentIndex(): Observable<any> {
     return this.http.get(ADMIN_API + 'commentary/index', this.httpOptions)

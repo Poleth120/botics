@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AdminService } from 'src/app/services/admin.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-create-user',
@@ -24,7 +24,7 @@ export class CreateUserComponent {
     password: new FormControl('', Validators.required),
     role: new FormControl([], Validators.required)
   });
-  constructor(private authService: AuthService) {
+  constructor(private adminService: AdminService) {
     this.myForm.setValue({
       username: '',
       email: '',
@@ -39,7 +39,7 @@ export class CreateUserComponent {
    onSubmit(): void {
     const { username, email, role, password } = this.form;
     console.log(this.roles)
-    this.authService.register(username, email, [this.roles], password).subscribe({
+    this.adminService.register(username, email, [this.roles], password).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;
