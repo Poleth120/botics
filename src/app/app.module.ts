@@ -50,6 +50,8 @@ import { CommentsComponent } from './COMPONENTS/comments/comments.component';
 import { DialogCommentComponent } from './COMPONENTS/comments/dialog-comment/dialog-comment.component';
 
 
+import {MatTabsModule} from '@angular/material/tabs';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -99,7 +101,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatNativeDateModule,
     MatFormFieldModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule
   ],
   providers: [{provide: PERFECT_SCROLLBAR_CONFIG,
     useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG}],
