@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogSaveComponent } from './dialog-save/dialog-save.component';
 import { DialogLabComponent } from './dialog-lab/dialog-lab.component';
+import { DialogChangeComponent } from './dialog-change/dialog-change.component';
 
 export interface Computer {
   id: number;
@@ -179,12 +180,12 @@ export class ListCComponent implements OnInit {
 
   openDialogeChange(idComputer: number) {
     const dialogReference = this.matDialog.open(DialogLabComponent,
-      { data: { idComputer: idComputer, idLab1: this.labId.id, idLab2: 0}});
+      { data: { idComputer: idComputer, idLab1: this.labId.id, idLab2: 0, changeDetails: ''}});
       dialogReference.afterClosed().subscribe((result) => {
         if (result === undefined) {
           this.ngOnInit();
         } else {
-          this.adminService.computerReAssign(result.idLab1, result.idLab2, result.idComputer, "cambio")
+          this.adminService.computerReAssign(result.idLab1, result.idLab2, result.idComputer, result.changeDetails)
           .subscribe(() => {
             this.ngOnInit();
           })
@@ -205,11 +206,18 @@ export class ListCComponent implements OnInit {
   }
 
   unassign(idComputer: number) {
-    this.adminService
-      .computerUnAssign(this.labId.id, idComputer, 'Computador dañado.')
-      .subscribe(() => {
-        this.ngOnInit();
-      });
+    const dialogReference = this.matDialog.open(DialogChangeComponent,
+      { data: { idComputer: idComputer, idLab: this.labId.id, changeDetails: ''}});
+    dialogReference.afterClosed().subscribe((result) => {
+      if (result) {
+        this.adminService
+          .computerUnAssign(result.idLab, result.idComputer, result.changeDetails)
+          .subscribe(() => {
+            this.ngOnInit();
+          });
+      }
+    })
+
   }
 
   delete(idComputer: number, hostName: string) {

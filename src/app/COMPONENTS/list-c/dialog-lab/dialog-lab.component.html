@@ -16,7 +16,7 @@
       <ng-container matColumnDef="Acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-stroked-button color="primary" [mat-dialog-close]="data" (click)="select(element.id)">Seleccionar</button>
+          <button mat-stroked-button color="primary" (click)="select(element.id)">Seleccionar</button>
         </td>
       </ng-container>
 

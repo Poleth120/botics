@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Cambio de computadora</h1>
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label>Detalles del cambio</label>
+        <textarea class="form-control" type="text" name="details" placeholder="Detalles"
+          value="{{ data.changeDetails }}" [(ngModel)]="data.changeDetails"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="data">Guardar</button>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Cerrar</button>
+</div>
