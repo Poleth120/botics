@@ -55,7 +55,8 @@ export class SidebarService {
           title: 'Listar',
         },
         {
-          title: 'Resgistrar'
+          title: 'Resgistrar',
+          route: 'crear-nuevo-usuario'
         }
       ]
     },
