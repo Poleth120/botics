@@ -16,6 +16,8 @@ import { ListUserComponent } from './COMPONENTS/list-user/list-user.component';
 import { CommentsComponent } from './COMPONENTS/comments/comments.component';
 import { TicketsComponent } from './COMPONENTS/tickets/tickets.component';
 import { ReservesComponent } from './COMPONENTS/reserves/reserves.component';
+import { HistoryComponent } from './COMPONENTS/history/history.component';
+import { ReservesSendComponent } from './COMPONENTS/reserves-send/reserves-send.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -28,7 +30,10 @@ const routes: Routes = [
   { path: 'admin-comentarios', component: CommentsComponent },
   { path: 'admin-tickets', component: TicketsComponent },
   { path: 'admin-reserves', component: ReservesComponent },
+  { path: 'intern-reserves', component: ReservesComponent },
+  { path: 'teacher-reserves-send', component: ReservesSendComponent },
   { path: 'crear-nuevo-usuario', component: CreateUserComponent },
+  { path: 'admin-history', component: HistoryComponent },
   { path: 'listar-nuevo-usuario', component: ListUserComponent },
   { path: 'laboratorios', component: ListLComponent },
   { path: 'laboratorios/lab-computadoras', component: ListCComponent },

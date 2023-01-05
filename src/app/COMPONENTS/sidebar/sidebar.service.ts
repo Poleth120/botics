@@ -94,7 +94,8 @@ export class SidebarService {
           title: 'Reporte',
         },
         {
-          title: 'Historial'
+          title: 'Historial',
+          route: 'admin-history'
         }
       ]
     }
@@ -122,6 +123,7 @@ export class SidebarService {
       submenus: [
         {
           title: 'Listar',
+          route: 'intern-reserves'
         },
         {
           title: 'Responder'
@@ -129,6 +131,40 @@ export class SidebarService {
       ]
     },
   ];
+
+  menusProfesor = [
+    {
+      title: 'Tickets',
+      icon: 'fa fa-ticket',
+      active: false,
+      type: 'dropdown',
+      submenus: [
+        {
+          title: 'Listar',
+        },
+        {
+          title: 'Responder'
+        }
+      ]
+    },
+    {
+      title: 'Reservas',
+      icon: 'fa fa-calendar',
+      active: false,
+      type: 'dropdown',
+      submenus: [
+        {
+          title: 'Solicitar Reserva',
+          route: 'teacher-reserves-send'
+        },
+        {
+          title: 'Listar mis reservas'
+        }
+      ]
+    },
+  ];
+
+
   noMenus = [];
   constructor() { }
 
@@ -151,6 +187,12 @@ export class SidebarService {
       }
       case role = 'ROLE_PASANTE': {
         return this.menusPasante;
+      }
+      case role = 'ROLE_ADMINISTRATIVO': {
+        return this.menusAdmin;
+      }
+      case role = 'ROLE_PROFESOR': {
+        return this.menusProfesor;
       }
       default: {
         return this.noMenus;

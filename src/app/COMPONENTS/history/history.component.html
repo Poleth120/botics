@@ -1,0 +1,21 @@
+<h1>Historial de movimeintos</h1>
+<div class="container">
+
+  <div class="col-12 col-md-6 col-lg-4" *ngFor="let history of history">
+    <div class="card border-0 shadow-lg pt-5 my-5 position-relative">
+      <div class="card-body p-4">
+        <div class="card-text pt-1">
+          <h5 class="member-name mb-0 text-center text-primary font-weight-bold">Historial ID: {{ history.id }}</h5>
+          <h5 class="member-name mb-0 text-center text-primary font-weight-bold">{{ history.hostName }}</h5>
+          <div>
+            La computadora con nombre de host: {{ history.hostName }} y código de bien de CPU: {{ history.codeCpu }}
+            fue desasignada del laboratorio: {{ history.labName }} debido a los siguientes detalles: {{
+            history.changeDetails }}.
+          </div>
+        </div>
+      </div><!--//card-body-->
+      <div class="card-footer theme-bg-primary border-0 text-center">
+      </div><!--//card-footer-->
+    </div><!--//card-->
+  </div><!--//col-->
+</div>

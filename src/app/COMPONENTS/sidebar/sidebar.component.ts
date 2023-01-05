@@ -43,6 +43,7 @@ export class SidebarComponent implements OnInit {
 
   reloadList(id: number) {
     this.listC.refreshComponent(id)
+    this.ngOnInit()
   }
 
   toggle(currentMenu: any) {

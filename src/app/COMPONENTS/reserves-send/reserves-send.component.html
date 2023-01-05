@@ -1,0 +1,21 @@
+<div class="container">
+  <section class="get-in-touch">
+    <form class="contact-form row">
+      <div class="row">
+        <div class="form-field col x-50">
+          <input id="name" class="input-text js-input" type="text" name="labName" required [(ngModel)]="reserva.labName" value="reserva?.labName">
+          <label class="label" for="name">Nombre del laboratorio</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-field col x-100">
+          <textarea id="message" class="input-text js-input" type="text" name="description" required [(ngModel)]="reserva.description" value="reserva?.description"></textarea>
+          <label class="label" for="message">Message</label>
+        </div>
+      </div>
+      <div>
+        <button mat-raised-button color="primary" (click)="sendReserve()">Enviar</button>
+      </div>
+    </form>
+  </section>
+</div>

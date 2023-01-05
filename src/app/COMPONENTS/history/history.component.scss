@@ -1,0 +1,182 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Montserrat,sans-serif;
+  margin: 50px;
+  background-image: linear-gradient(90deg, #9274b7, #3b4a8d);
+
+  >h1, >p{
+    text-align:center;
+  }
+
+  >h1{
+    margin: 40px;
+    color: #ffffff;
+  }
+
+  >p{
+    font-size:20px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
+}
+
+.card-container{
+  display: flex;
+
+  .card{
+    margin: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+
+    .card-count-container{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 200px;
+      padding: 20px 0px;
+    }
+
+    .card-count{
+      font-weight: bold;
+      font-size: 100px;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: auto;
+      margin-right: 0;
+      padding-right: 25px;
+      overflow: hidden;
+      color: #ffffff;
+      box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+      text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+      transition: all 0.2s ease-in-out;
+    }
+
+    .card-content{
+      padding: 20px;
+      padding-top: 0px;
+
+      > h2{
+        margin-top: 0px;
+        text-align: center;
+      }
+    }
+
+    .card-footer{
+      padding: 20px;
+      color: #ffffff;
+    }
+
+    &:nth-child(1){
+      .card-count, .card-footer{
+        background-image: linear-gradient(90deg, #f6671f, #c01b1c);
+      }
+    }
+
+    &:nth-child(2){
+      .card-count, .card-footer{
+        background-image: linear-gradient(90deg, #fec22f, #ea9826);
+      }
+    }
+
+    &:nth-child(3){
+      .card-count, .card-footer{
+        background-image: linear-gradient(90deg, #6fc6a9, #058ba9);
+      }
+    }
+
+    &:hover{
+      .card-count{
+        width: 160px;
+        height: 160px;
+      }
+    }
+  }
+
+  @media (max-width: 767px){
+    flex-wrap: wrap;
+  }
+}
+
+
+body{margin-top:20px;}
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+.pt-5 {
+    padding-top: 3rem !important;
+}
+.my-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+}
+.border-0 {
+    border: 0 !important;
+}
+.position-relative {
+    position: relative !important;
+}
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%) !important;
+}
+.card {
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,0.125);
+    border-radius: .25rem;
+}
+
+.member-profile {
+    top: -50px;
+    left: 0;
+}
+.text-center {
+    text-align: center !important;
+}
+.w-100 {
+    width: 100% !important;
+}
+.position-absolute {
+    position: absolute !important;
+}
+
+.member-profile img {
+    width: 100px;
+    height: 100px;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.mx-auto {
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+}
+
+.container{
+  width: 100%;
+  max-width:100%;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}

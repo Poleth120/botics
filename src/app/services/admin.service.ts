@@ -75,4 +75,8 @@ export class AdminService {
   reserveIndex(): Observable<any> {
     return this.http.get(ADMIN_API + 'reserve/index', this.httpOptions)
   }
+
+  historyIndex(): Observable<any> {
+    return this.http.get(ADMIN_API + 'inventory/history/index', this.httpOptions)
+  }
 }
