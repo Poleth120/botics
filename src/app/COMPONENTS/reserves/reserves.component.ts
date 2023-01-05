@@ -6,6 +6,7 @@ import { AdminService } from 'src/app/services/admin.service';
 import { DialogReserveComponent } from './dialog-reserve/dialog-reserve.component';
 import { Router } from '@angular/router';
 import { InternService } from 'src/app/services/intern.service';
+import { DialogResponseComponent } from './dialog-response/dialog-response.component';
 
 @Component({
   selector: 'app-reserves',
@@ -53,6 +54,6 @@ export class ReservesComponent {
   }
 
   reserveResponse() {
-    
+    this.matDialog.open(DialogResponseComponent)
   }
 }
