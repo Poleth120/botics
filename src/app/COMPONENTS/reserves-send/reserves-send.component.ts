@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
@@ -8,21 +9,12 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./reserves-send.component.scss']
 })
 export class ReservesSendComponent {
-  constructor(private teacherService: TeacherService, private tokenService: TokenStorageService) {}
+  constructor(public dialogRef: MatDialogRef<ReservesSendComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
 
-  idUser: any
-
-  ngOnInit(): void {
-    this.reserva = {labName: '', description: ''};
-    this.idUser = this.tokenService.getUser().id
   }
 
-  reserva!: any;
-
-  sendReserve() {
-    this.teacherService.saveReserve(this.idUser, this.reserva).subscribe(() => {
-      this.ngOnInit()
-    });
+  onNoClick() {
+    this.dialogRef.close()
   }
 
 

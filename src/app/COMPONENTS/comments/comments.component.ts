@@ -4,6 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdminService } from 'src/app/services/admin.service';
 import { DialogCommentComponent } from './dialog-comment/dialog-comment.component';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { Router } from '@angular/router';
+import { AdministrativeService } from 'src/app/services/administrative.service';
+import { DialogResponseComponent } from '../reserves/dialog-response/dialog-response.component';
 
 @Component({
   selector: 'app-comments',
@@ -12,7 +16,9 @@ import { DialogCommentComponent } from './dialog-comment/dialog-comment.componen
 })
 export class CommentsComponent {
 
-  constructor(private adminService: AdminService, private matDialog: MatDialog) {}
+  constructor(private adminService: AdminService, private matDialog: MatDialog, private userService: TokenStorageService, private router: Router, private administrativeService: AdministrativeService) {
+    this.routes = this.router.url
+  }
 
   displayedColumns: string[] = [
     'Name',
@@ -26,18 +32,41 @@ export class CommentsComponent {
   commentsD: any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  ngOnInit(): void {
-    this.adminService.commentIndex().subscribe((data) => {
-      this.comments = data as MatTableDataSource<any>
-      this.commentsD = data
-      console.log(data)
-    })
+  routes: string
+  currentUser = this.userService.getUser()
+  response: any = {subject: '', details: ''}
 
+  ngOnInit(): void {
+    this.response = {subject: '', details: ''}
+    if (this.routes === '/administrativo-comentarios-res') {
+      this.administrativeService.indexNoCommentary(this.currentUser.id).subscribe((data) => {
+        this.comments = data as MatTableDataSource<any>
+        this.commentsD = data
+        console.log(data)
+      })
+    } else {
+      this.adminService.commentIndex().subscribe((data) => {
+        this.comments = data as MatTableDataSource<any>
+        this.commentsD = data
+        console.log(data)
+      })
+    }
   }
 
   commentDetails(comment: any) {
     this.matDialog.open(DialogCommentComponent, {data: comment})
   }
 
-
+  commentResponse(id: number) {
+    const dialogReference = this.matDialog.open(DialogResponseComponent, {data: this.response})
+    dialogReference.afterClosed().subscribe((result) => {
+      if (result === undefined) {
+        this.ngOnInit();
+      } else {
+        this.administrativeService.responseCommentary(this.currentUser.id, id, result).subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    })
+  }
 }

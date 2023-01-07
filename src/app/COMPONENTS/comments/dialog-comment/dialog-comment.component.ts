@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dialog-comment',
@@ -7,7 +8,12 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./dialog-comment.component.css']
 })
 export class DialogCommentComponent {
-  constructor(public dialogRef: MatDialogRef<DialogCommentComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(public dialogRef: MatDialogRef<DialogCommentComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private router: Router) {
+
+  this.routes = this.router.url;
+  }
+
+  routes: string
 
   ngOnInit(): void {
     console.log(this.data)

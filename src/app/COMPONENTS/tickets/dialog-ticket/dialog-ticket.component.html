@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Ticket Id: {{ data?.id }}</h1>
 <div mat-dialog-content>
   <mat-tab-group animationDuration="0ms">
-    <mat-tab label="Comentario">
+    <mat-tab label="Ticket">
       <div class="container">
         <div class="row">
           <div>
@@ -64,8 +64,8 @@
             </div>
           </form>
         </div>
-        <h1>Responsable</h1>
-        <div class="tab-pane active">
+        <h1 *ngIf="!(routes === '/profesor-tickets')">Responsable</h1>
+        <div class="tab-pane active" *ngIf="!(routes === '/profesor-tickets')">
           <form class="form" novalidate="">
             <div class="row">
               <div class="col">

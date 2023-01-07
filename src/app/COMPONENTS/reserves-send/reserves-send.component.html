@@ -1,21 +1,37 @@
-<div class="container">
-  <section class="get-in-touch">
-    <form class="contact-form row">
-      <div class="row">
-        <div class="form-field col x-50">
-          <input id="name" class="input-text js-input" type="text" name="labName" required [(ngModel)]="reserva.labName" value="reserva?.labName">
-          <label class="label" for="name">Nombre del laboratorio</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-field col x-100">
-          <textarea id="message" class="input-text js-input" type="text" name="description" required [(ngModel)]="reserva.description" value="reserva?.description"></textarea>
-          <label class="label" for="message">Message</label>
-        </div>
-      </div>
+<h1 mat-dialog-title>Reserva</h1>
+<div mat-dialog-content>
+  <div class="container">
+    <div class="row">
       <div>
-        <button mat-raised-button color="primary" (click)="sendReserve()">Enviar</button>
+        <div class="card card-margin">
+          <div class="card-body pt-0">
+            <div class="widget-49">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Nombre del laboratorio</label>
+                    <input class="form-control" type="text" name="labName" placeholder="Laboratorio que se busca reservar"
+                      value="{{ data?.labName }}" [(ngModel)]="data.labName">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea class="form-control" type="text" name="description" placeholder="Descripción"
+                      value="{{ data?.description }}" [(ngModel)]="data.description"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </form>
-  </section>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="data">Enviar</button>
+  <button mat-button (click)="onNoClick()">Cerrar</button>
 </div>

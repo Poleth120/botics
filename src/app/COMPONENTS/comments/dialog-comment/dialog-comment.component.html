@@ -22,8 +22,8 @@
                     <div class="col">
                       <div class="form-group">
                         <label>Mensaje</label>
-                        <textarea class="form-control" type="text" name="observations" placeholder="Observaciones"
-                          value="{{ data?.message }}" [(ngModel)]="data.message" [readonly]="true"></textarea>
+                        <textarea class="form-control" type="text" name="message" placeholder="Mensaje"
+                          value="{{ data?.message }}" [(ngModel)]="data.message || data.description" [readonly]="true"></textarea>
                       </div>
                     </div>
                   </div>
@@ -64,8 +64,8 @@
             </div>
           </form>
         </div>
-        <h1>Responsable</h1>
-        <div class="tab-pane active">
+        <h1 *ngIf="!(routes === '/profesor-comentarios')">Responsable</h1>
+        <div class="tab-pane active" *ngIf="!(routes === '/profesor-comentarios')">
           <form class="form" novalidate="">
             <div class="row">
               <div class="col">

@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Respuesta</h1>
+<h1 mat-dialog-title>Comentario</h1>
 <div mat-dialog-content>
   <div class="container">
     <div class="row">
@@ -10,7 +10,7 @@
                 <div class="col">
                   <div class="form-group">
                     <label>Asunto</label>
-                    <input class="form-control" type="text" name="subject" placeholder="Asunto"
+                    <input class="form-control" type="text" name="Asunto" placeholder="Asunto del comentario"
                       value="{{ data?.subject }}" [(ngModel)]="data.subject">
                   </div>
                 </div>
@@ -18,9 +18,9 @@
               <div class="row">
                 <div class="col">
                   <div class="form-group">
-                    <label>Detalles</label>
-                    <textarea class="form-control" type="text" name="details" placeholder="Detalles"
-                      value="{{ data?.detalles }}" [(ngModel)]="data.details"></textarea>
+                    <label>Mensaje</label>
+                    <textarea class="form-control" type="text" name="description" placeholder="Mensaje"
+                      value="{{ data?.message }}" [(ngModel)]="data.message"></textarea>
                   </div>
                 </div>
               </div>
@@ -35,3 +35,4 @@
   <button mat-button cdkFocusInitial [mat-dialog-close]="data">Enviar</button>
   <button mat-button (click)="onNoClick()">Cerrar</button>
 </div>
+

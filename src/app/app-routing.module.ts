@@ -18,6 +18,9 @@ import { TicketsComponent } from './COMPONENTS/tickets/tickets.component';
 import { ReservesComponent } from './COMPONENTS/reserves/reserves.component';
 import { HistoryComponent } from './COMPONENTS/history/history.component';
 import { ReservesSendComponent } from './COMPONENTS/reserves-send/reserves-send.component';
+import { ReservesUserComponent } from './COMPONENTS/reserves-user/reserves-user.component';
+import { TicketsUserComponent } from './COMPONENTS/tickets-user/tickets-user.component';
+import { CommentsUserComponent } from './COMPONENTS/comments-user/comments-user.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -31,6 +34,13 @@ const routes: Routes = [
   { path: 'admin-tickets', component: TicketsComponent },
   { path: 'admin-reserves', component: ReservesComponent },
   { path: 'intern-reserves', component: ReservesComponent },
+  { path: 'administrativo-comentarios-res', component: CommentsComponent },
+  { path: 'profesor-reservas', component: ReservesUserComponent },
+  { path: 'profesor-comentarios', component: CommentsUserComponent },
+  { path: 'profesor-tickets', component: TicketsUserComponent },
+  { path: 'administrativo-tickets', component: TicketsUserComponent },
+  { path: 'administrativo-comentarios', component: CommentsUserComponent },
+  { path: 'pasante-tickets', component: TicketsComponent },
   { path: 'teacher-reserves-send', component: ReservesSendComponent },
   { path: 'crear-nuevo-usuario', component: CreateUserComponent },
   { path: 'admin-history', component: HistoryComponent },

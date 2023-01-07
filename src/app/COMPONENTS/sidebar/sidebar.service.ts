@@ -109,9 +109,7 @@ export class SidebarService {
       submenus: [
         {
           title: 'Listar',
-        },
-        {
-          title: 'Responder'
+          route: 'pasante-tickets'
         }
       ]
     },
@@ -124,9 +122,6 @@ export class SidebarService {
         {
           title: 'Listar',
           route: 'intern-reserves'
-        },
-        {
-          title: 'Responder'
         }
       ]
     },
@@ -134,16 +129,26 @@ export class SidebarService {
 
   menusProfesor = [
     {
+      title: 'Comentarios y/o sugerencias',
+      icon: 'fa fa-comments',
+      active: false,
+      type: 'dropdown',
+      submenus: [
+        {
+          title: 'Listar - Enviar',
+          route: 'profesor-comentarios'
+        }
+      ]
+    },
+    {
       title: 'Tickets',
       icon: 'fa fa-ticket',
       active: false,
       type: 'dropdown',
       submenus: [
         {
-          title: 'Listar',
-        },
-        {
-          title: 'Responder'
+          title: 'Listar - Enviar',
+          route: 'profesor-tickets'
         }
       ]
     },
@@ -154,14 +159,42 @@ export class SidebarService {
       type: 'dropdown',
       submenus: [
         {
-          title: 'Solicitar Reserva',
-          route: 'teacher-reserves-send'
-        },
-        {
-          title: 'Listar mis reservas'
+          title: 'Listar - Enviar',
+          route: 'profesor-reservas'
         }
       ]
     },
+  ];
+
+  menusAdministrativo = [
+    {
+      title: 'Comentarios y/o sugerencias',
+      icon: 'fa fa-comments',
+      active: false,
+      type: 'dropdown',
+      submenus: [
+        {
+          title: 'Listar - Enviar',
+          route: 'administrativo-comentarios'
+        },
+        {
+          title: 'Listar',
+          route: 'administrativo-comentarios-res'
+        }
+      ]
+    },
+    {
+      title: 'Tickets',
+      icon: 'fa fa-ticket',
+      active: false,
+      type: 'dropdown',
+      submenus: [
+        {
+          title: 'Listar - Enviar',
+          route: 'administrativo-tickets'
+        }
+      ]
+    }
   ];
 
 
@@ -189,7 +222,7 @@ export class SidebarService {
         return this.menusPasante;
       }
       case role = 'ROLE_ADMINISTRATIVO': {
-        return this.menusAdmin;
+        return this.menusAdministrativo;
       }
       case role = 'ROLE_PROFESOR': {
         return this.menusProfesor;
