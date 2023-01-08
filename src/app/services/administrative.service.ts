@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 
-const ADMINISTRATIVE_API = 'https://boticssys.loca.lt/api/v1/administrative/';
+const ADMINISTRATIVE_API = 'https://botics.loca.lt/api/v1/administrative/';
 
 @Injectable({
   providedIn: 'root'

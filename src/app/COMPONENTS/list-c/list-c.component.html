@@ -1,5 +1,8 @@
-<div>
+<div *ngIf="!(routes === '/lab-computadoras')">
   <button mat-raised-button color="primary" (click)="openDialogeCreate()">Crear</button>
+</div>
+<div *ngIf="routes === '/lab-computadoras'">
+  <button mat-raised-button color="primary" (click)="openDialogeCreateOnly()">Crear</button>
 </div>
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="computers">
@@ -24,6 +27,11 @@
       <td mat-cell *matCellDef="let element"> {{element.serialMonitor}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="Referencia de laboratorio">
+      <th mat-header-cell *matHeaderCellDef> Laboratorio al que pertenece </th>
+      <td mat-cell *matCellDef="let element"> {{element.labReference}} </td>
+    </ng-container>
+
     <ng-container matColumnDef="Estado">
       <th mat-header-cell *matHeaderCellDef> Estado </th>
       <td mat-cell *matCellDef="let element"><mat-slide-toggle color="primary" [checked]="element.state" (change)="toggleChange($event, element.id)"></mat-slide-toggle></td>
@@ -35,8 +43,9 @@
         <button mat-icon-button color="primary" (click)="openDialogeShow(element)"><mat-icon>visibility</mat-icon></button>
         <button mat-icon-button color="blank" (click)="openDialogeEdit(element)"><mat-icon>edit</mat-icon></button>
         <button mat-icon-button color="warn" (click)="delete(element.id, element.hostName)"><mat-icon>delete_forever</mat-icon></button>
-        <button mat-button color="accent" (click)="unassign(element.id)">Desasignar</button>
-        <button mat-button color="accent" (click)="openDialogeChange(element.id)">Cambiar</button>
+        <button mat-button color="accent" *ngIf="routes === '/lab-computadoras' && element.labReference === 0" (click)="openDialogeAssign(element.id, element.labReference)">Asignar</button>
+        <button mat-button color="accent" (click)="unassign(element.id, element.labReference)" *ngIf="!(element.labReference === 0)">Desasignar</button>
+        <button mat-button color="accent" (click)="openDialogeChange(element.id, element.labReference)" *ngIf="!(element.labReference === 0)">Cambiar</button>
       </td>
     </ng-container>
 
