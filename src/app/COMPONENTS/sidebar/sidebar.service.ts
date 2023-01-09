@@ -53,6 +53,7 @@ export class SidebarService {
       submenus: [
         {
           title: 'Listar',
+          route: 'pasantes-listar'
         },
         {
           title: 'Resgistrar',

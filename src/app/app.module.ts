@@ -63,6 +63,8 @@ import { TicketsUserComponent } from './COMPONENTS/tickets-user/tickets-user.com
 import { TicketsSendComponent } from './COMPONENTS/tickets-send/tickets-send.component';
 import { CommentsUserComponent } from './COMPONENTS/comments-user/comments-user.component';
 import { CommentsSendComponent } from './COMPONENTS/comments-send/comments-send.component';
+import { ListIComponent } from './COMPONENTS/list-i/list-i.component';
+import { DialogShowComponent } from './COMPONENTS/list-i/dialog-show/dialog-show.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -102,6 +104,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     TicketsSendComponent,
     CommentsUserComponent,
     CommentsSendComponent,
+    ListIComponent,
+    DialogShowComponent,
   ],
   imports: [
     BrowserModule,

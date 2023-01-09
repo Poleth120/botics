@@ -16,6 +16,18 @@ export class AdminService {
     headers: new HttpHeaders({'Authorization': 'Bearer '+this.tokens,  'Content-Type': 'application/json',  'Bypass-Tunnel-Reminder': 'njkjjk'})
   };
 
+  internIndex(): Observable<any> {
+    return this.http.get(ADMIN_API + 'intern/index', this.httpOptions);
+  }
+
+  internEnable(id: number): Observable<any> {
+    return this.http.get(ADMIN_API + 'intern/enable/' + id, this.httpOptions);
+  }
+
+  internDisable(id: number): Observable<any> {
+    return this.http.get(ADMIN_API + 'intern/disable/' + id, this.httpOptions);
+  }
+
   labIndex(): Observable<any> {
     return this.http.get(ADMIN_API + 'lab/index', this.httpOptions);
   }

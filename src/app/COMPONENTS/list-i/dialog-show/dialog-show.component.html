@@ -1,0 +1,62 @@
+<h1 mat-dialog-title *ngIf="data.data?.hostName">{{ data.username }}</h1>
+<div mat-dialog-content>
+  <div class="tab-content pt-3">
+    <div class="tab-pane active">
+      <form class="form" novalidate="">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input class="form-control" type="text" name="Nombre" placeholder="Nombre"
+                    value="{{ data?.firstName }}" [(ngModel)]="data.firstName" [readonly]=true>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Apellido</label>
+                  <input class="form-control" type="text" name="Apellido" placeholder="Apellido"
+                    value="{{ data?.lastName }}" [(ngModel)]="data.lastName" [readonly]=true>
+                </div>
+              </div>
+            </div>
+            <div class="row" *ngIf="!data.data?.serialMonitor">
+              <div class="col">
+                <div class="form-group">
+                  <label>Extensión</label>
+                  <input class="form-control" type="text" name="Extensión" placeholder="Extensión"
+                    value="{{ data?.extension }}" [(ngModel)]="data.extension" [readonly]=true>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Registrado el</label>
+                  <input class="form-control" type="text" name="Creado en" placeholder="Creado en"
+                    value="{{ data?.createdAt }}" [(ngModel)]="data.createdAt" [readonly]=true>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Actualizado el</label>
+                  <input class="form-control" type="text" name="Actualizado en" placeholder="Actualizado en"
+                    value="{{ data?.updatedAt }}" [(ngModel)]="data.updatedAt" [readonly]=true>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cerrar</button>
+</div>
+
