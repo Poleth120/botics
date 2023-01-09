@@ -2,7 +2,7 @@
 body{background: #eee;font-family: sans-serif;}
 .flexone{flex: 1;}
 
-.groups{margin: 0 auto;width: 1000px;padding: 10px;height: auto; margin-left:14%; margin-top:45px;}
+.groups{margin: 0 auto;width: 1010px;padding: 10px;height: auto; margin-left:14%; margin-top:45px;}
 .groups li{position: relative;list-style: none;background: #fff;border-radius: 5px;
     box-shadow: 0 3px 4px 0 #0001;overflow: hidden;margin-bottom: 30px;transition: all 0.3s;}
 
@@ -42,7 +42,7 @@ body{background: #eee;font-family: sans-serif;}
     display: flex;
     
     justify-content: center;
-    margin-left:100px;
+    margin-left:102px;
 }
 
 .container1 .card1{
