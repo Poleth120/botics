@@ -58,6 +58,11 @@ import { DialogReserveComponent } from './COMPONENTS/reserves/dialog-reserve/dia
 import { HistoryComponent } from './COMPONENTS/history/history.component';
 import { DialogResponseComponent } from './COMPONENTS/reserves/dialog-response/dialog-response.component';
 import { ReservesSendComponent } from './COMPONENTS/reserves-send/reserves-send.component';
+import { ReservesUserComponent } from './COMPONENTS/reserves-user/reserves-user.component';
+import { TicketsUserComponent } from './COMPONENTS/tickets-user/tickets-user.component';
+import { TicketsSendComponent } from './COMPONENTS/tickets-send/tickets-send.component';
+import { CommentsUserComponent } from './COMPONENTS/comments-user/comments-user.component';
+import { CommentsSendComponent } from './COMPONENTS/comments-send/comments-send.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -92,6 +97,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HistoryComponent,
     DialogResponseComponent,
     ReservesSendComponent,
+    ReservesUserComponent,
+    TicketsUserComponent,
+    TicketsSendComponent,
+    CommentsUserComponent,
+    CommentsSendComponent,
   ],
   imports: [
     BrowserModule,

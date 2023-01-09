@@ -65,13 +65,22 @@ export class ListCComponent implements OnInit, OnChanges  {
     private matDialog: MatDialog,
     private routerF: Router,
     private changeDetectorRef: ChangeDetectorRef
-  ) {this.FLAG = true
+  ) {this.FLAG = true,
     this.routerSub = this.router.queryParams.subscribe((params) => {
 
       console.log(params);
+
       this.labId = params;
-    });}
-  @Input() labId: any = {id: 0};
+      console.log(this.labId)
+      if (this.routerF.url === '/lab-computadoras'){
+        this.labId = {id: 500};
+        console.log(this.labId)
+      } else {
+        this.labId = params;
+        console.log(this.labId)
+      }
+    }), this.routes = this.routerF.url}
+  @Input() labId: any = {id: 500};
 
   FLAG: boolean
   displayedColumns: string[] = [
@@ -79,6 +88,7 @@ export class ListCComponent implements OnInit, OnChanges  {
     'Host Name',
     'Serial del CPU',
     'Serial del Monitor',
+    "Referencia de laboratorio",
     'Estado',
     'Acciones',
   ];
@@ -107,6 +117,7 @@ export class ListCComponent implements OnInit, OnChanges  {
   computerSave: any;
   computersSub: any;
   routerSub: any;
+  routes: string;
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -116,7 +127,7 @@ export class ListCComponent implements OnInit, OnChanges  {
     this.routerSub?.unsubscribe()
     this.computers =  new MatTableDataSource<Computer>([]);
     console.log(this.labId)
-    if (!this.labId.id) {
+    if (this.routerF.url === '/lab-computadoras') {
       this.computersSub = this.adminService.computerIndex().subscribe((data) => {
         console.log(data);
         this.computers = data as MatTableDataSource<Computer>;
@@ -184,14 +195,44 @@ export class ListCComponent implements OnInit, OnChanges  {
     });
   }
 
-  openDialogeChange(idComputer: number) {
+  openDialogeCreateOnly() {
+    const dialogReference = this.matDialog.open(DialogSaveComponent, {
+      data: { data: this.computer, edit: false },
+    });
+    dialogReference.afterClosed().subscribe((result) => {
+      if (result === undefined) {
+        this.ngOnInit();
+      } else {
+        this.adminService.computerSave(result).subscribe(() => {
+          this.ngOnInit();
+        });
+      }
+    });
+  }
+
+  openDialogeChange(idComputer: number, labReference: number) {
     const dialogReference = this.matDialog.open(DialogLabComponent,
-      { data: { idComputer: idComputer, idLab1: this.labId.id, idLab2: 0, changeDetails: ''}});
+      { data: { idComputer: idComputer, idLab1: labReference, idLab2: 0, changeDetails: ''}});
       dialogReference.afterClosed().subscribe((result) => {
         if (result === undefined) {
           this.ngOnInit();
         } else {
           this.adminService.computerReAssign(result.idLab1, result.idLab2, result.idComputer, result.changeDetails)
+          .subscribe(() => {
+            this.ngOnInit();
+          })
+        }
+      })
+  }
+
+  openDialogeAssign(idComputer: number, labReference: number) {
+    const dialogReference = this.matDialog.open(DialogLabComponent,
+      { data: { idComputer: idComputer, idLab1: labReference, idLab2: 0, changeDetails: ''}});
+      dialogReference.afterClosed().subscribe((result) => {
+        if (result === undefined) {
+          this.ngOnInit();
+        } else {
+          this.adminService.computerAssign(result.idLab1, result.idComputer)
           .subscribe(() => {
             this.ngOnInit();
           })
@@ -211,9 +252,9 @@ export class ListCComponent implements OnInit, OnChanges  {
     }
   }
 
-  unassign(idComputer: number) {
+  unassign(idComputer: number, labReference: number) {
     const dialogReference = this.matDialog.open(DialogChangeComponent,
-      { data: { idComputer: idComputer, idLab: this.labId.id, changeDetails: ''}});
+      { data: { idComputer: idComputer, idLab: labReference, changeDetails: ''}});
     dialogReference.afterClosed().subscribe((result) => {
       if (result) {
         this.adminService
