@@ -10,6 +10,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 body {
   font-size: .9rem;
+  background: #dbe0ec;
 }
 
 .page-wrapper.toggled .sidebar {
