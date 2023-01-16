@@ -11,10 +11,19 @@ export class ProfileComponent {
   ) {}
 
   profile: any;
+  profileInfo: any;
 
   ngOnInit(): void {
     this.profileService.getProfile().subscribe((data) => {
       this.profile = data
+      console.log(data)
+    })
+  }
+
+  updateInfoProfile() {
+    console.log(this.profileInfo)
+    this.profileService.updateProfileInfo(this.profileInfo).subscribe(() => {
+      this.ngOnInit()
     })
   }
 }
