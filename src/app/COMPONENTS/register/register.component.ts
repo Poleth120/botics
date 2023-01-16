@@ -15,7 +15,7 @@ export class RegisterComponent {
     this.visible=!this.visible;
     this.changetype=!this.changetype;
   }
-  
+
 
   form: any = {
     username: null,

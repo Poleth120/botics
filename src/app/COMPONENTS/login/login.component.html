@@ -1,85 +1,85 @@
 <body>
-<div class="col-md-12">
+  <div class="col-md-12">
 
-  <div class="contenedor-formulario contenedor">
-    <div class="imagen-formulario">
+    <div class="contenedor-formulario contenedor">
+      <div class="imagen-formulario">
 
-    </div>
+      </div>
 
-    <form class="formulario" *ngIf="!isLoggedIn"
-    name="form"
-    (ngSubmit)="f.form.valid && onSubmit()"
-    #f="ngForm"
-    novalidate>
-        <div class="texto-formulario">
-            <h3><strong>Bienvenido de nuevo</strong></h3>
-            <h6 style="text-align:center;">Inicia sesión con tu cuenta</h6>
-        </div>
-        <div class="input">
-            <label for="usuario"><h5><strong>Nombre de usuario </strong></h5></label>
-            <input placeholder="Ingresa tu nombre o email"  type="text"
-            class="form-control"
-            name="username"
-            [(ngModel)]="form.username"
-            required
-            #username="ngModel">
-
-            <div
-
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="username.errors && f.submitted"
-        >
-          !El nombre de usuario es obligatorio!
-        </div>
-        </div>
-        
-
-        <div class="input">
-            <label for="contraseña"><h5><strong>Contraseña </strong></h5></label>
-            <input placeholder="Ingresa tu contraseña" type="password"
-          class="form-control"
-          name="password"
-          [(ngModel)]="form.password"
-          required
-          minlength="6"
-          #password="ngModel">
-          <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="password.errors && f.submitted"
-        >
-          <div *ngIf="password.errors['required']">La contraseña es obligatoria</div>
-          <div *ngIf="password.errors['minlength']">
-            Password must be at least 6 characters
+      <form class="formulario" *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+          <div class="texto-formulario">
+              <h3><strong>Bienvenido de nuevo</strong></h3>
+              <h6 style="text-align:center;">Inicia sesión con tu cuenta</h6>
           </div>
-        </div>
-        </div>
-        
+          <div class="input">
+              <label for="usuario"><h5><strong>Nombre de usuario </strong></h5></label>
+              <input placeholder="Ingresa tu nombre o email"  type="text"
+              class="form-control"
+              name="username"
+              [(ngModel)]="form.username"
+              required
+              #username="ngModel">
 
-        <div class="password-olvidada">
-            <a href="#" style="text-align:center;"><h6 ><strong>¿Olvidaste tu contraseña?</strong></h6></a>
+              <div
+
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="username.errors && f.submitted"
+          >
+            !El nombre de usuario es obligatorio!
+          </div>
+          </div>
+
+
+          <div class="input">
+              <label for="contraseña"><h5><strong>Contraseña </strong></h5></label>
+              <input placeholder="Ingresa tu contraseña" type="password"
+            class="form-control"
+            name="password"
+            [(ngModel)]="form.password"
+            required
+            minlength="6"
+            #password="ngModel">
+            <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="password.errors && f.submitted"
+          >
+            <div *ngIf="password.errors['required']">La contraseña es obligatoria</div>
+            <div *ngIf="password.errors['minlength']">
+              Password must be at least 6 characters
+            </div>
+          </div>
+          </div>
+
+
+          <div class="password-olvidada">
+              <a href="#" style="text-align:center;"><h6 ><strong>¿Olvidaste tu contraseña?</strong></h6></a>
+          </div>
+          <div class="form-group">
+          <button class="btn btn-primary btn-block input" style=" border-radius: 40px;">
+            Iniciar sesión
+          </button>
         </div>
         <div class="form-group">
-        <button class="btn btn-primary btn-block input" style=" border-radius: 40px;">
-          Iniciar sesión
-        </button>
-      </div>
-      <div class="form-group">
-        <div
-          class="alert alert-danger"
-          role="alert"
-          *ngIf="f.submitted && isLoginFailed"
-        >
-          Login failed: {{ errorMessage }}
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && isLoginFailed"
+          >
+            Login failed: {{ errorMessage }}
+          </div>
         </div>
-      </div>
-    </form>
-<script src="login.js"></script>
-</div>
-</div>
+      </form>
+  <script src="login.js"></script>
+  </div>
+  </div>
 
-</body>
-<div class="alert alert-success" *ngIf="isLoggedIn">
-  Has iniciado sesión como {{ roles }}.
-</div>
+  </body>
+  <div class="alert alert-success" *ngIf="isLoggedIn">
+    Has iniciado sesión como {{ roles }}.
+  </div>

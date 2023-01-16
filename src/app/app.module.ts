@@ -132,7 +132,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatFormFieldModule,
     MatSlideToggleModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    MatProgressBarModule,
+
   ],
   providers: [{provide: PERFECT_SCROLLBAR_CONFIG,
     useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG},
