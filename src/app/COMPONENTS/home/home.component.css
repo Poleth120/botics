@@ -2,7 +2,7 @@
 body{background: #eee;font-family: sans-serif;}
 .flexone{flex: 1;}
 
-.groups{margin: 0 auto;width: 1010px;padding: 10px;height: auto; margin-left:14%; margin-top:45px;}
+.groups{margin: 0 auto;width: 1010px;padding: 10px;height: auto; margin-left:22%; margin-top:45px;}
 .groups li{position: relative;list-style: none;background: #fff;border-radius: 5px;
     box-shadow: 0 3px 4px 0 #0001;overflow: hidden;margin-bottom: 30px;transition: all 0.3s;}
 
@@ -40,9 +40,9 @@ body{background: #eee;font-family: sans-serif;}
     max-width: 1250px;
     height: 430px;
     display: flex;
-    
+    flex-wrap: wrap;
     justify-content: center;
-    margin-left:102px;
+    margin-left:17%;
 }
 
 .container1 .card1{
@@ -56,7 +56,7 @@ body{background: #eee;font-family: sans-serif;}
     text-align: center;
     transition: all 0.25s;
 }
-.container1 .card2{
+.container1 .card1{
     width: 330px;
     height: 430px;
     border-radius: 8px;
@@ -93,6 +93,14 @@ body{background: #eee;font-family: sans-serif;}
     text-decoration: none;
     color: #3498db;
 }
+
+
+
+
+
+
+
+
 
 
 
