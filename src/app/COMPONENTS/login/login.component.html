@@ -1,63 +1,68 @@
 <body>
 <div class="col-md-12">
 
-  <div class="card card-container">
-    <img
-    id="profile-img"
-    src="https://esfot.epn.edu.ec/images/headers/logo_esfot_buho.png"
-    class="img"
-  />
+  <div class="contenedor-formulario contenedor">
+    <div class="imagen-formulario">
 
-    <form
-      *ngIf="!isLoggedIn"
-      name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
-      #f="ngForm"
-      novalidate
-    >
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input
-          type="text"
-          class="form-control"
-          name="username"
-          [(ngModel)]="form.username"
-          required
-          #username="ngModel"
-        />
-        <div
+    </div>
+
+    <form class="formulario" *ngIf="!isLoggedIn"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate>
+        <div class="texto-formulario">
+            <h3><strong>Bienvenido de nuevo</strong></h3>
+            <h6 style="text-align:center;">Inicia sesión con tu cuenta</h6>
+        </div>
+        <div class="input">
+            <label for="usuario"><h5><strong>Nombre de usuario </strong></h5></label>
+            <input placeholder="Ingresa tu nombre o email"  type="text"
+            class="form-control"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            #username="ngModel">
+
+            <div
+
           class="alert alert-danger"
           role="alert"
           *ngIf="username.errors && f.submitted"
         >
-          Username is required!
+          !El nombre de usuario es obligatorio!
         </div>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          type="password"
+        </div>
+        
+
+        <div class="input">
+            <label for="contraseña"><h5><strong>Contraseña </strong></h5></label>
+            <input placeholder="Ingresa tu contraseña" type="password"
           class="form-control"
           name="password"
           [(ngModel)]="form.password"
           required
           minlength="6"
-          #password="ngModel"
-        />
-        <div
+          #password="ngModel">
+          <div
           class="alert alert-danger"
           role="alert"
           *ngIf="password.errors && f.submitted"
         >
-          <div *ngIf="password.errors['required']">Password is required</div>
+          <div *ngIf="password.errors['required']">La contraseña es obligatoria</div>
           <div *ngIf="password.errors['minlength']">
             Password must be at least 6 characters
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary btn-block">
-          Login
+        </div>
+        
+
+        <div class="password-olvidada">
+            <a href="#" style="text-align:center;"><h6 ><strong>¿Olvidaste tu contraseña?</strong></h6></a>
+        </div>
+        <div class="form-group">
+        <button class="btn btn-primary btn-block input" style=" border-radius: 40px;">
+          Iniciar sesión
         </button>
       </div>
       <div class="form-group">
@@ -70,10 +75,11 @@
         </div>
       </div>
     </form>
-
-    <div class="alert alert-success" *ngIf="isLoggedIn">
-      Logged in as {{ roles }}.
-    </div>
-  </div>
+<script src="login.js"></script>
 </div>
+</div>
+
 </body>
+<div class="alert alert-success" *ngIf="isLoggedIn">
+  Has iniciado sesión como {{ roles }}.
+</div>

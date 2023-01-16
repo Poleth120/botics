@@ -8,6 +8,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegisterComponent {
 
+
+  visible:boolean=true;
+  changetype:boolean=true;
+  viewpass(){
+    this.visible=!this.visible;
+    this.changetype=!this.changetype;
+  }
+  
+
   form: any = {
     username: null,
     email: null,
