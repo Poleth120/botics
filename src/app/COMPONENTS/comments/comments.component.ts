@@ -15,7 +15,7 @@ import { DialogResponseComponent } from '../reserves/dialog-response/dialog-resp
   styleUrls: ['./comments.component.css']
 })
 export class CommentsComponent {
-  longText = `Visualizar los comentarios y/o sugerencias realizadas por parte del personal docente y administrativo. También, puedes visualizar las respuestas de los comentarios y/o sugerencias.`;
+  longText=''
 
 
 
@@ -42,6 +42,7 @@ export class CommentsComponent {
   ngOnInit(): void {
     this.response = {subject: '', details: ''}
     if (this.routes === '/administrativo-comentarios-res') {
+      this.longText = `Visualizar los comentarios y/o sugerencias realizadas por parte del personal docente y administrativo. También, puedes visualizar las respuestas y a su vez responder los comentarios y/o sugerencias que no han sido atendidos.`;
       this.administrativeService.indexNoCommentary(this.currentUser.id).subscribe((data) => {
         this.comments = new MatTableDataSource<any>(data)
         this.comments.paginator = this.paginator
@@ -49,6 +50,7 @@ export class CommentsComponent {
         console.log(data)
       })
     } else {
+      this.longText = `Visualizar los comentarios y/o sugerencias realizadas por parte del personal docente y administrativo. También, puedes visualizar las respuestas de los comentarios y/o sugerencias.`;
       this.adminService.commentIndex().subscribe((data) => {
         this.comments = new MatTableDataSource<any>(data)
         this.comments.paginator = this.paginator

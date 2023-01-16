@@ -16,12 +16,15 @@ import { AdministrativeService } from 'src/app/services/administrative.service';
 })
 export class TicketsUserComponent {
 
+  longText = `Visualizar y enviar tickets de asistencia de mi autoría.`;
+
+
   constructor(private matDialog: MatDialog, private teacherService: TeacherService, private userService: TokenStorageService, private router: Router, private administrativeService: AdministrativeService) {
     this.routes = this.router.url
   }
 
   displayedColumns: string[] = [
-    'Id',
+    
     'Asunto',
     'Acciones'
   ];

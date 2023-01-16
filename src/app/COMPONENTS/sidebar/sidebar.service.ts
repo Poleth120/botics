@@ -175,11 +175,11 @@ export class SidebarService {
       type: 'dropdown',
       submenus: [
         {
-          title: 'Listar - Enviar',
+          title: 'Enviar mis comentarios ',
           route: 'administrativo-comentarios'
         },
         {
-          title: 'Listar',
+          title: 'Listar comentarios',
           route: 'administrativo-comentarios-res'
         }
       ]
@@ -191,7 +191,7 @@ export class SidebarService {
       type: 'dropdown',
       submenus: [
         {
-          title: 'Listar - Enviar',
+          title: 'Enviar ticket de asistencia',
           route: 'administrativo-tickets'
         }
       ]
