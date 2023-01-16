@@ -2,3 +2,139 @@
     margin-left: 37%;
     max-width: 25%;
 }
+
+.img{
+  margin-left: 37%;
+  max-width: 25%;
+}
+
+:root{
+--azul:#134074;
+--azulOscuro:#0B2545;
+--azulGris:#8DA9C4;
+--blanco:#fff;
+--fuente:'Quicksand', sans-serif;
+}
+html{
+box-sizing: border-box;
+}
+
+*,*::after, *::before{
+box-sizing: inherit;
+}
+
+
+
+.contenedor{
+margin: 0 auto;
+max-width: 900px;
+width: 95%;
+max-height:570px;
+height:90%;
+border-width: 20px;
+border-color: hsl(210, 47%, 6%);
+border-radius: 10px;
+background-color:rgb(229, 237, 240);
+}
+
+.imagen-formulario{
+background-image: url('src/assets/img/ESFOT.jpeg');
+background-position: center center;
+background-size: cover;
+height: 200px;
+flex: 0 0 calc(60%);
+position: relative;
+border-radius: 50px, 50px, 0px,  0px ;
+
+}
+.imagen-formulario::before{
+content: '';
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+
+
+}
+
+@media(min-width:768px){
+.imagen-formulario{
+    height: auto;
+    background-position: right;
+}
+
+}
+@media(min-width:1200px){
+.imagen-formulario{
+    background-position: center;
+}
+}
+
+@media(min-width:768px){
+.contenedor-formulario{
+    display: flex;
+
+}
+}
+
+.formulario{
+padding: 45px;
+background-color: var(--azul);
+}
+.texto-formulario h2, .input label, .password-olvidada a, .texto-formulario p{
+color: var(--blanco);
+}
+.texto-formulario h2{
+font-size: 40px;
+text-align: center;
+}
+.texto-formulario p{
+font-size: 22px;
+text-align: center;
+}
+.input label{
+display: block;
+font-size: 22px;
+font-weight: bold;
+margin: 20px 0;
+}
+.password-olvidada a{
+display: inline-block;
+margin-top: 20px;
+font-size: 22px;
+text-align:center;
+}
+.input input{
+width: 100%;
+padding: 10px 16px;
+border-radius: 10px;
+outline: none;
+}
+.input input[type="submit"]{
+background-color: var(--azulGris);
+color: var(--blanco);
+font-size: 22px;
+font-weight: bold;
+
+margin-top: 20px;
+transition: background-color .3s ease-in-out;
+
+
+}
+.input input[type="submit"]:hover{
+
+cursor: pointer;
+background-color: var(--azulOscuro);
+
+
+}
+
+
+.eyeicon {
+position: absolute;
+left:75%;
+top:69%;
+
+cursor: pointer;
+}

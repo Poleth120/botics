@@ -31,10 +31,10 @@
         <div class="alert-danger" *ngIf="username.errors && f.submitted">
           <div *ngIf="username.errors['required']">Nombre de usuario es obligatorio</div>
           <div *ngIf="username.errors['minlength']">
-            Username must be at least 3 characters
+            El nombre de usuario debe tener como mínimo 3 caracteres
           </div>
           <div *ngIf="username.errors['maxlength']">
-            Username must be at most 20 characters
+            El nombre de usuario debe tener como máximo 20 caracteres
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
           #email="ngModel"
         />
         <div class="alert-danger" *ngIf="email.errors && f.submitted">
-          <div *ngIf="email.errors['required']">Email is required</div>
+          <div *ngIf="email.errors['required']">¡El correo electrónico es obligatorio!</div>
           <div *ngIf="email.errors['email']">
             Email must be a valid email address
           </div>
@@ -72,7 +72,7 @@
             <span class="eyeicon" style="width:20px;"(click)="viewpass()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i></span>
 
             <div class="alert-danger" *ngIf="password.errors && f.submitted">
-              <div *ngIf="password.errors['required']">Password is required</div>
+              <div *ngIf="password.errors['required']">¡La contraseña es obligatoria!/div>
               <div *ngIf="password.errors['minlength']">
                 Password must be at least 6 characters
               </div>
@@ -92,7 +92,7 @@
               role="alert"
               *ngIf="password.errors && f.submitted"
             >
-              <div *ngIf="password.errors['required']">Password is required</div>
+              <div *ngIf="password.errors['required']">¡La contraseña es obligatoria!</div>
               <div *ngIf="password.errors['minlength']">
                 Password must be at least 6 characters
               </div>
@@ -109,14 +109,13 @@
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
           Signup failed!<br />{{ errorMessage }}
         </div>
-      </form>
-
 
     </div>
-  </div>
-</body>
+  </form>
+</div>
+
   <div class="alert alert-success" *ngIf="isSuccessful">
-    Se ha registrado exitosamente!
+    Bienvenido, se ha registrado exitosamente!
+    Ahora puedes navegar en BOTICS
   </div>
 
-  

@@ -71,15 +71,16 @@
             role="alert"
             *ngIf="f.submitted && isLoginFailed"
           >
-            Login failed: {{ errorMessage }}
+            Fallo de login: {{ errorMessage }}
           </div>
         </div>
       </form>
-  <script src="login.js"></script>
+
   </div>
   </div>
 
   </body>
   <div class="alert alert-success" *ngIf="isLoggedIn">
-    Has iniciado sesión como {{ roles }}.
+    <h5><strong>Bienvenido, has iniciado sesión como {{ roles }}.
+    Continúa navegando en BOTICS </strong></h5>
   </div>

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './COMPONENTS/login/login.component';
@@ -32,7 +33,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import  {PerfectScrollbarModule}  from 'ngx-perfect-scrollbar';
@@ -134,6 +135,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatDialogModule,
     MatTabsModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
+
 
   ],
   providers: [{provide: PERFECT_SCROLLBAR_CONFIG,

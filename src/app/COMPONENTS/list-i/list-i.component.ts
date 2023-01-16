@@ -13,6 +13,8 @@ import { DialogShowComponent } from './dialog-show/dialog-show.component';
 })
 export class ListIComponent {
   constructor(private adminService: AdminService, private matDialog: MatDialog) {}
+  longText = `Visualizar una lista de los pasantes que han sido registrados y puedes habilitar o deshabilitar alguno de ellos, según se requiera:`;
+
 
   displayedColumns: string[] = [
     'Id',

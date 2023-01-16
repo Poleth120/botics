@@ -8,9 +8,14 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CreateUserComponent {
 
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
+  visible:boolean=true;
+  changetype:boolean=true;
+  viewpass(){
+    this.visible=!this.visible;
+    this.changetype=!this.changetype;
+  }
+
+  longText = `Registrar nuevos usuarios de tipo pasante, para lo cual debes llenas los siguientes campos:`;
 
   form: any = {
     username: null,
