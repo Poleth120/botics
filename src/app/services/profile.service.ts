@@ -21,4 +21,8 @@ export class ProfileService {
   getProfile(): Observable<any> {
     return this.http.get(PROFILE_API, this.httpOptions);
   }
+
+  updateProfileInfo(profileInfo: any): Observable<any> {
+    return this.http.post(PROFILE_API + 'update/info', profileInfo, this.httpOptions)
+  }
 }
