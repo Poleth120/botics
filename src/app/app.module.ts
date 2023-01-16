@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import  {PerfectScrollbarModule}  from 'ngx-perfect-scrollbar';
@@ -50,7 +51,7 @@ import { CommentsComponent } from './COMPONENTS/comments/comments.component';
 import { DialogCommentComponent } from './COMPONENTS/comments/dialog-comment/dialog-comment.component';
 
 
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { TicketsComponent } from './COMPONENTS/tickets/tickets.component';
 import { DialogTicketComponent } from './COMPONENTS/tickets/dialog-ticket/dialog-ticket.component';
 import { ReservesComponent } from './COMPONENTS/reserves/reserves.component';
@@ -65,6 +66,7 @@ import { CommentsUserComponent } from './COMPONENTS/comments-user/comments-user.
 import { CommentsSendComponent } from './COMPONENTS/comments-send/comments-send.component';
 import { ListIComponent } from './COMPONENTS/list-i/list-i.component';
 import { DialogShowComponent } from './COMPONENTS/list-i/dialog-show/dialog-show.component';
+import { NetworkInterceptor } from './interceptors/network';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -130,11 +132,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MatFormFieldModule,
     MatSlideToggleModule,
     MatDialogModule,
-    MatTabsModule,
-    MatProgressBarModule,
+    MatTabsModule
   ],
   providers: [{provide: PERFECT_SCROLLBAR_CONFIG,
-    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG}],
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG},
+  {provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true}],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

@@ -4,6 +4,24 @@
   overflow-y: scroll;
 }
 
+mat-progress-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.overlays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  backdrop-filter: blur(2px);
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 5px;

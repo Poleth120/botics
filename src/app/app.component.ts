@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { AuthService } from './services/auth.service';
 import { SidebarService } from './COMPONENTS/sidebar/sidebar.service';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,9 @@ export class AppComponent {
   listL=false;
   createUser=false;
   listUser=false;
+  loading$ = this.loader.loading$;
 
-  constructor(private sidebarservice: SidebarService, private tokenStorageService: TokenStorageService, private auth: AuthService) { }
+  constructor(private sidebarservice: SidebarService, private tokenStorageService: TokenStorageService, private auth: AuthService, public loader: LoadingService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
