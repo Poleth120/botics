@@ -18,7 +18,7 @@ export class ListIComponent {
 
 
   displayedColumns: string[] = [
-    'Id',
+ 
     'Nombre de usuario',
     'Email',
     'Estado',
