@@ -34,7 +34,7 @@ export class ReservesComponent {
     'Acciones',
   ];
 
-  reserves =  new MatTableDataSource<any>([]);
+  reserves: any;
   reservesD: any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -44,14 +44,14 @@ export class ReservesComponent {
     console.log(this.router.url)
     if (this.routes === '/intern-reserves') {
       this.internService.reserveIndex().subscribe((data) => {
-        this.reserves = data as MatTableDataSource<any>
+        this.reserves = new MatTableDataSource<any>(data)
         this.reserves.paginator = this.paginator;
         this.reservesD = data
         console.log(data)
       })
     } else {
       this.adminService.reserveIndex().subscribe((data) => {
-        this.reserves = data as MatTableDataSource<any>
+        this.reserves = new MatTableDataSource<any>(data)
         this.reserves.paginator = this.paginator;
         this.reservesD = data
         console.log(data)

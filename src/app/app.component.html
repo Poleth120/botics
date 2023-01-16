@@ -1,7 +1,11 @@
-<ng-container>
-  <div class="page-wrapper" [ngClass]="{'toggled' : getSideBarState()}">
-    <app-sidebar *ngIf="isLoggedIn"></app-sidebar>
-    <main class="page-content">
+<ng-container *ngIf="loading$ | async">
+  <div class="overlays"></div>
+  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+</ng-container>
+<div class="page-wrapper" [ngClass]="{'toggled' : getSideBarState()}">
+  <app-sidebar *ngIf="isLoggedIn"></app-sidebar>
+  <main class="page-content">
+    <div class="">
       <div class="">
           <div class="">
               <div>
@@ -26,13 +30,13 @@
                           <a href="/listar-nuevo-usuarioadmin" class="nav-link" routerLink="admin">Listar Usuario</a>
                         </li>
 
-                  <li class="nav-item" *ngIf="showModeratorBoard">
-                    <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
-                  </li>
-                </ul>
+                <li class="nav-item" *ngIf="showModeratorBoard">
+                  <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
+                </li>
+              </ul>
 
                       <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
                         <li class="nav-item">
@@ -56,11 +60,10 @@
                 </div>
           </div>
       </div>
-      <div class="overlay" (click)="toggleSidebar()" [ngClass]="{'show' : !getSideBarState()}"></div>
-      <div class="content-container">
-        <router-outlet></router-outlet>
-      </div>
-    </main>
-  </div>
-  <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading$ | async"></mat-progress-spinner>
-</ng-container>
+    </div>
+    <div class="overlay" (click)="toggleSidebar()" [ngClass]="{'show' : !getSideBarState()}"></div>
+    <div class="content-container">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

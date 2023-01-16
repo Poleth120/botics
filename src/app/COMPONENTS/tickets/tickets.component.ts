@@ -35,7 +35,7 @@ export class TicketsComponent {
   ];
   response: any = {subject: '', details: ''}
 
-  tickets = new MatTableDataSource<any>([]);
+  tickets: any;
   ticketsD: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -43,13 +43,13 @@ export class TicketsComponent {
     this.response = {subject: '', details: ''}
     if (this.routes === '/pasante-tickets') {
       this.internService.ticketIndex().subscribe((data) => {
-        this.tickets = data as MatTableDataSource<any>;
+        this.tickets = new MatTableDataSource<any>(data);
         this.tickets.paginator = this.paginator
         this.ticketsD = data;
       });
     } else {
       this.adminService.ticketIndex().subscribe((data) => {
-        this.tickets = data as MatTableDataSource<any>;
+        this.tickets = new MatTableDataSource<any>(data);
         this.tickets.paginator = this.paginator
         this.ticketsD = data;
         console.log(data);

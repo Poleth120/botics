@@ -93,7 +93,7 @@ export class ListCComponent implements OnInit, OnChanges  {
     'Acciones',
   ];
 
-  computers =  new MatTableDataSource<Computer>([]);
+  computers: any;
 
   computer: ComputerC = {
     hostName: null,
@@ -130,13 +130,13 @@ export class ListCComponent implements OnInit, OnChanges  {
     if (this.routerF.url === '/lab-computadoras') {
       this.computersSub = this.adminService.computerIndex().subscribe((data) => {
         console.log(data);
-        this.computers = data as MatTableDataSource<Computer>;
+        this.computers = new MatTableDataSource<Computer>(data);
         this.computers.paginator = this.paginator;
       });
     } else {
       this.computersSub = this.adminService.computerIndexLab(this.labId['id']).subscribe((data) => {
         console.log(data);
-        this.computers = data as MatTableDataSource<Computer>;
+        this.computers = new MatTableDataSource<Computer>(data);
         this.computers.paginator = this.paginator;
         console.log(this.computers);
       });
