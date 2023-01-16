@@ -14,6 +14,10 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./tickets.component.css'],
 })
 export class TicketsComponent {
+
+  longText = `Visualizar los tickets de asistencia solicitados por parte del personal docente y administrativo. También, puedes visualizar las respuestas de los tickets de asistencia.`;
+
+
   constructor(
     private adminService: AdminService,
     private matDialog: MatDialog,

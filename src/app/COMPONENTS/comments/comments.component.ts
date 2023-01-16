@@ -15,6 +15,9 @@ import { DialogResponseComponent } from '../reserves/dialog-response/dialog-resp
   styleUrls: ['./comments.component.css']
 })
 export class CommentsComponent {
+  longText = `Visualizar los comentarios y/o sugerencias realizadas por parte del personal docente y administrativo. También, puedes visualizar las respuestas de los comentarios y/o sugerencias.`;
+
+
 
   constructor(private adminService: AdminService, private matDialog: MatDialog, private userService: TokenStorageService, private router: Router, private administrativeService: AdministrativeService) {
     this.routes = this.router.url
