@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-<div class="input-group">
-  <div class="form-outline">
-    <input [(ngModel)]="searchTerm" placeholder="Buscar computadora" type="search" id="form1" class="form-control" />
-  </div>
-  <button type="button" class="btn btn-primary" matPrefix (click)="filterComputers(searchTerm)">
-    <i class="fa fa-search"></i>
-  </button>
-</div>
-=======
+
 <mat-card class="example-card">
   <mat-card-header>
 
@@ -19,10 +10,19 @@
     <h6>{{ longText }}</h6>
 
   </mat-card-content>
- 
+
 
 </mat-card>
->>>>>>> c20425ea0aed55944dbb207071f8692ee07517e0
+<br>
+
+<div class="input-group">
+  <div class="form-outline">
+    <input [(ngModel)]="searchTerm" placeholder="Buscar computadora" type="search" id="form1" class="form-control" />
+  </div>
+  <button type="button" class="btn btn-primary" matPrefix (click)="filterComputers(searchTerm)">
+    <i class="fa fa-search"></i>
+  </button>
+</div>
 <br>
 
 <div *ngIf="!(routes === '/lab-computadoras')">
