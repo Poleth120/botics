@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 <div class="input-group">
   <div class="form-outline">
     <input [(ngModel)]="searchTerm" placeholder="Buscar comentario" type="search" id="form1" class="form-control" />
@@ -7,6 +8,23 @@
     <i class="fa fa-search"></i>
   </button>
 </div>
+=======
+
+<mat-card class="example-card">
+  <mat-card-header>
+
+    <mat-card-title>Este módulo te permite:</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <h6>{{ longText }}</h6>
+
+  </mat-card-content>
+ 
+
+</mat-card>
+>>>>>>> c20425ea0aed55944dbb207071f8692ee07517e0
 <br>
 
 <div>
@@ -16,18 +34,15 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="comments">
 
-    <ng-container matColumnDef="Id">
-      <th mat-header-cell *matHeaderCellDef> Comentario Id </th>
-      <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
-    </ng-container>
+    
 
     <ng-container matColumnDef="Asunto">
-      <th mat-header-cell *matHeaderCellDef> Asunto </th>
+      <th mat-header-cell *matHeaderCellDef><strong> Asunto</strong> </th>
       <td mat-cell *matCellDef="let element"> {{element?.subject}} </td>
     </ng-container>
 
     <ng-container matColumnDef="Acciones">
-      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <th mat-header-cell *matHeaderCellDef> <strong>Detalles </strong></th>
       <td mat-cell *matCellDef="let element">
         <button mat-mini-fab color="primary" (click)="commentDetails(element)">
           <mat-icon>comment</mat-icon>

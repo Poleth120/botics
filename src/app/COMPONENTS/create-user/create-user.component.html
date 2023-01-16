@@ -92,18 +92,18 @@
             <span class="eyeicon" style="width:20px;"(click)="viewpass()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i></span>
 
             <div class="alert-danger" *ngIf="password.errors && f.submitted">
-              <div *ngIf="password.errors['required']">¡La contraseña es obligatoria!/div>
+              <div *ngIf="password.errors['required']">¡La contraseña es obligatoria!</div>
               <div *ngIf="password.errors['minlength']">
-                Password must be at least 6 characters
+                La contraseña tieneun mínimo de 6 caracteres
               </div>
             </div>
           </div>
 
-          <div class="input">
+          
             <label for=""><h5><strong>Elija el rol </strong></h5></label>
             <mat-radio-group aria-label="Select an option" [(ngModel)]="roles" [ngModelOptions]="{standalone: true}">
 
-
+<br>
               <mat-radio-button value="administrativo">Pasante</mat-radio-button>
 
             </mat-radio-group>
@@ -117,7 +117,7 @@
                 Password must be at least 6 characters
               </div>
             </div>
-          </div>
+         
 
 
           <div class="form-group">
@@ -130,7 +130,7 @@
           Signup failed!<br />{{ errorMessage }}
         </div>
 
-    </div>
+   
   </form>
 </div>
 

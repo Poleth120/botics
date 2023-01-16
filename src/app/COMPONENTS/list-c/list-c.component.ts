@@ -60,6 +60,10 @@ export interface ComputerC {
   providedIn: 'root'
 })
 export class ListCComponent implements OnInit, OnChanges  {
+
+
+  longText=''
+
   constructor(
     private router: ActivatedRoute,
     private adminService: AdminService,
@@ -76,9 +80,12 @@ export class ListCComponent implements OnInit, OnChanges  {
       if (this.routerF.url === '/lab-computadoras'){
         this.labId = {id: 500};
         console.log(this.labId)
+        this.longText = `Visualizar los equipos registrados y también puedes añadir nuevos equipos y realizar otras acciones, tales como: dar de baja algún equipo.`;
+ 
       } else {
         this.labId = params;
         console.log(this.labId)
+        this.longText = `Visualizar los equipos asignados a este laboratorio y también puedes registrar nuevos equipos.`;
       }
     }), this.routes = this.routerF.url}
   @Input() labId: any = {id: 500};

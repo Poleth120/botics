@@ -1,14 +1,3 @@
-
-<div class="input-group">
-  <div class="form-outline">
-    <input [(ngModel)]="searchTerm" placeholder="Buscar tickets" type="search" id="form1" class="form-control" />
-  </div>
-  <button type="button" class="btn btn-primary" matPrefix (click)="filterTickets(searchTerm)">
-    <i class="fa fa-search"></i>
-  </button>
-</div>
-<br>
-
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="tickets">
 

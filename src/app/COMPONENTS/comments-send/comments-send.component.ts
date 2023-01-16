@@ -7,6 +7,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./comments-send.component.css']
 })
 export class CommentsSendComponent {
+
+  
+
   constructor(public dialogRef: MatDialogRef<CommentsSendComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   onNoClick() {
