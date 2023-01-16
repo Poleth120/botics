@@ -8,6 +8,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { Router } from '@angular/router';
 import { AdministrativeService } from 'src/app/services/administrative.service';
 import { DialogResponseComponent } from '../reserves/dialog-response/dialog-response.component';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-comments',
@@ -31,6 +32,8 @@ export class CommentsComponent {
   comments: any;
   commentsD: any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  searchTerm = '';
+  @ViewChild(MatSort) sort!: MatSort;
 
   routes: string
   currentUser = this.userService.getUser()
@@ -70,5 +73,11 @@ export class CommentsComponent {
         });
       }
     })
+  }
+
+  filterComments(searchTerm: string) {
+    this.comments.filter = searchTerm.trim().toLocaleLowerCase();
+    const filterValue = searchTerm;
+    this.comments.filter = filterValue.trim().toLowerCase();
   }
 }

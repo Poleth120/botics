@@ -1,9 +1,21 @@
+<div class="input-group">
+  <div class="form-outline">
+    <input [(ngModel)]="searchTerm" placeholder="Buscar computadora" type="search" id="form1" class="form-control" />
+  </div>
+  <button type="button" class="btn btn-primary" matPrefix (click)="filterComputers(searchTerm)">
+    <i class="fa fa-search"></i>
+  </button>
+</div>
+<br>
+
 <div *ngIf="!(routes === '/lab-computadoras')">
   <button mat-raised-button color="primary" (click)="openDialogeCreate()">Crear</button>
 </div>
 <div *ngIf="routes === '/lab-computadoras'">
   <button mat-raised-button color="primary" (click)="openDialogeCreateOnly()">Crear</button>
 </div>
+<br>
+
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="computers">
 

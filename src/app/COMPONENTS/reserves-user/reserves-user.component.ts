@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { DialogReserveComponent } from '../reserves/dialog-reserve/dialog-reserve.component';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-reserves-user',
@@ -21,6 +22,8 @@ export class ReservesUserComponent {
   reservesD: any
   currentUser = this.userService.getUser()
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  searchTerm = '';
+  @ViewChild(MatSort) sort!: MatSort;
 
   displayedColumns: string[] = [
     'Id',
@@ -54,5 +57,11 @@ export class ReservesUserComponent {
         });
       }
     });
+  }
+
+  filterReserves(searchTerm: string) {
+    this.reserves.filter = searchTerm.trim().toLocaleLowerCase();
+    const filterValue = searchTerm;
+    this.reserves.filter = filterValue.trim().toLowerCase();
   }
 }

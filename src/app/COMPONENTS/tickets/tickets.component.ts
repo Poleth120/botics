@@ -8,6 +8,7 @@ import { InternService } from 'src/app/services/intern.service';
 import { Router } from '@angular/router';
 import { DialogResponseComponent } from '../reserves/dialog-response/dialog-response.component';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
@@ -38,6 +39,8 @@ export class TicketsComponent {
   tickets: any;
   ticketsD: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  searchTerm = '';
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
     this.response = {subject: '', details: ''}
@@ -72,5 +75,11 @@ export class TicketsComponent {
         });
       }
     })
+  }
+
+  filterTickets(searchTerm: string) {
+    this.tickets.filter = searchTerm.trim().toLocaleLowerCase();
+    const filterValue = searchTerm;
+    this.tickets.filter = filterValue.trim().toLowerCase();
   }
 }

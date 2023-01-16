@@ -8,6 +8,7 @@ import { DialogCommentComponent } from '../comments/dialog-comment/dialog-commen
 import { CommentsSendComponent } from '../comments-send/comments-send.component';
 import { Router } from '@angular/router';
 import { AdministrativeService } from 'src/app/services/administrative.service';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-comments-user',
@@ -32,6 +33,8 @@ export class CommentsUserComponent {
   commentsD: any;
   routes: string
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  searchTerm = '';
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit() {
     this.comment = {subject: '', description: ''}
@@ -77,5 +80,11 @@ export class CommentsUserComponent {
         }
       }
     });
+  }
+
+  filterComments(searchTerm: string) {
+    this.comments.filter = searchTerm.trim().toLocaleLowerCase();
+    const filterValue = searchTerm;
+    this.comments.filter = filterValue.trim().toLowerCase();
   }
 }

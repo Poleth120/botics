@@ -32,4 +32,5 @@ export class ListLComponent implements OnInit{
     });
     console.log(this.labs)
   }
+
 }

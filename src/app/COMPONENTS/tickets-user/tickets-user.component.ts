@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { TicketsSendComponent } from '../tickets-send/tickets-send.component';
 import { Router } from '@angular/router';
 import { AdministrativeService } from 'src/app/services/administrative.service';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-tickets-user',
@@ -34,6 +35,8 @@ export class TicketsUserComponent {
   tickets: any;
   ticketsD: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  searchTerm = '';
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit() {
     this.ticket = {subject: '', description: ''}
@@ -76,6 +79,12 @@ export class TicketsUserComponent {
         }
       }
     });
+  }
+
+  filterTickets(searchTerm: string) {
+    this.tickets.filter = searchTerm.trim().toLocaleLowerCase();
+    const filterValue = searchTerm;
+    this.tickets.filter = filterValue.trim().toLowerCase();
   }
 
 }

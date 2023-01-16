@@ -13,6 +13,16 @@
 </mat-card>
 <br>
 
+<div class="input-group">
+  <div class="form-outline">
+    <input [(ngModel)]="searchTerm" placeholder="Buscar pasante" type="search" id="form1" class="form-control" />
+  </div>
+  <button type="button" class="btn btn-primary" matPrefix (click)="filterInterns(searchTerm)">
+    <i class="fa fa-search"></i>
+  </button>
+</div>
+<br>
+
 <div class="mat-elevation-z8">
 
   <table mat-table [dataSource]="interns">

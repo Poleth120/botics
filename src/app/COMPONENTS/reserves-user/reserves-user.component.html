@@ -1,3 +1,14 @@
+
+<div class="input-group">
+  <div class="form-outline">
+    <input [(ngModel)]="searchTerm" placeholder="Buscar reservas" type="search" id="form1" class="form-control" />
+  </div>
+  <button type="button" class="btn btn-primary" matPrefix (click)="filterReserves(searchTerm)">
+    <i class="fa fa-search"></i>
+  </button>
+</div>
+<br>
+
 <div>
   <button mat-raised-button color="primary" (click)="sendReserve()">Enviar reserva</button>
 </div>

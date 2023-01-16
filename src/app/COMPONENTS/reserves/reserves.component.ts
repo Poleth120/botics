@@ -10,6 +10,7 @@ import { DialogResponseComponent } from './dialog-response/dialog-response.compo
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { ReservesSendComponent } from '../reserves-send/reserves-send.component';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-reserves',
@@ -42,6 +43,8 @@ export class ReservesComponent {
   reserves: any;
   reservesD: any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  searchTerm = '';
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
     this.response = {subject: '', details: ''}
@@ -92,5 +95,11 @@ export class ReservesComponent {
         });
       }
     });
+  }
+
+  filterReserves(searchTerm: string) {
+    this.reserves.filter = searchTerm.trim().toLocaleLowerCase();
+    const filterValue = searchTerm;
+    this.reserves.filter = filterValue.trim().toLowerCase();
   }
 }

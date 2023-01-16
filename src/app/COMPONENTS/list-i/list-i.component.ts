@@ -5,6 +5,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdminService } from 'src/app/services/admin.service';
 import { DialogShowComponent } from './dialog-show/dialog-show.component';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-list-i',
@@ -25,6 +26,8 @@ export class ListIComponent {
   ];
   interns: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  searchTerm = '';
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit() {
     this.adminService.internIndex().subscribe((data) => {
@@ -49,6 +52,21 @@ export class ListIComponent {
         this.ngOnInit();
       });
     }
+  }
+
+
+  filterInterns(searchTerm: string) {
+    this.interns.filter = searchTerm.trim().toLocaleLowerCase();
+    const filterValue = searchTerm;
+    this.interns.filter = filterValue.trim().toLowerCase();
+  }
+
+  ngAfterViewInit(): void {
+    this.interns.sort = this.sort;
+  }
+
+  onMatSortChange() {
+    this.interns.sort = this.sort;
   }
 
 

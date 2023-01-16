@@ -9,6 +9,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { DialogSaveComponent } from './dialog-save/dialog-save.component';
 import { DialogLabComponent } from './dialog-lab/dialog-lab.component';
 import { DialogChangeComponent } from './dialog-change/dialog-change.component';
+import { MatSort } from '@angular/material/sort';
 
 export interface Computer {
   id: number;
@@ -121,6 +122,8 @@ export class ListCComponent implements OnInit, OnChanges  {
 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  searchTerm = '';
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit() {
     this.computersSub?.unsubscribe()
@@ -158,6 +161,12 @@ export class ListCComponent implements OnInit, OnChanges  {
     const dialogReference = this.matDialog.open(DialogComponent, {
       data: { data: computer, edit: true },
     });
+  }
+
+  filterComputers(searchTerm: string) {
+    this.computers.filter = searchTerm.trim().toLocaleLowerCase();
+    const filterValue = searchTerm;
+    this.computers.filter = filterValue.trim().toLowerCase();
   }
 
   openDialogeEdit(computer: any) {
