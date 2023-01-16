@@ -28,7 +28,7 @@ export class CommentsUserComponent {
   comment: any = {subject: '',message: ''}
   currentUser = this.userService.getUser()
 
-  comments = new MatTableDataSource<any>([]);
+  comments: any;
   commentsD: any;
   routes: string
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -37,13 +37,14 @@ export class CommentsUserComponent {
     this.comment = {subject: '', description: ''}
     if(this.routes === '/administrativo-comentarios') {
       this.administrativeService.indexCommentary(this.currentUser.id).subscribe((data) => {
-        this.comments = data as MatTableDataSource<any>;
+        this.comments = new MatTableDataSource<any>(data);
         this.comments.paginator = this.paginator
         this.commentsD = data;
       })
     } else {
       this.teacherService.indexCommentary(this.currentUser.id).subscribe((data) => {
-        this.comments = data as MatTableDataSource<any>;
+        console.log(data)
+        this.comments = new MatTableDataSource<any>(data);
         this.comments.paginator = this.paginator
         this.commentsD = data;
       })
@@ -60,13 +61,16 @@ export class CommentsUserComponent {
     const dialogReference = this.matDialog.open(CommentsSendComponent, {data: this.comment})
     dialogReference.afterClosed().subscribe((result) => {
       if (result === undefined) {
+        console.log(result)
         this.ngOnInit();
       } else {
         if (this.routes === '/administrativo-comentarios') {
+          console.log(this.currentUser.id)
           this.administrativeService.saveCommentary(this.currentUser.id, result).subscribe(() => {
             this.ngOnInit();
           })
         } else {
+          console.log(this.currentUser.id)
           this.teacherService.saveCommentary(this.currentUser.id, result).subscribe(() => {
             this.ngOnInit();
           });

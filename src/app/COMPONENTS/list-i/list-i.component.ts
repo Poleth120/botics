@@ -21,12 +21,12 @@ export class ListIComponent {
     'Estado',
     'Acciones',
   ];
-  interns = new MatTableDataSource<any>([]);
+  interns: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit() {
     this.adminService.internIndex().subscribe((data) => {
-      this.interns = data as MatTableDataSource<any>
+      this.interns = new MatTableDataSource<any>(data)
       this.interns.paginator = this.paginator
     })
   }

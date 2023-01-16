@@ -28,7 +28,7 @@ export class CommentsComponent {
     'Acciones',
   ];
 
-  comments =  new MatTableDataSource<any>([]);
+  comments: any;
   commentsD: any
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -40,13 +40,15 @@ export class CommentsComponent {
     this.response = {subject: '', details: ''}
     if (this.routes === '/administrativo-comentarios-res') {
       this.administrativeService.indexNoCommentary(this.currentUser.id).subscribe((data) => {
-        this.comments = data as MatTableDataSource<any>
+        this.comments = new MatTableDataSource<any>(data)
+        this.comments.paginator = this.paginator
         this.commentsD = data
         console.log(data)
       })
     } else {
       this.adminService.commentIndex().subscribe((data) => {
-        this.comments = data as MatTableDataSource<any>
+        this.comments = new MatTableDataSource<any>(data)
+        this.comments.paginator = this.paginator
         this.commentsD = data
         console.log(data)
       })

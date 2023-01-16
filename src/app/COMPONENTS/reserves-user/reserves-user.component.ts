@@ -17,7 +17,7 @@ export class ReservesUserComponent {
 
   constructor(private matDialog: MatDialog, private teacherService: TeacherService, private userService: TokenStorageService) {}
 
-  reserves =  new MatTableDataSource<any>([]);
+  reserves: any;
   reservesD: any
   currentUser = this.userService.getUser()
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -32,7 +32,7 @@ export class ReservesUserComponent {
   ngOnInit() {
     this.reserve = {labName: '', description: ''}
     this.teacherService.indexReserve(this.currentUser.id).subscribe((data) => {
-      this.reserves = data as MatTableDataSource<any>
+      this.reserves = new MatTableDataSource<any>(data)
       this.reserves.paginator = this.paginator;
       this.reservesD = data
       console.log(data)

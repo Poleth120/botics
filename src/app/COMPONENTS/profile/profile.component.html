@@ -11,6 +11,8 @@
                     <div class="mx-auto" style="width: 140px;">
                       <div class="d-flex justify-content-center align-items-center rounded"
                         style="height: 140px; background-color: rgb(233, 236, 239);">
+                        <input class="form-control" type="file"
+                                (change)="onChange($event)">
                         <img class="rounded" *ngIf="profile.avatar" style="width: 140px; height: 140px;" src="{{ profile?.avatar?.path }}" >
                         <span *ngIf="!profile.avatar" style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span>
                       </div>
@@ -21,7 +23,7 @@
                       <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{ profile?.username }}</h4>
                       <p class="mb-0">{{ profile?.email }}</p>
                       <div class="mt-2">
-                        <button class="btn btn-primary" type="button">
+                        <button class="btn btn-primary" type="button" (click)="updateAvatarProfile()">
                           <i class="fa fa-fw fa-camera"></i>
                           <span>Cambiar foto</span>
                         </button>
@@ -46,21 +48,21 @@
                               <div class="form-group">
                                 <label>Nombre</label>
                                 <input class="form-control" type="text" name="name" placeholder="Nombre"
-                                  value="{{ profile?.firstName }}">
+                                  value="{{ profile?.firstName }}" [(ngModel)]="profileInfo.firstName">
                               </div>
                             </div>
                             <div class="col">
                               <div class="form-group">
                                 <label>Apellido</label>
-                                <input class="form-control" type="text" name="username" placeholder="Apellido"
-                                  value="{{ profile?.lastName }}">
+                                <input class="form-control" type="text" placeholder="Apellido"
+                                  value="{{ profile?.lastName }}" [(ngModel)]="profileInfo.lastName" name="lastName">
                               </div>
                             </div>
                             <div class="col">
                               <div class="form-group">
                                 <label>Ext.</label>
                                 <input class="form-control" type="number" placeholder="Extensión"
-                                  value="{{ profile?.extension }}">
+                                  value="{{ profile?.extension }}" [(ngModel)]="profileInfo.extension" name="extension">
                               </div>
                             </div>
                           </div>
@@ -68,7 +70,7 @@
                       </div>
                       <div class="row">
                         <div class="col d-flex justify-content-end">
-                          <button class="btn btn-primary" type="submit">Save Changes</button>
+                          <button class="btn btn-primary" (click)="updateInfoProfile()">Save Changes</button>
                         </div>
                       </div>
                     </form>
