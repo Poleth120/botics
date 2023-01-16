@@ -7,31 +7,30 @@
   <main class="page-content">
     <div class="">
       <div class="">
-        <div>
-          <div id="app">
-            <nav class="navbar navbar-expand navbar-dark bg-dark" style="height:68px;">
-              <a href="#" *ngIf="!isLoggedIn" class="navbar-brand">BOTICS</a>
-              <button mat-icon-button color="primary" *ngIf="isLoggedIn"
-                aria-label="Example icon button with a menu icon" (click)="toggleSidebar()">
-                <mat-icon>menu</mat-icon>
-              </button>
-              <ul class="navbar-nav mr-auto" routerLinkActive="active">
-                <li class="nav-item">
-                  <a href="/home" class="nav-link" *ngIf="!isLoggedIn" routerLink="home">Inicio</a>
-                </li>
-                <li class="nav-item" *ngIf="listL">
-                  <a href="/laboratorios" class="nav-link" routerLink="laboratorios">Labos</a>
-                </li>
+          <div class="">
+              <div>
+                  <div id="app">
+                    <nav class="navbar navbar-expand navbar-dark bg-dark" style="height:68px;">
+                      <a href="#" *ngIf="!isLoggedIn" class="navbar-brand">BOTICS</a>
+                      <button mat-icon-button color="primary" *ngIf="isLoggedIn" aria-label="Example icon button with a menu icon" (click)="toggleSidebar()">
+                        <mat-icon>menu</mat-icon>
+                      </button>
+                      <ul class="navbar-nav mr-auto" routerLinkActive="active">
+                        <li class="nav-item">
+                          <a href="/home" class="nav-link" *ngIf="!isLoggedIn" routerLink="home">Inicio</a>
+                        </li>
+                        <li class="nav-item" *ngIf="listL">
+                          <a href="/laboratorios" class="nav-link"  routerLink="laboratorios">Labos</a>
+                        </li>
 
 
-                <li class="nav-item" *ngIf="createUser">
-                  <a href="/crear-nuevo-usuario" class="nav-link" routerLink="crear-nuevo-usuario">Crear nuevo
-                    usuario</a>
-                </li>
+                        <li class="nav-item" *ngIf="createUser">
+                          <a href="/crear-nuevo-usuario" class="nav-link" routerLink="crear-nuevo-usuario">Crear nuevo usuario</a>
+                        </li>
 
-                <li class="nav-item" *ngIf="listUser">
-                  <a href="/listar-nuevo-usuarioadmin" class="nav-link" routerLink="admin">Listar Usuario</a>
-                </li>
+                        <li class="nav-item" *ngIf="listUser">
+                          <a href="/listar-nuevo-usuarioadmin" class="nav-link" routerLink="admin">Listar Usuario</a>
+                        </li>
 
                 <li class="nav-item" *ngIf="showModeratorBoard">
                   <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
@@ -41,26 +40,27 @@
                 </li>
               </ul>
 
-              <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-                <li class="nav-item">
-                  <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                  <a href="/login" class="nav-link" routerLink="login">Login</a>
-                </li>
-              </ul>
+                      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+                        <li class="nav-item">
+                          <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="/login" class="nav-link" routerLink="login">Login</a>
+                        </li>
+                      </ul>
 
-              <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-                <li class="nav-item">
-                  <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-                </li>
-                <li class="nav-item">
-                  <a href class="nav-link" (click)="logout()">LogOut</a>
-                </li>
-              </ul>
-            </nav>
+                      <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+                        <li class="nav-item">
+                          <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+                        </li>
+                        <li class="nav-item">
+                          <a href class="nav-link" (click)="logout()">LogOut</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
           </div>
-        </div>
       </div>
     </div>
     <div class="overlay" (click)="toggleSidebar()" [ngClass]="{'show' : !getSideBarState()}"></div>

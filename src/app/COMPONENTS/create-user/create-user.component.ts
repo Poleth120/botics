@@ -7,6 +7,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent {
+
+  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
+  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
+  originally bred for hunting.`;
+
   form: any = {
     username: null,
     email: null,
