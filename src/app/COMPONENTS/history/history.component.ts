@@ -9,6 +9,8 @@ import { AdminService } from 'src/app/services/admin.service';
 export class HistoryComponent {
   constructor(private adminService: AdminService) {}
 
+  longText = `Visualizar el historial de los equipos de los laboratorios. `;
+
   history: any
 
   ngOnInit(): void {

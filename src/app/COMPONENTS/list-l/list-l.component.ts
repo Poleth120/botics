@@ -15,6 +15,11 @@ export interface Lab{
   styleUrls: ['./list-l.component.css']
 })
 export class ListLComponent implements OnInit{
+
+
+  longText = `Visualizar los laboratorios registrados y acceder al listado de computadoras de cada laboratorio. `;
+
+
   constructor(private adminService: AdminService, private router: Router) {
 
   }

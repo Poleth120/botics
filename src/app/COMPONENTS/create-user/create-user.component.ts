@@ -15,7 +15,7 @@ export class CreateUserComponent {
     this.changetype=!this.changetype;
   }
 
-  longText = `Registrar nuevos usuarios de tipo pasante, para lo cual debes llenas los siguientes campos:`;
+  longText = `Registrar nuevos usuarios de tipo pasante, para lo cual debes llenar los siguientes campos:`;
 
   form: any = {
     username: null,

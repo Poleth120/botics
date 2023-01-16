@@ -17,6 +17,11 @@ import { ReservesSendComponent } from '../reserves-send/reserves-send.component'
   styleUrls: ['./reserves.component.css']
 })
 export class ReservesComponent {
+
+  longText = `Visualizar las reservas de laboratorios enviadas por parte del personal docente. `;
+
+
+
   constructor(private adminService: AdminService, private matDialog: MatDialog,  private router: Router, private internService: InternService, private userService: TokenStorageService, private teacherService: TeacherService) {
     this.routes = this.router.url
   }
