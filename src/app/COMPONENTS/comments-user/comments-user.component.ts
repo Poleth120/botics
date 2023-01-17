@@ -18,14 +18,14 @@ import { MatSort } from '@angular/material/sort';
 export class CommentsUserComponent {
 
 
-  longText = `Visualizar y enviar comentarios y/o sugerencias de mi autoría.`;
+  longText = `Visualizar y enviar comentarios y/o sugerencias de mi autoría y a su vez visualziar la respuesta a mis cometarios y/o sugerencias.`;
 
   constructor(private matDialog: MatDialog, private teacherService: TeacherService, private userService: TokenStorageService, private router: Router, private administrativeService: AdministrativeService) {
     this.routes = this.router.url
   }
 
   displayedColumns: string[] = [
-    
+
     'Asunto',
     'Acciones'
   ];

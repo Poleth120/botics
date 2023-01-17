@@ -136,7 +136,7 @@ export class SidebarService {
       type: 'dropdown',
       submenus: [
         {
-          title: 'Listar - Enviar',
+          title: 'Enviar mis comentarios',
           route: 'profesor-comentarios'
         }
       ]
@@ -148,7 +148,7 @@ export class SidebarService {
       type: 'dropdown',
       submenus: [
         {
-          title: 'Listar - Enviar',
+          title: 'Enviar ticket de asistencia',
           route: 'profesor-tickets'
         }
       ]
@@ -160,7 +160,7 @@ export class SidebarService {
       type: 'dropdown',
       submenus: [
         {
-          title: 'Listar - Enviar',
+          title: 'Solicitar reservas',
           route: 'profesor-reservas'
         }
       ]
