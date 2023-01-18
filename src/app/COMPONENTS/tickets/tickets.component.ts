@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { DialogResponseComponent } from '../reserves/dialog-response/dialog-response.component';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { MatSort } from '@angular/material/sort';
+import { AlertComponent } from '../alert/alert.component';
 @Component({
   selector: 'app-tickets',
   templateUrl: './tickets.component.html',
@@ -53,6 +54,9 @@ export class TicketsComponent {
         this.tickets = new MatTableDataSource<any>(data);
         this.tickets.paginator = this.paginator
         this.ticketsD = data;
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       });
     } else {
       this.adminService.ticketIndex().subscribe((data) => {
@@ -60,6 +64,9 @@ export class TicketsComponent {
         this.tickets.paginator = this.paginator
         this.ticketsD = data;
         console.log(data);
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       });
     }
   }
@@ -74,8 +81,15 @@ export class TicketsComponent {
       if (result === undefined) {
         this.ngOnInit();
       } else {
-        this.internService.responseTicket(this.currentUser.id, id, result).subscribe(() => {
-          this.ngOnInit();
+        this.internService.responseTicket(this.currentUser.id, id, result).subscribe((response) => {
+          const alertReference = this.matDialog.open(AlertComponent, {data: response})
+          alertReference.afterClosed().subscribe(() => {
+            this.ngOnInit();
+          })
+        },
+        err => {
+          console.log(err)
+          const alertReference = this.matDialog.open(AlertComponent, {data: err})
         });
       }
     })

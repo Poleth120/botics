@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AdminService } from 'src/app/services/admin.service';
 import { DialogShowComponent } from './dialog-show/dialog-show.component';
 import { MatSort } from '@angular/material/sort';
+import { AlertComponent } from '../alert/alert.component';
+import { AlertCComponent } from './alert-c/alert-c.component';
 
 @Component({
   selector: 'app-list-i',
@@ -33,7 +35,10 @@ export class ListIComponent {
     this.adminService.internIndex().subscribe((data) => {
       this.interns = new MatTableDataSource<any>(data)
       this.interns.paginator = this.paginator
-    })
+    },
+    err => {
+      const alertReference = this.matDialog.open(AlertComponent, {data: err})
+    });
   }
 
   openDialogeShow(intern: any) {
@@ -44,13 +49,34 @@ export class ListIComponent {
 
   toggleChange(event: MatSlideToggleChange, id: number) {
     if (event.checked) {
-      this.adminService.internEnable(id).subscribe(() => {
-        this.ngOnInit();
+      this.adminService.internEnable(id).subscribe((response) => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: response})
+        alertReference.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        })
+      },
+        err => {
+        console.log(err)
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       });
     } else {
-      this.adminService.internDisable(id).subscribe(() => {
-        this.ngOnInit();
-      });
+      const dialogReference = this.matDialog.open(AlertCComponent)
+      dialogReference.afterClosed().subscribe((result) => {
+        if (result) {
+          this.adminService.internDisable(id).subscribe((response) => {
+            const alertReference = this.matDialog.open(AlertComponent, {data: response})
+            alertReference.afterClosed().subscribe(() => {
+              this.ngOnInit();
+            })
+          },
+          err => {
+            console.log(err)
+            const alertReference = this.matDialog.open(AlertComponent, {data: err})
+          });
+        } else {
+          this.ngOnInit()
+        }
+      })
     }
   }
 

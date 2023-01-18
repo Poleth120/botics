@@ -1,0 +1,14 @@
+<h1 mat-dialog-title *ngIf="!(data.error)">Confirmación</h1>
+<h1 mat-dialog-title *ngIf="data.error">Error en la operación</h1>
+<div mat-dialog-content>
+  <p *ngIf="!(data.error)">{{data.message}}</p>
+  <p *ngIf="data.error">{{data.error.message}}</p>
+  <div *ngIf="data.error">
+    <div *ngIf="data.error.errors">
+      <p *ngFor="let error of data.error.errors">{{error}}</p>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cerrarDialogo()">OK</button>
+</div>

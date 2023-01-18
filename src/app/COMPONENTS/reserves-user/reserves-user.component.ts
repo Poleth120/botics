@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { DialogReserveComponent } from '../reserves/dialog-reserve/dialog-reserve.component';
 import { MatSort } from '@angular/material/sort';
+import { AlertComponent } from '../alert/alert.component';
 
 @Component({
   selector: 'app-reserves-user',
@@ -39,6 +40,9 @@ export class ReservesUserComponent {
       this.reserves.paginator = this.paginator;
       this.reservesD = data
       console.log(data)
+    },
+    err => {
+      const alertReference = this.matDialog.open(AlertComponent, {data: err})
     })
   }
 
@@ -52,8 +56,15 @@ export class ReservesUserComponent {
       if (result === undefined) {
         this.ngOnInit();
       } else {
-        this.teacherService.saveReserve(this.currentUser.id, result).subscribe(() => {
-          this.ngOnInit();
+        this.teacherService.saveReserve(this.currentUser.id, result).subscribe((response) => {
+          const alertReference = this.matDialog.open(AlertComponent, {data: response})
+          alertReference.afterClosed().subscribe(() => {
+            this.ngOnInit();
+          })
+        },
+        err => {
+          console.log(err)
+          const alertReference = this.matDialog.open(AlertComponent, {data: err})
         });
       }
     });

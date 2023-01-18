@@ -9,6 +9,7 @@ import { TicketsSendComponent } from '../tickets-send/tickets-send.component';
 import { Router } from '@angular/router';
 import { AdministrativeService } from 'src/app/services/administrative.service';
 import { MatSort } from '@angular/material/sort';
+import { AlertComponent } from '../alert/alert.component';
 
 @Component({
   selector: 'app-tickets-user',
@@ -25,7 +26,7 @@ export class TicketsUserComponent {
   }
 
   displayedColumns: string[] = [
-    
+
     'Asunto',
     'Acciones'
   ];
@@ -48,12 +49,18 @@ export class TicketsUserComponent {
         this.tickets = new MatTableDataSource<any>(data);
         this.tickets.paginator = this.paginator
         this.ticketsD = data;
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       })
     } else {
       this.teacherService.indexTicket(this.currentUser.id).subscribe((data) => {
         this.tickets = new MatTableDataSource<any>(data);
         this.tickets.paginator = this.paginator
         this.ticketsD = data;
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       });
     }
 
@@ -72,12 +79,26 @@ export class TicketsUserComponent {
         this.ngOnInit();
       } else {
         if (this.routes === '/administrativo-tickets') {
-          this.administrativeService.saveTicket(this.currentUser.id, result).subscribe(() => {
-            this.ngOnInit();
-          })
+          this.administrativeService.saveTicket(this.currentUser.id, result).subscribe((response) => {
+            const alertReference = this.matDialog.open(AlertComponent, {data: response})
+            alertReference.afterClosed().subscribe(() => {
+              this.ngOnInit();
+            })
+          },
+          err => {
+            console.log(err)
+            const alertReference = this.matDialog.open(AlertComponent, {data: err})
+          });
         } else {
-          this.teacherService.saveTicket(this.currentUser.id, result).subscribe(() => {
-            this.ngOnInit();
+          this.teacherService.saveTicket(this.currentUser.id, result).subscribe((response) => {
+            const alertReference = this.matDialog.open(AlertComponent, {data: response})
+            alertReference.afterClosed().subscribe(() => {
+              this.ngOnInit();
+            })
+          },
+          err => {
+            console.log(err)
+            const alertReference = this.matDialog.open(AlertComponent, {data: err})
           });
         }
       }

@@ -93,6 +93,7 @@ export class SidebarService {
         },
         {
           title: 'Reporte',
+          route: 'admin-report'
         },
         {
           title: 'Historial',

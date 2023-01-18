@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Injectable, ChangeDetectorRef, Inject, SimpleChanges, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, Injectable, ChangeDetectorRef, Inject, SimpleChanges, Input, OnChanges, ElementRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,6 +10,10 @@ import { DialogSaveComponent } from './dialog-save/dialog-save.component';
 import { DialogLabComponent } from './dialog-lab/dialog-lab.component';
 import { DialogChangeComponent } from './dialog-change/dialog-change.component';
 import { MatSort } from '@angular/material/sort';
+import { AlertComponent } from '../alert/alert.component';
+import { AlertCComponent } from './alert-c/alert-c.component';
+
+
 
 export interface Computer {
   id: number;
@@ -81,7 +85,7 @@ export class ListCComponent implements OnInit, OnChanges  {
         this.labId = {id: 500};
         console.log(this.labId)
         this.longText = `Visualizar los equipos registrados y también puedes añadir nuevos equipos y realizar otras acciones, tales como: dar de baja algún equipo.`;
- 
+
       } else {
         this.labId = params;
         console.log(this.labId)
@@ -132,6 +136,7 @@ export class ListCComponent implements OnInit, OnChanges  {
   searchTerm = '';
   @ViewChild(MatSort) sort!: MatSort;
 
+
   ngOnInit() {
     this.computersSub?.unsubscribe()
     this.routerSub?.unsubscribe()
@@ -142,6 +147,9 @@ export class ListCComponent implements OnInit, OnChanges  {
         console.log(data);
         this.computers = new MatTableDataSource<Computer>(data);
         this.computers.paginator = this.paginator;
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       });
     } else {
       this.computersSub = this.adminService.computerIndexLab(this.labId['id']).subscribe((data) => {
@@ -149,6 +157,9 @@ export class ListCComponent implements OnInit, OnChanges  {
         this.computers = new MatTableDataSource<Computer>(data);
         this.computers.paginator = this.paginator;
         console.log(this.computers);
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       });
     }
   }
@@ -184,7 +195,16 @@ export class ListCComponent implements OnInit, OnChanges  {
       if (result === undefined) {
         this.ngOnInit();
       } else {
-        this.adminService.computerSave(result).subscribe(() => {});
+        this.adminService.computerSave(result).subscribe((response) => {
+          const alertReference = this.matDialog.open(AlertComponent, {data: response})
+          alertReference.afterClosed().subscribe(() => {
+            this.ngOnInit();
+          })
+        },
+        err => {
+          console.log(err)
+          const alertReference = this.matDialog.open(AlertComponent, {data: err})
+        });
       }
     });
   }
@@ -197,15 +217,30 @@ export class ListCComponent implements OnInit, OnChanges  {
       if (result === undefined) {
         this.ngOnInit();
       } else {
-        this.adminService.computerSave(result).subscribe(() => {
+        this.adminService.computerSave(result).subscribe((result) => {
           this.adminService.computerIndex().subscribe((data) => {
             console.log(data.at(-1));
             this.adminService
               .computerAssign(this.labId.id, data.at(-1).id)
-              .subscribe(() => {
-                this.ngOnInit();
+              .subscribe((response) => {
+                const alertReference = this.matDialog.open(AlertComponent, {data: response})
+                alertReference.afterClosed().subscribe(() => {
+                  this.ngOnInit();
+                })
+              },
+              err => {
+                console.log(err)
+                const alertReference = this.matDialog.open(AlertComponent, {data: err})
               });
+          },
+          err => {
+            console.log(err)
+            const alertReference = this.matDialog.open(AlertComponent, {data: err})
           });
+        },
+        err => {
+          console.log(err)
+          const alertReference = this.matDialog.open(AlertComponent, {data: err})
         });
       }
     });
@@ -219,8 +254,15 @@ export class ListCComponent implements OnInit, OnChanges  {
       if (result === undefined) {
         this.ngOnInit();
       } else {
-        this.adminService.computerSave(result).subscribe(() => {
-          this.ngOnInit();
+        this.adminService.computerSave(result).subscribe((response) => {
+          const alertReference = this.matDialog.open(AlertComponent, {data: response})
+          alertReference.afterClosed().subscribe(() => {
+            this.ngOnInit();
+          });
+        },
+        err => {
+          console.log(err)
+          const alertReference = this.matDialog.open(AlertComponent, {data: err})
         });
       }
     });
@@ -234,8 +276,15 @@ export class ListCComponent implements OnInit, OnChanges  {
           this.ngOnInit();
         } else {
           this.adminService.computerReAssign(result.idLab1, result.idLab2, result.idComputer, result.changeDetails)
-          .subscribe(() => {
-            this.ngOnInit();
+          .subscribe((response) => {
+            const alertReference = this.matDialog.open(AlertComponent, {data: response})
+            alertReference.afterClosed().subscribe(() => {
+              this.ngOnInit();
+            });
+          },
+          err => {
+            console.log(err)
+            const alertReference = this.matDialog.open(AlertComponent, {data: err})
           })
         }
       })
@@ -249,8 +298,15 @@ export class ListCComponent implements OnInit, OnChanges  {
           this.ngOnInit();
         } else {
           this.adminService.computerAssign(result.idLab1, result.idComputer)
-          .subscribe(() => {
-            this.ngOnInit();
+          .subscribe((response) => {
+            const alertReference = this.matDialog.open(AlertComponent, {data: response})
+            alertReference.afterClosed().subscribe(() => {
+              this.ngOnInit();
+            })
+          },
+          err => {
+            console.log(err)
+            const alertReference = this.matDialog.open(AlertComponent, {data: err})
           })
         }
       })
@@ -258,13 +314,34 @@ export class ListCComponent implements OnInit, OnChanges  {
 
   toggleChange(event: MatSlideToggleChange, id: number) {
     if (event.checked) {
-      this.adminService.computerEnable(id).subscribe(() => {
-        this.ngOnInit();
+      this.adminService.computerEnable(id).subscribe((response) => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: response})
+        alertReference.afterClosed().subscribe(() => {
+          this.ngOnInit();
+        })
+      },
+      err => {
+        console.log(err)
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       });
     } else {
-      this.adminService.computerDisable(id).subscribe(() => {
-        this.ngOnInit();
-      });
+      const dialogReference = this.matDialog.open(AlertCComponent)
+      dialogReference.afterClosed().subscribe((result) => {
+        if (result) {
+          this.adminService.computerDisable(id).subscribe((response) => {
+            const alertReference = this.matDialog.open(AlertComponent, {data: response})
+            alertReference.afterClosed().subscribe(() => {
+              this.ngOnInit();
+            })
+          },
+          err => {
+            console.log(err)
+            const alertReference = this.matDialog.open(AlertComponent, {data: err})
+          });
+        } else {
+          this.ngOnInit()
+        }
+      })
     }
   }
 
@@ -275,8 +352,15 @@ export class ListCComponent implements OnInit, OnChanges  {
       if (result) {
         this.adminService
           .computerUnAssign(result.idLab, result.idComputer, result.changeDetails)
-          .subscribe(() => {
-            this.ngOnInit();
+          .subscribe((response) => {
+            const alertReference = this.matDialog.open(AlertComponent, {data: response})
+            alertReference.afterClosed().subscribe(() => {
+              this.ngOnInit();
+            });
+          },
+          err => {
+            console.log(err)
+            const alertReference = this.matDialog.open(AlertComponent, {data: err})
           });
       }
     })
@@ -287,9 +371,20 @@ export class ListCComponent implements OnInit, OnChanges  {
     this.adminService
       .computerUnAssign(this.labId.id, idComputer, 'Borrar.')
       .subscribe(() => {
-        this.adminService.computerDelete(hostName).subscribe(() => {
-          this.ngOnInit();
+        this.adminService.computerDelete(hostName).subscribe((response) => {
+          const alertReference = this.matDialog.open(AlertComponent, {data: response})
+          alertReference.afterClosed().subscribe(() => {
+            this.ngOnInit();
+          })
+        },
+        err => {
+          console.log(err)
+          const alertReference = this.matDialog.open(AlertComponent, {data: err})
         });
+      },
+      err => {
+        console.log(err)
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       });
   }
 }

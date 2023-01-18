@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { AdministrativeService } from 'src/app/services/administrative.service';
 import { DialogResponseComponent } from '../reserves/dialog-response/dialog-response.component';
 import { MatSort } from '@angular/material/sort';
+import { AlertComponent } from '../alert/alert.component';
 
 @Component({
   selector: 'app-comments',
@@ -51,6 +52,9 @@ export class CommentsComponent {
         this.comments.paginator = this.paginator
         this.commentsD = data
         console.log(data)
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       })
     } else {
       this.longText = `Visualizar los comentarios y/o sugerencias realizadas por parte del personal docente y administrativo. También, puedes visualizar las respuestas de los comentarios y/o sugerencias.`;
@@ -59,6 +63,9 @@ export class CommentsComponent {
         this.comments.paginator = this.paginator
         this.commentsD = data
         console.log(data)
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       })
     }
   }
@@ -73,8 +80,15 @@ export class CommentsComponent {
       if (result === undefined) {
         this.ngOnInit();
       } else {
-        this.administrativeService.responseCommentary(this.currentUser.id, id, result).subscribe(() => {
-          this.ngOnInit();
+        this.administrativeService.responseCommentary(this.currentUser.id, id, result).subscribe((response) => {
+          const alertReference = this.matDialog.open(AlertComponent, {data: response})
+          alertReference.afterClosed().subscribe(() => {
+            this.ngOnInit();
+          })
+        },
+        err => {
+          console.log(err)
+          const alertReference = this.matDialog.open(AlertComponent, {data: err})
         });
       }
     })

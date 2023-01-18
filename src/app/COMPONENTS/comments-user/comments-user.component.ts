@@ -9,6 +9,7 @@ import { CommentsSendComponent } from '../comments-send/comments-send.component'
 import { Router } from '@angular/router';
 import { AdministrativeService } from 'src/app/services/administrative.service';
 import { MatSort } from '@angular/material/sort';
+import { AlertComponent } from '../alert/alert.component';
 
 @Component({
   selector: 'app-comments-user',
@@ -25,7 +26,7 @@ export class CommentsUserComponent {
   }
 
   displayedColumns: string[] = [
-    
+
     'Asunto',
     'Acciones'
   ];
@@ -47,6 +48,9 @@ export class CommentsUserComponent {
         this.comments = new MatTableDataSource<any>(data);
         this.comments.paginator = this.paginator
         this.commentsD = data;
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       })
     } else {
       this.teacherService.indexCommentary(this.currentUser.id).subscribe((data) => {
@@ -54,6 +58,9 @@ export class CommentsUserComponent {
         this.comments = new MatTableDataSource<any>(data);
         this.comments.paginator = this.paginator
         this.commentsD = data;
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       })
     }
 
@@ -73,13 +80,27 @@ export class CommentsUserComponent {
       } else {
         if (this.routes === '/administrativo-comentarios') {
           console.log(this.currentUser.id)
-          this.administrativeService.saveCommentary(this.currentUser.id, result).subscribe(() => {
-            this.ngOnInit();
+          this.administrativeService.saveCommentary(this.currentUser.id, result).subscribe((response) => {
+            const alertReference = this.matDialog.open(AlertComponent, {data: response})
+            alertReference.afterClosed().subscribe(() => {
+              this.ngOnInit();
+            })
+          },
+          err => {
+            console.log(err)
+            const alertReference = this.matDialog.open(AlertComponent, {data: err})
           })
         } else {
           console.log(this.currentUser.id)
-          this.teacherService.saveCommentary(this.currentUser.id, result).subscribe(() => {
-            this.ngOnInit();
+          this.teacherService.saveCommentary(this.currentUser.id, result).subscribe((response) => {
+            const alertReference = this.matDialog.open(AlertComponent, {data: response})
+            alertReference.afterClosed().subscribe(() => {
+              this.ngOnInit();
+            })
+          },
+          err => {
+            console.log(err)
+            const alertReference = this.matDialog.open(AlertComponent, {data: err})
           });
         }
       }

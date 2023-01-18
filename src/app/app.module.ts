@@ -68,6 +68,9 @@ import { CommentsSendComponent } from './COMPONENTS/comments-send/comments-send.
 import { ListIComponent } from './COMPONENTS/list-i/list-i.component';
 import { DialogShowComponent } from './COMPONENTS/list-i/dialog-show/dialog-show.component';
 import { NetworkInterceptor } from './interceptors/network';
+import { ReportComponent } from './COMPONENTS/report/report.component';
+import { AlertComponent } from './COMPONENTS/alert/alert.component';
+import { AlertCComponent } from './COMPONENTS/list-i/alert-c/alert-c.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -109,6 +112,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CommentsSendComponent,
     ListIComponent,
     DialogShowComponent,
+    ReportComponent,
+    AlertComponent,
+    AlertCComponent,
   ],
   imports: [
     BrowserModule,

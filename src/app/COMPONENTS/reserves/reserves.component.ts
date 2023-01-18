@@ -11,6 +11,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { TeacherService } from 'src/app/services/teacher.service';
 import { ReservesSendComponent } from '../reserves-send/reserves-send.component';
 import { MatSort } from '@angular/material/sort';
+import { AlertComponent } from '../alert/alert.component';
 
 @Component({
   selector: 'app-reserves',
@@ -56,6 +57,9 @@ export class ReservesComponent {
         this.reserves.paginator = this.paginator;
         this.reservesD = data
         console.log(data)
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       })
     } else {
       this.adminService.reserveIndex().subscribe((data) => {
@@ -63,6 +67,9 @@ export class ReservesComponent {
         this.reserves.paginator = this.paginator;
         this.reservesD = data
         console.log(data)
+      },
+      err => {
+        const alertReference = this.matDialog.open(AlertComponent, {data: err})
       })
     }
   }
@@ -77,8 +84,15 @@ export class ReservesComponent {
       if (result === undefined) {
         this.ngOnInit();
       } else {
-        this.internService.responseReserve(this.currentUser.id, id, result).subscribe(() => {
-          this.ngOnInit();
+        this.internService.responseReserve(this.currentUser.id, id, result).subscribe((response) => {
+          const alertReference = this.matDialog.open(AlertComponent, {data: response})
+          alertReference.afterClosed().subscribe(() => {
+            this.ngOnInit();
+          })
+        },
+        err => {
+          console.log(err)
+          const alertReference = this.matDialog.open(AlertComponent, {data: err})
         });
       }
     })
@@ -90,8 +104,15 @@ export class ReservesComponent {
       if (result === undefined) {
         this.ngOnInit();
       } else {
-        this.teacherService.saveReserve(this.currentUser.id, result).subscribe(() => {
-          this.ngOnInit();
+        this.teacherService.saveReserve(this.currentUser.id, result).subscribe((response) => {
+          const alertReference = this.matDialog.open(AlertComponent, {data: response})
+          alertReference.afterClosed().subscribe(() => {
+            this.ngOnInit();
+          })
+        },
+        err => {
+          console.log(err)
+          const alertReference = this.matDialog.open(AlertComponent, {data: err})
         });
       }
     });

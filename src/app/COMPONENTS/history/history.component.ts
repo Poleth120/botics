@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -12,12 +15,29 @@ export class HistoryComponent {
   longText = `Visualizar el historial de los equipos de los laboratorios. `;
 
   history: any
+  searchTermH = '';
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  displayedColumnsH: string[] = [
+    'Host Name',
+    'Laboratorio',
+    'Fecha',
+    'Detalle'
+  ];
 
   ngOnInit(): void {
     this.adminService.historyIndex().subscribe((data) => {
-      this.history = data
+      this.history = new MatTableDataSource<any>(data);
+      this.history.paginator = this.paginator
       console.log(this.history)
     })
+  }
+
+  filterHistory(searchTerm: string) {
+    this.history.filter = searchTerm.trim().toLocaleLowerCase();
+    const filterValue = searchTerm;
+    this.history.filter = filterValue.trim().toLowerCase();
   }
 
 }
