@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-recuperar',
+  templateUrl: './recuperar.component.html',
+  styleUrls: ['./recuperar.component.css']
 })
-export class RegisterComponent {
-
-
+export class RecuperarComponent {
   visible:boolean=true;
   changetype:boolean=true;
   viewpass(){
@@ -84,6 +83,3 @@ export class RegisterComponent {
     });
   }
 }
-
-
-

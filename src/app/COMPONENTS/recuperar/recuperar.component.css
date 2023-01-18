@@ -23,14 +23,15 @@ html{
 
 .contenedor{
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 920px;
   width: 95%;
-  max-height:810px;
+  max-height:590px;
   height:90%;
   border-width: 20px;
-  border-color: hsl(210, 47%, 6%);
-  border-radius: 10px;
+  border-color: #080f16;
+  border-radius: 20px;
   background-color:rgb(229, 237, 240);
+
 }
 
 .imagen-formulario{
@@ -126,11 +127,21 @@ html{
 
 }
 
-
+.form-group{
+  position:relative;
+  width: 267px;
+}
+.form-group input {
+  border:1px solid #ddd;
+  height: 40px;
+  padding:0 15px;
+  border-radius: 5px;
+  font-size: 15px;
+  width: 100%;
+}
 .eyeicon {
-  position: relative;
-  left:90%;
-  top:-29px;
-
+  position: absolute;
+  right: -1px;
+  top:10px;
   cursor: pointer;
 }

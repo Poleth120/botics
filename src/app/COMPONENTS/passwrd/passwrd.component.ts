@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-@Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
-})
-export class RegisterComponent {
 
+@Component({
+  selector: 'app-passwrd',
+  templateUrl: './passwrd.component.html',
+  styleUrls: ['./passwrd.component.css']
+})
+export class PasswrdComponent {
 
   visible:boolean=true;
   changetype:boolean=true;
@@ -16,13 +16,21 @@ export class RegisterComponent {
     this.changetype=!this.changetype;
   }
 
+  visibl:boolean=true;
+  changetyp:boolean=true;
+  view(){
+    this.visibl=!this.visibl;
+    this.changetyp=!this.changetyp;
+  }
+
 
   form: any = {
     name:null,
     lastName:null,
     username: null,
     email: null,
-    password: null
+    password: null,
+    repassword:null,
   };
   roles: string | any;
 
@@ -34,6 +42,7 @@ export class RegisterComponent {
     username: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
+    repassword: new FormControl('', Validators.required),
     role: new FormControl([], Validators.required)
   });
 
@@ -43,6 +52,7 @@ export class RegisterComponent {
       username: '',
       email: '',
       password: '',
+      repassword:'',
       role: []
     });
    }
@@ -84,6 +94,3 @@ export class RegisterComponent {
     });
   }
 }
-
-
-

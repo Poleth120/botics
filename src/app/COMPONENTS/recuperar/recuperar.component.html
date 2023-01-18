@@ -1,0 +1,61 @@
+<body>
+  <div class="col-md-12">
+
+    <div class="contenedor-formulario contenedor">
+      <div class="imagen-formulario">
+
+      </div>
+
+      <form class="formulario" *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+      <div class="texto-formulario">
+        <h3><strong>Bienvenido de nuevo</strong></h3>
+        <h6 style="text-align:center;">Restablecer contraseña</h6>
+    </div>
+
+
+      <div class="input">
+        <label for="email"><h5><strong>Ingresa tu correo electrónico </strong> </h5> </label>
+        <input
+        placeholder="Ingresa tu correo electrónico"
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors['required']">¡El correo electrónico es obligatorio!</div>
+          <div *ngIf="email.errors['email']">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+<br>
+
+         <!--  <div class="form-group">
+          <button class="btn btn-primary btn-block input" href="nueva-contraseña" style=" border-radius: 40px;">
+            Obtener una contraseña nueva
+          </button>
+        </div> -->
+
+        <div class="password-olvidada">
+          <a href="nueva-contraseña" style="text-align:center;"><h6 ><strong>Obtener contraseña</strong></h6></a>
+      </div>
+
+
+  </form>
+</div>
+
+
+

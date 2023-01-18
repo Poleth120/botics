@@ -17,7 +17,7 @@ import { AlertComponent } from '../alert/alert.component';
 })
 export class TicketsComponent {
 
-  longText = `Visualizar los tickets de asistencia solicitados por parte del personal docente y administrativo. También, puedes visualizar las respuestas de los tickets de asistencia.`;
+  longText = ``;
 
 
   constructor(
@@ -50,6 +50,7 @@ export class TicketsComponent {
   ngOnInit(): void {
     this.response = {subject: '', details: ''}
     if (this.routes === '/pasante-tickets') {
+      this.longText='Visualizar los tickets de asistencia solicitados por parte del personal docente y administrativo. También, puedes visualizar las respuestas de los tickets de asistencia y a su vez responder los tickets que no han sido atendidos.';
       this.internService.ticketIndex().subscribe((data) => {
         this.tickets = new MatTableDataSource<any>(data);
         this.tickets.paginator = this.paginator
@@ -60,6 +61,9 @@ export class TicketsComponent {
       });
     } else {
       this.adminService.ticketIndex().subscribe((data) => {
+        this.longText='Visualizar los tickets de asistencia solicitados por parte del personal docente y administrativo. También, puedes visualizar las respuestas de los tickets de asistencia.';
+
+
         this.tickets = new MatTableDataSource<any>(data);
         this.tickets.paginator = this.paginator
         this.ticketsD = data;

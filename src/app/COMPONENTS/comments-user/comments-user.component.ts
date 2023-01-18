@@ -19,7 +19,7 @@ import { AlertComponent } from '../alert/alert.component';
 export class CommentsUserComponent {
 
 
-  longText = `Visualizar y enviar comentarios y/o sugerencias de mi autoría.`;
+  longText = `Visualizar y enviar comentarios y/o sugerencias de mi autoría y a su vez visualziar la respuesta a mis cometarios y/o sugerencias.`;
 
   constructor(private matDialog: MatDialog, private teacherService: TeacherService, private userService: TokenStorageService, private router: Router, private administrativeService: AdministrativeService) {
     this.routes = this.router.url

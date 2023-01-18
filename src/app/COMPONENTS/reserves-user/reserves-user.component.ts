@@ -15,6 +15,9 @@ import { AlertComponent } from '../alert/alert.component';
   styleUrls: ['./reserves-user.component.css']
 })
 export class ReservesUserComponent {
+
+  longText = `Visualizar y solicitar reservas de laboratorios y a su vez visualizar las respuestas de alguna solicitud de reserva. `;
+
   reserve: any = {labName: '', description: ''}
 
   constructor(private matDialog: MatDialog, private teacherService: TeacherService, private userService: TokenStorageService) {}

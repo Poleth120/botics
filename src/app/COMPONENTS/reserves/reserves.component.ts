@@ -20,7 +20,7 @@ import { AlertComponent } from '../alert/alert.component';
 })
 export class ReservesComponent {
 
-  longText = `Visualizar las reservas de laboratorios enviadas por parte del personal docente. `;
+  longText = ` `;
 
 
 
@@ -52,6 +52,8 @@ export class ReservesComponent {
     this.reserve = {labName: '', description: ''}
     console.log(this.router.url)
     if (this.routes === '/intern-reserves') {
+      this. longText = `Visualizar las reservas de laboratorios enviadas por parte del personal docente y a su vez responder las reservas que no han sido atentidas. `;
+
       this.internService.reserveIndex().subscribe((data) => {
         this.reserves = new MatTableDataSource<any>(data)
         this.reserves.paginator = this.paginator;
@@ -63,6 +65,7 @@ export class ReservesComponent {
       })
     } else {
       this.adminService.reserveIndex().subscribe((data) => {
+        this. longText = `Visualizar las reservas de laboratorios enviadas por parte del personal docente. `;
         this.reserves = new MatTableDataSource<any>(data)
         this.reserves.paginator = this.paginator;
         this.reservesD = data

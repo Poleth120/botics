@@ -18,6 +18,8 @@ export class CreateUserComponent {
   longText = `Registrar nuevos usuarios de tipo pasante, para lo cual debes llenar los siguientes campos:`;
 
   form: any = {
+    name:null,
+    lastName:null,
     username: null,
     email: null,
     password: null

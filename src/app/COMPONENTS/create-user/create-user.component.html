@@ -35,6 +35,58 @@
         <h3><strong>Bienvenido de nuevo</strong></h3>
         <h6 style="text-align:center;">Crea una cuenta nueva</h6>
     </div>
+
+
+
+    <div class="input">
+      <label for="username"><h5><strong>Nombre </strong></h5></label>
+      <input
+      placeholder="Ingresa tu nombre "
+        type="text"
+        class="form-control"
+        name="name"
+        [(ngModel)]="form.name"
+        required
+        minlength="3"
+        maxlength="20"
+        #username="ngModel"
+      />
+      <div class="alert-danger" *ngIf="username.errors && f.submitted">
+        <div *ngIf="username.errors['required']">Nombre  es obligatorio</div>
+        <div *ngIf="username.errors['minlength']">
+          El nombre de usuario debe tener como mínimo 3 caracteres
+        </div>
+        <div *ngIf="username.errors['maxlength']">
+          El nombre de usuario debe tener como máximo 20 caracteres
+        </div>
+      </div>
+    </div>
+
+
+    <div class="input">
+      <label for="username"><h5><strong>Apellido</strong></h5></label>
+      <input
+      placeholder="Ingresa tu nombre de apellido"
+        type="text"
+        class="form-control"
+        name="username"
+        [(ngModel)]="form.lastName"
+        required
+        minlength="3"
+        maxlength="20"
+        #username="ngModel"
+      />
+      <div class="alert-danger" *ngIf="username.errors && f.submitted">
+        <div *ngIf="username.errors['required']">El apellido es obligatorio</div>
+        <div *ngIf="username.errors['minlength']">
+          El nombre de usuario debe tener como mínimo 3 caracteres
+        </div>
+        <div *ngIf="username.errors['maxlength']">
+          El nombre de usuario debe tener como máximo 20 caracteres
+        </div>
+      </div>
+    </div>
+
       <div class="input">
         <label for="username"><h5><strong>Nombre de usuario </strong></h5></label>
         <input
@@ -59,7 +111,7 @@
         </div>
       </div>
       <div class="input">
-        <label for="email">Correo electrónico</label>
+        <label for="email"><h5><strong> Correo electrónico</strong></h5></label>
         <input
         placeholder="Ingresa tu correo electrónico"
           type="email"
@@ -99,7 +151,7 @@
             </div>
           </div>
 
-          
+
             <label for=""><h5><strong>Elija el rol </strong></h5></label>
             <mat-radio-group aria-label="Select an option" [(ngModel)]="roles" [ngModelOptions]="{standalone: true}">
 
@@ -117,7 +169,7 @@
                 Password must be at least 6 characters
               </div>
             </div>
-         
+
 
 
           <div class="form-group">
@@ -130,7 +182,7 @@
           Signup failed!<br />{{ errorMessage }}
         </div>
 
-   
+
   </form>
 </div>
 

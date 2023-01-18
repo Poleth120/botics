@@ -96,7 +96,7 @@ export class ListCComponent implements OnInit, OnChanges  {
 
   FLAG: boolean
   displayedColumns: string[] = [
-    'Id',
+    
     'Host Name',
     'Serial del CPU',
     'Serial del Monitor',

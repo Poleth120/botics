@@ -71,6 +71,8 @@ import { NetworkInterceptor } from './interceptors/network';
 import { ReportComponent } from './COMPONENTS/report/report.component';
 import { AlertComponent } from './COMPONENTS/alert/alert.component';
 import { AlertCComponent } from './COMPONENTS/list-i/alert-c/alert-c.component';
+import { RecuperarComponent } from './COMPONENTS/recuperar/recuperar.component';
+import { PasswrdComponent } from './COMPONENTS/passwrd/passwrd.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -115,6 +117,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ReportComponent,
     AlertComponent,
     AlertCComponent,
+    RecuperarComponent,
+    PasswrdComponent,
   ],
   imports: [
     BrowserModule,
