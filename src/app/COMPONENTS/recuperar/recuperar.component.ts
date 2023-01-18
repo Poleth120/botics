@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ForgotPwdService } from 'src/app/services/forgot-pwd.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertComponent } from '../alert/alert.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-recuperar',
@@ -37,7 +41,7 @@ export class RecuperarComponent {
   });
 
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private routerF: Router, private forgotService: ForgotPwdService, private router: ActivatedRoute, private matDialog: MatDialog) {
     this.myForm.setValue({
       username: '',
       email: '',
@@ -70,16 +74,15 @@ export class RecuperarComponent {
   onSubmit(): void {
     const { username, email, role, password } = this.form;
     console.log(this.roles)
-    this.authService.register(username, email, [this.roles], password).subscribe({
-      next: data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-      },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    });
+    this.forgotService.forgot(email).subscribe((response) => {
+      const alertReference = this.matDialog.open(AlertComponent, {data: response})
+      alertReference.afterClosed().subscribe(() => {
+        this.routerF.navigateByUrl('/home')
+      });
+    },
+    err => {
+      console.log(err)
+      const alertReference = this.matDialog.open(AlertComponent, {data: err})
+    })
   }
 }

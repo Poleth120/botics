@@ -55,7 +55,7 @@ const routes: Routes = [
   { path: 'laboratorios/lab-computadoras', component: ListCComponent },
   { path: 'lab-computadoras', component: ListCComponent },
   { path: 'restablecer-contraseña', component: RecuperarComponent},
-  { path: 'nueva-contraseña', component: PasswrdComponent},
+  { path: 'auth/nueva-contraseña', component: PasswrdComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
