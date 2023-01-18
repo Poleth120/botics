@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 export interface Lab{
   id: number;
   name: string;
-  state: boolean;
+ 
   image: string;
 }
 
