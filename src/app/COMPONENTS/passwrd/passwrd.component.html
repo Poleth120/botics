@@ -1,0 +1,83 @@
+<body>
+  <div class="col-md-12">
+
+    <div class="contenedor-formulario contenedor">
+      <div class="imagen-formulario">
+
+      </div>
+
+      <form class="formulario" *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate>
+      <div class="texto-formulario">
+        <h3><strong>Bienvenido de nuevo</strong></h3>
+        <h6 style="text-align:center;">Restablecer contraseña</h6>
+    </div>
+
+
+    <div class="input">
+      <label for="contraseña"><h5><strong>Nueva contraseña </strong></h5></label>
+      <input placeholder="Ingresa tu contraseña"
+      [type]="changetype?'password':'text'"
+    class="form-control"
+    name="password"
+    [(ngModel)]="form.password"
+    required
+    minlength="6"
+    #password="ngModel">
+    <span class="eyeicon" style="width:20px;"(click)="viewpass()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i></span>
+
+    <div class="alert-danger" *ngIf="password.errors && f.submitted">
+      <div *ngIf="password.errors['required']">¡La contraseña es obligatoria!/div>
+      <div *ngIf="password.errors['minlength']">
+        Password must be at least 6 characters
+      </div>
+    </div>
+  </div>
+
+  <div class="input">
+    <label for="newcontraseña"><h5><strong>Confirmar contraseña </strong></h5></label>
+    <input placeholder="Ingresa tu contraseña"
+    [type]="changetyp?'password':'text'"
+  class="form-control"
+  name="password"
+  [(ngModel)]="form.repassword"
+  required
+  minlength="6"
+  #password="ngModel">
+  <span class="eyeicon1" style="width:20px;"(click)="view()"><i [ngClass]="visibl?'fa fa-eye':'fa fa-eye-slash'"></i></span>
+
+  <div class="alert-danger" *ngIf="password.errors && f.submitted">
+    <div *ngIf="password.errors['required']">¡La contraseña es obligatoria!/div>
+    <div *ngIf="password.errors['minlength']">
+      Password must be at least 6 characters
+    </div>
+  </div>
+</div>
+
+
+<br>
+
+
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block input" style=" border-radius: 40px;">
+            Finalizar
+          </button>
+        </div>
+
+
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+  </div>
+    </div>
+
+  </form>
+
+</div>
+
+
+

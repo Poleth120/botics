@@ -22,6 +22,8 @@ import { ReservesUserComponent } from './COMPONENTS/reserves-user/reserves-user.
 import { TicketsUserComponent } from './COMPONENTS/tickets-user/tickets-user.component';
 import { CommentsUserComponent } from './COMPONENTS/comments-user/comments-user.component';
 import { ListIComponent } from './COMPONENTS/list-i/list-i.component';
+import { RecuperarComponent } from './COMPONENTS/recuperar/recuperar.component';
+import { PasswrdComponent } from './COMPONENTS/passwrd/passwrd.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -50,6 +52,8 @@ const routes: Routes = [
   { path: 'laboratorios', component: ListLComponent },
   { path: 'laboratorios/lab-computadoras', component: ListCComponent },
   { path: 'lab-computadoras', component: ListCComponent },
+  { path: 'restablecer-contraseña', component: RecuperarComponent},
+  { path: 'nueva-contraseña', component: PasswrdComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

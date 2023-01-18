@@ -68,6 +68,8 @@ import { CommentsSendComponent } from './COMPONENTS/comments-send/comments-send.
 import { ListIComponent } from './COMPONENTS/list-i/list-i.component';
 import { DialogShowComponent } from './COMPONENTS/list-i/dialog-show/dialog-show.component';
 import { NetworkInterceptor } from './interceptors/network';
+import { RecuperarComponent } from './COMPONENTS/recuperar/recuperar.component';
+import { PasswrdComponent } from './COMPONENTS/passwrd/passwrd.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -109,6 +111,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CommentsSendComponent,
     ListIComponent,
     DialogShowComponent,
+    RecuperarComponent,
+    PasswrdComponent,
   ],
   imports: [
     BrowserModule,
