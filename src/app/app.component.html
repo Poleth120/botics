@@ -11,7 +11,7 @@
               <div>
                   <div id="app">
                     <nav class="navbar navbar-expand navbar-dark " style="height:68px; background-color:rgb(36, 43, 43)">
-                      <a href="#" *ngIf="!isLoggedIn" href="/home" class="navbar-brand">BOTICS</a>
+                      <a href="/" *ngIf="!isLoggedIn" class="navbar-brand">BOTICS</a>
                       <button mat-icon-button color="primary" *ngIf="isLoggedIn" aria-label="Example icon button with a menu icon" (click)="toggleSidebar()">
                         <mat-icon>menu</mat-icon>
                       </button>
@@ -20,11 +20,6 @@
                         <li class="nav-item" *ngIf="listL">
                           <a href="/laboratorios" class="nav-link"  routerLink="laboratorios">Laboratorios</a>
                         </li>
-
-
-                <li class="nav-item" *ngIf="showModeratorBoard">
-                  <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-                </li>
 
               </ul>
 

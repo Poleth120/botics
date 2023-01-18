@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ForgotPwdService } from 'src/app/services/forgot-pwd.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertComponent } from '../alert/alert.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-passwrd',
@@ -22,6 +26,7 @@ export class PasswrdComponent {
     this.visibl=!this.visibl;
     this.changetyp=!this.changetyp;
   }
+  token!: any;
 
 
   form: any = {
@@ -47,7 +52,7 @@ export class PasswrdComponent {
   });
 
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private routerF: Router, private matDialog: MatDialog, private forgotService: ForgotPwdService, private router: ActivatedRoute) {
     this.myForm.setValue({
       username: '',
       email: '',
@@ -58,7 +63,9 @@ export class PasswrdComponent {
    }
 
    ngOnInit(): void {
-
+    this.router.queryParams.subscribe((params) => {
+      this.token = params
+    });
    }
 
    /*
@@ -79,18 +86,17 @@ export class PasswrdComponent {
   */
 
   onSubmit(): void {
-    const { username, email, role, password } = this.form;
+    const { username, email, role, password, repassword } = this.form;
     console.log(this.roles)
-    this.authService.register(username, email, [this.roles], password).subscribe({
-      next: data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-      },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    });
+    this.forgotService.reset(this.token.token, password, repassword).subscribe((response) => {
+      const alertReference = this.matDialog.open(AlertComponent, {data: response})
+      alertReference.afterClosed().subscribe(() => {
+        this.routerF.navigateByUrl('/login')
+      });
+    },
+    err => {
+      console.log(err)
+      const alertReference = this.matDialog.open(AlertComponent, {data: err})
+    })
   }
 }

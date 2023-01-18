@@ -33,7 +33,6 @@ export class AppComponent {
       this.createUser = this.roles.includes('ROLE_ADMIN');
       this.listL = this.roles.includes('ROLE_ADMIN');
       this.listUser = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
       this.username = user.username;
     }
