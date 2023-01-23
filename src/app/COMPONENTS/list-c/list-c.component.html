@@ -49,13 +49,13 @@
     </ng-container>
 
     <ng-container matColumnDef="Serial del Monitor">
-      <th mat-header-cell *matHeaderCellDef> <strong>>Serial del Monitor </strong></th>
+      <th mat-header-cell *matHeaderCellDef> <strong>Serial del Monitor </strong></th>
       <td mat-cell *matCellDef="let element"> {{element.serialMonitor}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="Referencia de laboratorio">
-      <th mat-header-cell *matHeaderCellDef> <strong>Laboratorio al que pertenece </strong> </th>
-      <td mat-cell *matCellDef="let element"> {{element.labReference}} </td>
+    <ng-container matColumnDef="Código del bien">
+      <th mat-header-cell *matHeaderCellDef> <strong>Código del bien </strong> </th>
+      <td mat-cell *matCellDef="let element"> {{element.codeCpu}} </td>
     </ng-container>
 
     <ng-container matColumnDef="Estado">
@@ -64,7 +64,7 @@
     </ng-container>
 
     <ng-container matColumnDef="Acciones">
-      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <th mat-header-cell *matHeaderCellDef> <strong>Acciones </strong></th>
       <td mat-cell *matCellDef="let element">
         <button mat-icon-button color="primary" (click)="openDialogeShow(element)"><mat-icon>visibility</mat-icon></button>
         <button mat-icon-button color="blank" (click)="openDialogeEdit(element)"><mat-icon>edit</mat-icon></button>
