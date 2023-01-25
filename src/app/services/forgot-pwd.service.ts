@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 
-const FORGOT_API = 'http://localhost:8080/api/v1/auth/';
+const FORGOT_API = 'https://botics.azurewebsites.net/api/v1/auth/';
 
 @Injectable({
   providedIn: 'root'

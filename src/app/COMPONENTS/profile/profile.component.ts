@@ -46,7 +46,10 @@ export class ProfileComponent {
   }
 
   updateAvatarProfile() {
-    console.log(this.filesss)
+    this.filesss.arrayBuffer().then((binary) => {
+      console.log(binary)
+    })
+    /*
     this.profileService.updateAvatar(this.filesss).subscribe((response) => {
       const alertReference = this.matDialog.open(AlertComponent, {data: response})
       alertReference.afterClosed().subscribe(() => {
@@ -57,6 +60,7 @@ export class ProfileComponent {
       console.log(err)
       const alertReference = this.matDialog.open(AlertComponent, {data: err})
     })
+    */
     /*
     this.filesss.arrayBuffer().then((binary) => {
       this.profileService.updateAvatar(binary).subscribe(() => {

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 
-const PROFILE_API = 'http://localhost:8080/api/v1/profile/';
+const PROFILE_API = 'https://botics.azurewebsites.net/api/v1/profile/';
 
 @Injectable({
   providedIn: 'root',
