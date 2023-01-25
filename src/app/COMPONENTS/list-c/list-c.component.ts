@@ -100,7 +100,7 @@ export class ListCComponent implements OnInit, OnChanges  {
     'Host Name',
     'Serial del CPU',
     'Serial del Monitor',
-    "Referencia de laboratorio",
+    "Código del bien",
     'Estado',
     'Acciones',
   ];

@@ -1,6 +1,13 @@
 <ng-container *ngIf="loading$ | async">
-  <div class="overlays"></div>
-  <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+ 
+  <div class="overlays" > 
+    <h6 style="margin-bottom: 50%;margin-left:47%; margin-top:26%">Cargando...</h6>
+    <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
+  </div>
+ 
+  
+  
+  
 </ng-container>
 <div class="page-wrapper" [ngClass]="{'toggled' : getSideBarState()}">
   <app-sidebar *ngIf="isLoggedIn"></app-sidebar>
