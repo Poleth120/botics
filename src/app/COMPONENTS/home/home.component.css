@@ -231,7 +231,7 @@ body{background: #eee;font-family: sans-serif;}
   .contenedor,
   .wave-contenedor{
     width: 90%;
-    max-width: 1000px;
+    max-width: 890px;
     overflow: hidden;
     margin: auto;
     padding: 0 0 80px 0;
@@ -266,6 +266,7 @@ body{background: #eee;font-family: sans-serif;}
 
   .website img{
     width: 48%;
+   
   }
 
   .website .contenedor-textos-main{
