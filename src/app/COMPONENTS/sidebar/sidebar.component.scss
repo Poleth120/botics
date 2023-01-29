@@ -194,7 +194,7 @@
         >a:after {
           font-family: "Font Awesome 5 Free";
           font-weight: 900;
-          content: "\>";
+          content: "\f107";
           display: inline-block;
           font-style: normal;
           font-variant: normal;
@@ -224,7 +224,7 @@
 
             a {
               &:before {
-                content: "\*";
+                content: "\f111";
                 font-family: "Font Awesome 5 Free";
                 font-weight: 400;
                 font-style: normal;
@@ -415,7 +415,7 @@
 /*------------------------------default theme---------------------------------*/
 $bg-sidebar-wrapper : #1d1d1d;
 $border-color : #1771de;
-$bg-sidebar-wrapper : rgb(25, 29, 29); 
+$bg-sidebar-wrapper : rgb(25, 29, 29);
 $border-color : #2b2b2b;
 $footer-top-border-color :#3a3a3a;
 $color:#bdbdbd;

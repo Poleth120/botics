@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 export interface Lab{
   id: number;
   name: string;
- 
+
   image: string;
 }
 
@@ -36,6 +36,10 @@ export class ListLComponent implements OnInit{
       const alertReference = this.matDialog.open(AlertComponent, {data: err})
     });
     console.log(this.labs)
+  }
+
+  navigate(id: number) {
+    this.router.navigateByUrl('laboratorios/lab-computadoras/'+id)
   }
 
 }

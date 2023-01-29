@@ -9,6 +9,7 @@ import {
 import { SidebarService } from './sidebar.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ListCComponent } from '../list-c/list-c.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -25,7 +26,7 @@ import { ListCComponent } from '../list-c/list-c.component';
 export class SidebarComponent implements OnInit {
   menus!: any[];
   profile: any;
-  constructor(public sidebarservice: SidebarService, private profileService: ProfileService, public listC: ListCComponent) {
+  constructor(public sidebarservice: SidebarService, private profileService: ProfileService, public listC: ListCComponent, private router: Router) {
 
   }
 
@@ -41,9 +42,13 @@ export class SidebarComponent implements OnInit {
     return this.sidebarservice.getSidebarState();
   }
 
-  reloadList(id: number) {
-    this.listC.refreshComponent(id)
-    this.ngOnInit()
+  reloadList(id: number, route: string) {
+    if(id) {
+      console.log(route+'/'+id)
+      this.router.navigateByUrl(route+'/'+id)
+    } else {
+      this.router.navigateByUrl(route)
+    }
   }
 
   toggle(currentMenu: any) {

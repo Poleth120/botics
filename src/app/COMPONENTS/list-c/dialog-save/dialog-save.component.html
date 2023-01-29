@@ -2,7 +2,7 @@
 <div mat-dialog-content>
   <div class="tab-content pt-3">
     <div class="tab-pane active">
-      <form class="form" novalidate="">
+      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid" novalidate>
         <div class="row">
           <div class="col">
             <div class="row">
@@ -10,127 +10,197 @@
                 <div class="form-group">
                   <label>Nombre de Host</label>
                   <input class="form-control" type="text" name="Nombre de Host" placeholder="Nombre de host"
-                    value="{{ data.data?.hostName}}" [(ngModel)]="data.data.hostName" [readonly]="data?.edit">
+                    value="{{ data.data?.hostName}}" [(ngModel)]="data.data.hostName" [readonly]="data?.edit" required maxlength="30" minlength="3" #hostName="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="hostName.errors">
+              <div *ngIf="hostName.errors['required']">Se requiere un nombre de host.</div>
+              <div *ngIf="hostName.errors['minlength'] || hostName.errors['maxlength']">El nombre de host debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Serial del CPU</label>
                   <input class="form-control" type="text" name="Serial del Cpu" placeholder="Serial Cpu"
-                    value="{{ data.data?.serialCpu}}" [(ngModel)]="data.data.serialCpu" [readonly]="data?.edit">
+                    value="{{ data.data?.serialCpu}}" [(ngModel)]="data.data.serialCpu" [readonly]="data?.edit" required maxlength="30" minlength="3" #serialCpu="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="serialCpu.errors">
+              <div *ngIf="serialCpu.errors['required']">Debe ingresar el serial del cpu.</div>
+              <div *ngIf="serialCpu.errors['minlength'] || serialCpu.errors['maxlength']">El serial del cpu debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Serial del Monitor</label>
                   <input class="form-control" type="text" name="Serial del Monitor" placeholder="Serial Monitor"
-                    value="{{ data.data?.serialMonitor}}" [(ngModel)]="data.data.serialMonitor" [readonly]="data?.edit">
+                    value="{{ data.data?.serialMonitor}}" [(ngModel)]="data.data.serialMonitor" [readonly]="data?.edit" required maxlength="30" minlength="3" #serialMonitor="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="serialMonitor.errors">
+              <div *ngIf="serialMonitor.errors['required']">Debe ingresar el serial del monitor.</div>
+              <div *ngIf="serialMonitor.errors['minlength'] || serialMonitor.errors['maxlength']">El serial del monitor debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Serial del teclado</label>
                   <input class="form-control" type="text" name="serialKeyboard" placeholder="Serial Teclado"
-                    value="{{ data.data?.serialKeyboard }}" [(ngModel)]="data.data.serialKeyboard" [readonly]="data?.edit">
+                    value="{{ data.data?.serialKeyboard }}" [(ngModel)]="data.data.serialKeyboard" [readonly]="data?.edit" required maxlength="30" minlength="3" #serialKeyboard="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="serialKeyboard.errors">
+              <div *ngIf="serialKeyboard.errors['required']">Debe ingresar el serial del teclado.</div>
+              <div *ngIf="serialKeyboard.errors['minlength'] || serialKeyboard.errors['maxlength']">El serial del teclado debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Código de bien CPU</label>
                   <input class="form-control" type="text" name="codeCpu" placeholder="Código CPU"
-                    value="{{ data.data?.codeCpu }}" [(ngModel)]="data.data.codeCpu" [readonly]="data?.edit">
+                    value="{{ data.data?.codeCpu }}" [(ngModel)]="data.data.codeCpu" [readonly]="data?.edit" required maxlength="30" minlength="3" #codeCpu="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="codeCpu.errors">
+              <div *ngIf="codeCpu.errors['required']">Debe ingresar el código de bien del cpu.</div>
+              <div *ngIf="codeCpu.errors['minlength'] || codeCpu.errors['maxlength']">El código de bien del cpu debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Código de bien Monitor</label>
                   <input class="form-control" type="text" name="codeMonitor" placeholder="Código Monitor"
-                    value="{{ data.data?.codeMonitor }}" [(ngModel)]="data.data.codeMonitor" [readonly]="data?.edit">
+                    value="{{ data.data?.codeMonitor }}" [(ngModel)]="data.data.codeMonitor" [readonly]="data?.edit" required maxlength="30" minlength="3" #codeMonitor="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="codeMonitor.errors">
+              <div *ngIf="codeMonitor.errors['required']">Debe ingresar el código de bien del Monitor.</div>
+              <div *ngIf="codeMonitor.errors['minlength'] || codeMonitor.errors['maxlength']">El código de bien del monitor debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Código de bien Teclado</label>
                   <input class="form-control" type="text" name="codeKeyboard" placeholder="Código Teclado"
-                    value="{{ data.data?.codeKeyboard }}" [(ngModel)]="data.data.codeKeyboard" [readonly]="data?.edit">
+                    value="{{ data.data?.codeKeyboard }}" [(ngModel)]="data.data.codeKeyboard" [readonly]="data?.edit" required maxlength="30" minlength="3" #codeKeyboard="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="codeKeyboard.errors">
+              <div *ngIf="codeKeyboard.errors['required']">Debe ingresar el código de bien del teclado.</div>
+              <div *ngIf="codeKeyboard.errors['minlength'] || codeKeyboard.errors['maxlength']">El código de bien del teclado debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Modelo</label>
                   <input class="form-control" type="text" name="model" placeholder="Modelo"
-                    value="{{ data.data?.model }}" [(ngModel)]="data.data.model" [readonly]="data?.edit">
+                    value="{{ data.data?.model }}" [(ngModel)]="data.data.model" [readonly]="data?.edit" required maxlength="30" minlength="3" #model="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="model.errors">
+              <div *ngIf="model.errors['required']">Debe ingresar el modelo del equipo.</div>
+              <div *ngIf="model.errors['minlength'] || model.errors['maxlength']">El modelo del equipo debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Disco duro</label>
                   <input class="form-control" type="text" name="hardDrive" placeholder="Capacidad"
-                    value="{{ data.data?.hardDrive }}" [(ngModel)]="data.data.hardDrive" [readonly]="data?.edit">
+                    value="{{ data.data?.hardDrive }}" [(ngModel)]="data.data.hardDrive" [readonly]="data?.edit" required maxlength="30" minlength="3" #hardDrive="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="hardDrive.errors">
+              <div *ngIf="hardDrive.errors['required']">Debe ingresar la capacidad de memoria del equipo.</div>
+              <div *ngIf="hardDrive.errors['minlength'] || hardDrive.errors['maxlength']">La capacidad de memoria del equipo debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>RAM</label>
                   <input class="form-control" type="text" name="ram" placeholder="Cantidad"
-                    value="{{ data.data?.ram }}" [(ngModel)]="data.data.ram" [readonly]="data?.edit">
+                    value="{{ data.data?.ram }}" [(ngModel)]="data.data.ram" [readonly]="data?.edit" required maxlength="30" minlength="3" #ram="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="ram.errors">
+              <div *ngIf="ram.errors['required']">Debe ingresar la capacidad de memoria RAM del equipo.</div>
+              <div *ngIf="ram.errors['minlength'] || ram.errors['maxlength']">La capacidad de memoria RAM del equipo debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Procesador</label>
                   <input class="form-control" type="text" name="processor" placeholder="Procesador"
-                    value="{{ data.data?.processor }}" [(ngModel)]="data.data.processor" [readonly]="data?.edit">
+                    value="{{ data.data?.processor }}" [(ngModel)]="data.data.processor" [readonly]="data?.edit" required maxlength="30" minlength="3" #processor="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="processor.errors">
+              <div *ngIf="processor.errors['required']">Debe ingresar el tipo de procesador que tiene el equipo.</div>
+              <div *ngIf="processor.errors['minlength'] || processor.errors['maxlength']">El tipo de procesador del equipo debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Sistema operativo</label>
                   <input class="form-control" type="text" name="operativeSystem" placeholder="Sistema operativo"
-                    value="{{ data.data?.operativeSystem }}" [(ngModel)]="data.data.operativeSystem" [readonly]="data?.edit">
+                    value="{{ data.data?.operativeSystem }}" [(ngModel)]="data.data.operativeSystem" [readonly]="data?.edit" required maxlength="30" minlength="3" #operativeSystem="ngModel">
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="operativeSystem.errors">
+              <div *ngIf="operativeSystem.errors['required']">Debe ingresar el sistema operativo que tiene el equipo.</div>
+              <div *ngIf="operativeSystem.errors['minlength'] || operativeSystem.errors['maxlength']">El sistema operativo del equipo debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Detalles</label>
                   <textarea class="form-control" type="text" name="details" placeholder="Detalles"
-                    value="{{ data.data?.details }}" [(ngModel)]="data.data.details" [readonly]="data?.edit"></textarea>
+                    value="{{ data.data?.details }}" [(ngModel)]="data.data.details" [readonly]="data?.edit" required maxlength="30" minlength="3" #details="ngModel">NAN</textarea>
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="details.errors">
+              <div *ngIf="details.errors['required']">Debe ingresar los detalles específicos del equipo.</div>
+              <div *ngIf="details.errors['minlength'] || details.errors['maxlength']">Los detalles específicos del equipo deben tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
             <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Observaciones</label>
                   <textarea class="form-control" type="text" name="observations" placeholder="Observaciones"
-                    value="{{ data.data?.observations }}" [(ngModel)]="data.data.observations" [readonly]="data?.edit"></textarea>
+                    value="{{ data.data?.observations }}" [(ngModel)]="data.data.observations" [readonly]="data?.edit" required maxlength="30" minlength="3" #observations="ngModel">NAN</textarea>
                 </div>
               </div>
             </div>
+            <div class="alert-danger row" *ngIf="observations.errors">
+              <div *ngIf="observations.errors['required']">Debe ingresar cualquier observación sobre el equipo.</div>
+              <div *ngIf="observations.errors['minlength'] || observations.errors['maxlength']">Las observaciones del equipo deben tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+            </div>
+            <br>
           </div>
         </div>
       </form>
@@ -139,5 +209,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cerrar</button>
-  <button mat-button cdkFocusInitial [mat-dialog-close]="data.data" *ngIf="!data?.edit">Guardar</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="data.data" *ngIf="!data?.edit" type="submit" [disabled]="!f.form.valid">Guardar</button>
 </div>

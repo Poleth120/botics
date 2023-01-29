@@ -30,8 +30,11 @@
       <button mat-raised-button color="primary" (click)="downloadAsPDFC()">PDF</button>
     </div>
     <br>
+    <p>{{now}}</p>
+    <br>
 
     <div class="mat-elevation-z8" id="pdfTableC" #pdfTableC>
+
       <table mat-table [dataSource]="computers">
 
         <ng-container matColumnDef="Host Name">
@@ -89,8 +92,11 @@
       <button mat-raised-button color="primary" (click)="downloadAsPDFH()">PDF</button>
     </div>
     <br>
+    <p>{{now}}</p>
+    <br>
 
     <div class="mat-elevation-z8" id="pdfTableH" #pdfTableH>
+
       <table mat-table [dataSource]="history">
 
         <ng-container matColumnDef="Host Name">

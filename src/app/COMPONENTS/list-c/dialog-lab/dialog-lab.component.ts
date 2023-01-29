@@ -27,7 +27,7 @@ export class DialogLabComponent {
     this.routes = this.router.url;
   }
 
-  labs = new MatTableDataSource<Lab>([]);
+  labs: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -37,12 +37,19 @@ export class DialogLabComponent {
   displayedColumns: string[] = ['Id', 'Name', 'Acciones'];
 
   ngOnInit(): void {
-    console.log(this.data)
-    this.adminService.labIndex().subscribe((data) => {
-      data.splice(this.data.idLab1 - 1, 1);
-      this.labs = data as MatTableDataSource<Lab>;
-      this.labs.paginator = this.paginator;
-    });
+    console.log(this.labId)
+    if (this.labId === 0) {
+      this.adminService.labIndex().subscribe((data) => {
+        this.labs = new MatTableDataSource<Lab>(data);
+        this.labs.paginator = this.paginator;
+      });
+    } else {
+      this.adminService.labIndex().subscribe((data) => {
+        data.splice(this.data.idLab1 - 1, 1);
+        this.labs = new MatTableDataSource<Lab>(data);
+        this.labs.paginator = this.paginator;
+      });
+    }
   }
 
   select(idLab: number) {

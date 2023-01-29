@@ -2,7 +2,7 @@
   <div class="sidebar-content">
     <perfect-scrollbar>
       <div class="sidebar-header">
-        <a>Botics</a>
+        <a class="linki">Botics</a>
       </div>
 
       <div class="sidebar-profile">
@@ -15,21 +15,8 @@
           </span>
           <span class="user-role" *ngFor="let role of profile?.roles">{{ role?.name }}</span>
           <span class="user-role">
-            <i class="fa fa-circle"></i>
             <span *ngIf="profile?.extension">Ext: {{ profile?.extension }}</span>
           </span>
-        </div>
-      </div>
-      <div class="sidebar-search">
-        <div>
-          <div class="input-group">
-            <input type="text" class="form-control search-menu" placeholder="Search...">
-            <div class="input-group-append">
-              <span class="input-group-text">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </span>
-            </div>
-          </div>
         </div>
       </div>
       <div class="sidebar-menu">
@@ -38,13 +25,13 @@
             <span *ngIf="menu.type === 'header'">{{menu.title}}</span>
             <a *ngIf="menu.type !== 'header'" (click)='toggle(menu)'>
               <i class="{{menu.icon}}"></i>
-              <span>{{menu.title}}</span>
+              <span class="linki">{{menu.title}}</span>
               <span *ngIf="menu.badge" class="badge badge-pill" [ngClass]="menu.badge.class">{{menu.badge.text}}</span>
             </a>
             <div *ngIf="menu.type === 'dropdown'" class="sidebar-submenu" [@slide]="getState(menu)">
               <ul>
                 <li *ngFor="let submenu of menu?.submenus">
-                  <a class="linki" [routerLink]="[submenu?.route]" [queryParams]="{ id: submenu?.param?.id }"> {{submenu.title}}
+                  <a class="linki" (click)="reloadList(submenu?.param?.id, submenu?.route)"> {{submenu.title}}
                     <span *ngIf="submenu.badge" class="badge badge-pill" [ngClass]="submenu.badge.class">{{submenu.badge.text}}</span>
                   </a>
                 </li>

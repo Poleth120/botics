@@ -3,35 +3,45 @@
   <div class="container">
     <div class="row">
       <div>
-        <div class="card card-margin">
-          <div class="card-body pt-0">
-            <div class="widget-49">
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Nombre del laboratorio</label>
-                    <input class="form-control" type="text" name="labName" placeholder="Laboratorio que se busca reservar"
-                      value="{{ data?.labName }}" [(ngModel)]="data.labName">
+        <form name="form" #f="ngForm" (ngSubmit)="f.form.valid" novalidate>
+          <div class="card card-margin">
+            <div class="card-body pt-0">
+              <div class="widget-49">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Nombre del laboratorio</label>
+                      <input class="form-control" type="text" name="labName" placeholder="Laboratorio que se busca reservar"
+                        value="{{ data?.labName }}" [(ngModel)]="data.labName" required maxlength="30" minlength="3" #lab="ngModel">
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label>Descripción</label>
-                    <textarea class="form-control" type="text" name="description" placeholder="Descripción"
-                      value="{{ data?.description }}" [(ngModel)]="data.description"></textarea>
+                <div class="alert-danger row" *ngIf="lab.errors">
+                  <div *ngIf="lab.errors['required']">Debe ingresar el nombre del laboratorio a reservar.</div>
+                  <div *ngIf="lab.errors['minlength'] || lab.errors['maxlength']">El nombre de laboratorio debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Descripción</label>
+                      <textarea class="form-control" type="text" name="description" placeholder="Descripción"
+                        value="{{ data?.description }}" [(ngModel)]="data.description" required #description="ngModel"></textarea>
+                    </div>
                   </div>
+                </div>
+                <div class="alert-danger row" *ngIf="description.errors">
+                  <div *ngIf="description.errors['required']">Debe ingresar una descripción.</div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-button cdkFocusInitial [mat-dialog-close]="data">Enviar</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="data" type="submit" [disabled]="!f.form.valid">Enviar</button>
   <button mat-button (click)="onNoClick()">Cerrar</button>
 </div>
