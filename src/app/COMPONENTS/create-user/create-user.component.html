@@ -52,12 +52,12 @@
         #username="ngModel"
       />
       <div class="alert-danger" *ngIf="username.errors && f.submitted">
-        <div *ngIf="username.errors['required']">Nombre  es obligatorio</div>
+        <div *ngIf="username.errors['required']">El nombre  es obligatorio</div>
         <div *ngIf="username.errors['minlength']">
-          El nombre de usuario debe tener como mínimo 3 caracteres
+          El nombre debe tener como mínimo 3 caracteres
         </div>
         <div *ngIf="username.errors['maxlength']">
-          El nombre de usuario debe tener como máximo 20 caracteres
+          El nombre debe tener como máximo 20 caracteres
         </div>
       </div>
     </div>
@@ -79,10 +79,10 @@
       <div class="alert-danger" *ngIf="username.errors && f.submitted">
         <div *ngIf="username.errors['required']">El apellido es obligatorio</div>
         <div *ngIf="username.errors['minlength']">
-          El nombre de usuario debe tener como mínimo 3 caracteres
+          El apellido debe tener como mínimo 3 caracteres
         </div>
         <div *ngIf="username.errors['maxlength']">
-          El nombre de usuario debe tener como máximo 20 caracteres
+          El apellido debe tener como máximo 20 caracteres
         </div>
       </div>
     </div>
@@ -123,9 +123,9 @@
           #email="ngModel"
         />
         <div class="alert-danger" *ngIf="email.errors && f.submitted">
-          <div *ngIf="email.errors['required']">¡El correo electrónico es obligatorio!</div>
+          <div *ngIf="email.errors['required']">El correo electrónico es obligatorio</div>
           <div *ngIf="email.errors['email']">
-            Email must be a valid email address
+            Debe ingresar un email válido
           </div>
         </div>
       </div>
@@ -144,9 +144,9 @@
             <span class="eyeicon" style="width:20px;"(click)="viewpass()"><i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i></span>
 
             <div class="alert-danger" *ngIf="password.errors && f.submitted">
-              <div *ngIf="password.errors['required']">¡La contraseña es obligatoria!</div>
+              <div *ngIf="password.errors['required']">La contraseña es obligatoria</div>
               <div *ngIf="password.errors['minlength']">
-                La contraseña tieneun mínimo de 6 caracteres
+                La contraseña debe tener al menos 6 caracteres
               </div>
             </div>
           </div>
@@ -159,22 +159,13 @@
               <mat-radio-button value="administrativo">Pasante</mat-radio-button>
 
             </mat-radio-group>
-            <div
-              class="alert alert-danger"
-              role="alert"
-              *ngIf="password.errors && f.submitted"
-            >
-              <div *ngIf="password.errors['required']">¡La contraseña es obligatoria!</div>
-              <div *ngIf="password.errors['minlength']">
-                Password must be at least 6 characters
-              </div>
-            </div>
+            
 
 
 
           <div class="form-group">
           <button class="btn btn-primary btn-block input" style=" border-radius: 40px;">
-            Resgistrarse
+            Resgistrar
           </button>
         </div>
 
