@@ -1,13 +1,13 @@
 <ng-container *ngIf="loading$ | async">
- 
-  <div class="overlays" > 
+
+  <div class="overlays" >
     <h6 style="margin-bottom: 50%;margin-left:47%; margin-top:26%">Cargando...</h6>
     <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
   </div>
- 
-  
-  
-  
+
+
+
+
 </ng-container>
 <div class="page-wrapper" [ngClass]="{'toggled' : getSideBarState()}">
   <app-sidebar *ngIf="isLoggedIn"></app-sidebar>
@@ -17,7 +17,7 @@
           <div class="">
               <div>
                   <div id="app">
-                    <nav class="navbar navbar-expand navbar-dark " style="height:68px; background-color:rgb(36, 43, 43)">
+                    <nav class="navbar navbar-expand navbar-dark " style="height:68px; background-color:#2a506d">
                       <a href="/" *ngIf="!isLoggedIn" class="navbar-brand">BOTICS</a>
                       <button mat-icon-button color="primary" *ngIf="isLoggedIn" aria-label="Example icon button with a menu icon" (click)="toggleSidebar()">
                         <mat-icon>menu</mat-icon>
@@ -32,10 +32,10 @@
 
                       <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
                         <li class="nav-item">
-                          <a href="/register" class="nav-link" routerLink="register">Registrarse</a>
+                          <a href="/register" class="navbar-brand" routerLink="register"><h5><strong>Registrarse</strong></h5></a>
                         </li>
                         <li class="nav-item">
-                          <a href="/login" class="nav-link" routerLink="login">Iniciar Sesión</a>
+                          <a href="/login" class="navbar-brand" routerLink="login"><h5><strong>Iniciar Sesión</strong></h5></a>
                         </li>
                       </ul>
 
@@ -54,8 +54,16 @@
       </div>
     </div>
     <div class="overlay" (click)="toggleSidebar()" [ngClass]="{'show' : !getSideBarState()}"></div>
-    <div class="content-container">
+
+
+
+
+
+    <div class="content-container" >
       <router-outlet></router-outlet>
+      
     </div>
+
+
   </main>
 </div>
