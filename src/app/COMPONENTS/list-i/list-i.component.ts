@@ -20,7 +20,6 @@ export class ListIComponent {
 
 
   displayedColumns: string[] = [
- 
     'Nombre de usuario',
     'Email',
     'Estado',

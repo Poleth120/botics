@@ -37,7 +37,7 @@
                 <div class="form-group">
                   <label>Registrado el</label>
                   <input class="form-control" type="text" name="Creado en" placeholder="Creado en"
-                    value="{{ data?.createdAt }}" [(ngModel)]="data.createdAt" [readonly]=true>
+                    value="{{ data?.createdAt | date: 'short' }}" [readonly]=true>
                 </div>
               </div>
             </div>
@@ -46,7 +46,7 @@
                 <div class="form-group">
                   <label>Actualizado el</label>
                   <input class="form-control" type="text" name="Actualizado en" placeholder="Actualizado en"
-                    value="{{ data?.updatedAt }}" [(ngModel)]="data.updatedAt" [readonly]=true>
+                    value="{{ data?.updatedAt | date: 'short' }}" [readonly]=true>
                 </div>
               </div>
             </div>

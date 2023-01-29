@@ -31,6 +31,8 @@ export class CreateUserComponent {
   errorMessage = '';
 
   public myForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
     username: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -38,6 +40,8 @@ export class CreateUserComponent {
   });
   constructor(private adminService: AdminService) {
     this.myForm.setValue({
+      name: '',
+      lastName: '',
       username: '',
       email: '',
       password: '',
@@ -49,9 +53,9 @@ export class CreateUserComponent {
 
    }
    onSubmit(): void {
-    const { username, email, role, password } = this.form;
+    const { username, email, name, lastName, role, password } = this.form;
     console.log(this.roles)
-    this.adminService.register(username, email, [this.roles], password).subscribe({
+    this.adminService.register(username, email, name, lastName, [this.roles], password).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;

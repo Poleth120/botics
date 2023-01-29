@@ -32,9 +32,9 @@ export class AuthService {
     return this.http.post(AUTH_API + 'signout', '', this.httpOptionsLo)
   }
 
-  register( username: string, email: string, role: any[], password: string): Observable<any> {
+  register( username: string, email: string, firstName: string, lastName: string, role: any[], password: string): Observable<any> {
     console.log(role)
-    let jsonO = {username: username, email: email, role: role, password: password}
+    let jsonO = {username: username, email: email, firstName: firstName, lastName: lastName, role: role, password: password}
     console.log(JSON.stringify( jsonO))
     return this.http.post(AUTH_API + 'signup', jsonO, httpOptions);
   }

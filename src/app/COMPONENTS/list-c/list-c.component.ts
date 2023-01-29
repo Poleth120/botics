@@ -205,7 +205,7 @@ export class ListCComponent implements OnInit, OnChanges  {
       if (result === undefined) {
         this.ngOnInit();
       } else {
-        this.adminService.computerSave(result).subscribe((response) => {
+        this.adminService.computerUpdate(result).subscribe((response) => {
           const alertReference = this.matDialog.open(AlertComponent, {data: response})
           alertReference.afterClosed().subscribe(() => {
             this.ngOnInit();
@@ -375,26 +375,5 @@ export class ListCComponent implements OnInit, OnChanges  {
       }
     })
 
-  }
-
-  delete(idComputer: number, hostName: string) {
-    this.adminService
-      .computerUnAssign(this.labId.id, idComputer, 'Borrar.')
-      .subscribe(() => {
-        this.adminService.computerDelete(hostName).subscribe((response) => {
-          const alertReference = this.matDialog.open(AlertComponent, {data: response})
-          alertReference.afterClosed().subscribe(() => {
-            this.ngOnInit();
-          })
-        },
-        err => {
-          console.log(err)
-          const alertReference = this.matDialog.open(AlertComponent, {data: err})
-        });
-      },
-      err => {
-        console.log(err)
-        const alertReference = this.matDialog.open(AlertComponent, {data: err})
-      });
   }
 }

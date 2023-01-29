@@ -37,8 +37,11 @@ export class AdminService {
   }
 
   computerSave(computer: any): Observable<any> {
-    console.log(computer)
     return this.http.post(ADMIN_API + 'computer/save', computer, this.httpOptions)
+  }
+
+  computerUpdate(computer: any): Observable<any> {
+    return this.http.put(ADMIN_API + 'computer/update', computer, this.httpOptions)
   }
 
   computerIndexLab(idlab: number): Observable<any> {
@@ -65,12 +68,9 @@ export class AdminService {
     return this.http.put(ADMIN_API + 'computer/reassign/' + idLab1 + '/' + idLab2 + '/' + idComputer + '?changeDetails=' + changeDetails, '', this.httpOptions);
   }
 
-  computerDelete(hostName: string): Observable<any> {
-    return this.http.delete(ADMIN_API + 'computer/delete/' + hostName, this.httpOptions);
-  }
-  register( username: string, email: string, role: any[], password: string): Observable<any> {
+  register( username: string, email: string, firstName: string, lastName: string, role: any[], password: string): Observable<any> {
     console.log(role)
-    let jsonO = {username: username, email: email, role: role, password: password}
+    let jsonO = {username: username, email: email, firstName: firstName, lastName: lastName, role: role, password: password}
     console.log(JSON.stringify( jsonO))
     return this.http.post(ADMIN_API + 'intern/save', jsonO, this.httpOptions);
   }

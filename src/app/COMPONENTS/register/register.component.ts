@@ -31,6 +31,8 @@ export class RegisterComponent {
   errorMessage = '';
 
   public myForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
     username: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -40,6 +42,8 @@ export class RegisterComponent {
 
   constructor(private authService: AuthService) {
     this.myForm.setValue({
+      name: '',
+      lastName: '',
       username: '',
       email: '',
       password: '',
@@ -51,27 +55,10 @@ export class RegisterComponent {
 
    }
 
-   /*
-  public obtenerUsuario(form:any) {
-    let data = {
-      username: form.username,
-      email: form.email,
-      password: form.password,
-      role: ['profesor']
-    }
-    console.log(data)
-    this.authService.register( data.username ,data.email,data.role,data.password).subscribe((res)=>{
-        console.log(res)
-    })
-
-
-  }
-  */
-
   onSubmit(): void {
-    const { username, email, role, password } = this.form;
+    const { name, lastName, username, email, role, password } = this.form;
     console.log(this.roles)
-    this.authService.register(username, email, [this.roles], password).subscribe({
+    this.authService.register(username, email, name, lastName, [this.roles], password).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;
