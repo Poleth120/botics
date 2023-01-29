@@ -11,7 +11,7 @@ import { DialogLabComponent } from './dialog-lab/dialog-lab.component';
 import { DialogChangeComponent } from './dialog-change/dialog-change.component';
 import { MatSort } from '@angular/material/sort';
 import { AlertComponent } from '../alert/alert.component';
-import { AlertCComponent } from './alert-c/alert-c.component';
+import { AlertCCComponent } from './alert-c/alert-c.component';
 
 
 
@@ -75,28 +75,12 @@ export class ListCComponent implements OnInit, OnChanges  {
     private routerF: Router,
     private changeDetectorRef: ChangeDetectorRef
   ) {this.FLAG = true,
-    this.routerSub = this.router.queryParams.subscribe((params) => {
-
-      console.log(params);
-
-      this.labId = params;
-      console.log(this.labId)
-      if (this.routerF.url === '/lab-computadoras'){
-        this.labId = {id: 500};
-        console.log(this.labId)
-        this.longText = `Visualizar los equipos registrados y también puedes añadir nuevos equipos y realizar otras acciones, tales como: dar de baja algún equipo.`;
-
-      } else {
-        this.labId = params;
-        console.log(this.labId)
-        this.longText = `Visualizar los equipos asignados a este laboratorio y también puedes registrar nuevos equipos.`;
-      }
-    }), this.routes = this.routerF.url}
+    this.routes = this.routerF.url}
   @Input() labId: any = {id: 500};
 
   FLAG: boolean
   displayedColumns: string[] = [
-    
+
     'Host Name',
     'Serial del CPU',
     'Serial del Monitor',
@@ -140,6 +124,24 @@ export class ListCComponent implements OnInit, OnChanges  {
   ngOnInit() {
     this.computersSub?.unsubscribe()
     this.routerSub?.unsubscribe()
+    this.routerSub = this.router.params.subscribe((params) => {
+
+      console.log(params);
+
+      this.labId = params;
+      console.log(this.labId)
+      if (this.routerF.url === '/lab-computadoras'){
+        this.labId = {id: 500};
+        console.log(this.labId)
+        this.longText = `Visualizar los equipos registrados y también puedes añadir nuevos equipos y realizar otras acciones, tales como: dar de baja algún equipo.`;
+
+      } else {
+        this.labId = params;
+        console.log(this.labId)
+        this.refreshComponent()
+        this.longText = `Visualizar los equipos asignados a este laboratorio y también puedes registrar nuevos equipos.`;
+      }
+    })
     this.computers =  new MatTableDataSource<Computer>([]);
     console.log(this.labId)
     if (this.routerF.url === '/lab-computadoras') {
@@ -164,15 +166,23 @@ export class ListCComponent implements OnInit, OnChanges  {
     }
   }
 
+
+
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes)
 
   }
 
-  refreshComponent(id: number) {
-    this.computersSub?.unsubscribe()
-    this.routerSub?.unsubscribe()
-    this.routerF.navigate(['laboratorios/lab-computadoras'], { queryParams: { id: id }})
+  refreshComponent() {
+    this.computersSub = this.adminService.computerIndexLab(this.labId['id']).subscribe((data) => {
+      console.log(data);
+      this.computers = new MatTableDataSource<Computer>(data);
+      this.computers.paginator = this.paginator;
+      console.log(this.computers);
+    },
+    err => {
+      const alertReference = this.matDialog.open(AlertComponent, {data: err})
+    });
   }
 
   openDialogeShow(computer: any) {
@@ -325,7 +335,7 @@ export class ListCComponent implements OnInit, OnChanges  {
         const alertReference = this.matDialog.open(AlertComponent, {data: err})
       });
     } else {
-      const dialogReference = this.matDialog.open(AlertCComponent)
+      const dialogReference = this.matDialog.open(AlertCCComponent)
       dialogReference.afterClosed().subscribe((result) => {
         if (result) {
           this.adminService.computerDisable(id).subscribe((response) => {

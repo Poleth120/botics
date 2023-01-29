@@ -1,8 +1,30 @@
-<h1 mat-dialog-title>Confirmación</h1>
-<div mat-dialog-content>
+<h1 mat-dialog-title class="mat-mdc-dialog-title mdc-dialog__title">Confirmación</h1>
+<div mat-dialog-content class="mat-mdc-dialog-content mdc-dialog__content">
     <p>¿Dar de baja la computadora?</p>
 </div>
-<div mat-dialog-actions>
-    <button mat-button (click)="closeDialog()">No</button>
-    <button mat-button (click)="confirm()" cdkFocusInitial>Sí</button>
+<div mat-dialog-actions class="mat-mdc-dialog-actions mdc-dialog__actions">
+    <div _ngcontent-lht-c225=""
+    mat-dialog-actions=""
+    class="mat-mdc-dialog-actions mdc-dialog__actions">
+      <button _ngcontent-lht-c225="" (click)="closeDialog()"
+      mat-button=""
+      class="mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base">
+        <span class="mat-mdc-button-persistent-ripple mdc-button__ripple">
+        </span>
+        <span class="mdc-button__label">No</span>
+        <span class="mat-mdc-focus-indicator"></span>
+        <span matripple="" class="mat-ripple mat-mdc-button-ripple"
+        ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></span>
+        <span class="mat-mdc-button-touch-target"></span>
+      </button>
+      <button _ngcontent-lht-c225="" mat-button="" cdkfocusinitial="" (click)="confirm()"
+      class="mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base">
+        <span class="mat-mdc-button-persistent-ripple mdc-button__ripple"></span>
+        <span class="mdc-button__label">Sí</span>
+        <span class="mat-mdc-focus-indicator"></span>
+        <span matripple="" class="mat-ripple mat-mdc-button-ripple"
+        ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></span>
+        <span class="mat-mdc-button-touch-target"></span>
+      </button>
+    </div>
 </div>

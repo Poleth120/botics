@@ -52,6 +52,7 @@ const routes: Routes = [
   { path: 'admin-history', component: HistoryComponent },
   { path: 'listar-nuevo-usuario', component: ListUserComponent },
   { path: 'laboratorios', component: ListLComponent },
+  { path: 'laboratorios/lab-computadoras/:id', component: ListCComponent },
   { path: 'laboratorios/lab-computadoras', component: ListCComponent },
   { path: 'lab-computadoras', component: ListCComponent },
   { path: 'restablecer-contraseña', component: RecuperarComponent},

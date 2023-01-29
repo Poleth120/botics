@@ -47,7 +47,7 @@ export class ReportComponent {
     'Fecha',
     'Detalle'
   ];
- 
+
   ngOnInit() {
     this.adminService.historyIndex().subscribe((data) => {
      this.history = new MatTableDataSource<any>(data);
@@ -57,21 +57,46 @@ export class ReportComponent {
     })
   }
 
-  public downloadAsPDFC() {
+  now = new Date();
+  public async downloadAsPDFC() {
     const pdfTable = this.pdfTableC.nativeElement;
     var html = htmlToPdfmake(pdfTable.innerHTML);
-    const documentDefinition = { content: html };
-    pdfMake.createPdf(documentDefinition).download();
-
+    const documentDefinition = { content: [{image: await this.getBase64ImageFromURL("../assets/img/reporte-compu.png"), fit:[520,520]}, {text: 'Fecha: ' + this.now}, html]};
+    pdfMake.createPdf(documentDefinition).download('reporte-computadoras-'+this.now+'.pdf');
   }
 
-  public downloadAsPDFH() {
+  public async downloadAsPDFH() {
     const pdfTable = this.pdfTableH.nativeElement;
     var html = htmlToPdfmake(pdfTable.innerHTML);
-    const documentDefinition = { content: html };
-    pdfMake.createPdf(documentDefinition).download();
-
+    const documentDefinition = { content: [{image: await this.getBase64ImageFromURL("../assets/img/reporte-hist.png"), fit:[520,520]}, {text: 'Fecha: ' + this.now}, html]};
+    pdfMake.createPdf(documentDefinition).download('reporte-historial-'+this.now+'.pdf');
   }
+
+  getBase64ImageFromURL(url: string) {
+  return new Promise((resolve, reject) => {
+    var img = new Image();
+    img.setAttribute("crossOrigin", "anonymous");
+
+    img.onload = () => {
+      var canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+
+      var ctx = canvas.getContext("2d");
+      ctx?.drawImage(img, 0, 0);
+
+      var dataURL = canvas.toDataURL("image/png");
+
+      resolve(dataURL);
+    };
+
+    img.onerror = error => {
+      reject(error);
+    };
+
+    img.src = url;
+  });
+}
 
   filterComputers(searchTerm: string) {
     this.computers.filter = searchTerm.trim().toLocaleLowerCase();

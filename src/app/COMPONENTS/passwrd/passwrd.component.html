@@ -19,14 +19,14 @@
             <h5><strong>Nueva contraseña </strong></h5>
           </label>
           <input placeholder="Ingresa tu contraseña" [type]="changetype?'password':'text'" class="form-control"
-            name="password" [(ngModel)]="form.password" maxlength="30" required minlength="6" #password="ngModel" pattern='/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{6,20}$/'>
+            name="password" [(ngModel)]="form.password" maxlength="30" required minlength="6" #password="ngModel">
           <span class="eyeicon" style="width:20px;" (click)="viewpass()"><i
               [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i></span>
 
-          <div class="alert-danger" *ngIf="password.errors && f.submitted">
+          <div class="alert-danger" *ngIf="password.errors">
             <div *ngIf="password.errors['required']">¡La contraseña es obligatoria!</div>
-            <div *ngIf="password.errors['minlength']">La contraseña debe tener al menos 6 caracteres</div>
-            <div *ngIf="password.errors['pattern']">La contraseña debe tener al menos: Una mayúscula, un caracter especial, una minúscula y un número.{{ password.errors['pattern'] }}</div>
+            <div *ngIf="password.errors['minlength'] || password.errors['maxlength']">La contraseña debe tener al menos 6 caracteres</div>
+            <div *ngIf="password.errors['pattern']">La contraseña debe tener al menos: Una mayúscula, un caracter especial, una minúscula y un número.</div>
           </div>
         </div>
 
@@ -35,25 +35,24 @@
             <h5><strong>Confirmar contraseña </strong></h5>
           </label>
           <input placeholder="Ingresa tu contraseña" [type]="changetyp?'password':'text'" class="form-control"
-            name="password" [(ngModel)]="form.repassword" required minlength="6" #password="ngModel">
+            name="repassword" [(ngModel)]="form.repassword" maxlength="30" required minlength="6" #repassword="ngModel">
           <span class="eyeicon1" style="width:20px;" (click)="view()"><i
               [ngClass]="visibl?'fa fa-eye':'fa fa-eye-slash'"></i></span>
 
-          <div class="alert-danger" *ngIf="password.errors && f.submitted">
-            <div *ngIf="password.errors['required']">¡La contraseña es obligatoria!
-              <div *ngIf="password.errors['minlength']">
-                Password must be at least 6 characters
-              </div>
+          <div class="alert-danger" *ngIf="repassword.errors">
+            <div *ngIf="repassword.errors['required']">¡La contraseña es obligatoria!</div>
+            <div *ngIf="repassword.errors['minlength'] || repassword.errors['maxlength']">
+              La contraseña debe tener al menos 6 caracteres y no mas de 30 caracteres.
             </div>
           </div>
-
+        </div>
 
           <br>
 
 
 
           <div class="form-group">
-            <button class="btn btn-primary btn-block input" style="border-radius: 40px;">
+            <button class="btn btn-primary btn-block input" style="border-radius: 40px;" [disabled]="!f.form.valid">
               Finalizar
             </button>
           </div>
@@ -62,9 +61,6 @@
           <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
             Signup failed!<br />{{ errorMessage }}
           </div>
-        </div>
-
-
     </form>
 
   </div>

@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./passwrd.component.css']
 })
 export class PasswrdComponent {
+[x: string]: any;
 
   visible:boolean=true;
   changetype:boolean=true;
