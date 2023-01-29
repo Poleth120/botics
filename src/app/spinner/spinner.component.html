@@ -1,0 +1,7 @@
+<ng-container *ngIf="loading$ | async">
+
+  <div class="overlays" >
+    <mat-progress-spinner class="spinner" [mode]="'indeterminate'"></mat-progress-spinner>
+    <h6 class="msg">Cargando...</h6>
+  </div>
+</ng-container>

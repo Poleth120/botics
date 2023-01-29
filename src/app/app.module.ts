@@ -73,6 +73,7 @@ import { AlertComponent } from './COMPONENTS/alert/alert.component';
 import { AlertCComponent } from './COMPONENTS/list-i/alert-c/alert-c.component';
 import { RecuperarComponent } from './COMPONENTS/recuperar/recuperar.component';
 import { PasswrdComponent } from './COMPONENTS/passwrd/passwrd.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -119,6 +120,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AlertCComponent,
     RecuperarComponent,
     PasswrdComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
