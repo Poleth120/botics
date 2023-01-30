@@ -31,7 +31,7 @@
                     </div>
                     <div class="text-center text-sm-right">
                       <span class="badge badge-secondary" *ngFor="let role of profile?.roles">{{ role?.name }}</span>
-                      <div class="text-muted"><small>{{profile?.createdAt}}</small></div>
+                      <div class="text-muted"><small>{{profile?.createdAt | date:'medium'}}</small></div>
                     </div>
                   </div>
                 </div>
