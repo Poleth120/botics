@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/botics-frontend"
+  publish = "dist/botics"
   command = "ng build"
 [[redirects]]
   from = "/*"
