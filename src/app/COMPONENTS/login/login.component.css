@@ -145,3 +145,12 @@ html{
   top:10px;
   cursor: pointer;
 }
+
+
+.eyeicon {
+  position: relative;
+  left:90%;
+  top:-29px;
+
+  cursor: pointer;
+}

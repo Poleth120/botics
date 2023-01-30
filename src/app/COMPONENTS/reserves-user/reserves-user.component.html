@@ -30,20 +30,17 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="reserves">
 
-    <ng-container matColumnDef="Id">
-      <th mat-header-cell *matHeaderCellDef> Reserva Id </th>
-      <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
-    </ng-container>
+    
 
     <ng-container matColumnDef="Lab Name">
-      <th mat-header-cell *matHeaderCellDef> Laboratorio </th>
+      <th mat-header-cell *matHeaderCellDef> <strong>Laboratorio </strong></th>
       <td mat-cell *matCellDef="let element"> {{element?.labName}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="Acciones">
-      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <ng-container matColumnDef="Detalles">
+      <th mat-header-cell *matHeaderCellDef> <strong>Detalles</strong> </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-mini-fab color="primary" (click)="reserveDetails(element)">
+        <button mat-mini-fab color="primary"  title="Visualizar" (click)="reserveDetails(element)">
           <mat-icon>comment</mat-icon>
         </button>
       </td>

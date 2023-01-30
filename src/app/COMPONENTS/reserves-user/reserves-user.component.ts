@@ -30,9 +30,9 @@ export class ReservesUserComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   displayedColumns: string[] = [
-    'Id',
+  
     'Lab Name',
-    'Acciones'
+    'Detalles'
   ];
 
 

@@ -40,10 +40,15 @@
               <input placeholder="Ingresa tu contraseña" type="password"
             class="form-control"
             name="password"
+            [type]="changetype?'password':'text'"
             [(ngModel)]="form.password"
             required
             minlength="6"
             #password="ngModel">
+
+            <span class="eyeicon" style="width:20px;" (click)="viewpass()"><i
+              [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i></span>
+
             <div
             class="alert alert-danger"
             role="alert"
