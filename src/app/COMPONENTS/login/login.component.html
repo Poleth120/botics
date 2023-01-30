@@ -71,7 +71,7 @@
             role="alert"
             *ngIf="f.submitted && isLoginFailed"
           >
-            Fallo de login: {{ errorMessage }}
+            Fallo de inicio de sesión: {{ errorMessage }}
           </div>
         </div>
       </form>
@@ -80,15 +80,24 @@
   </div>
 
   </body>
-  <div class="alert alert-success" *ngIf="isLoggedIn">
+  <div class="alert alert-success" *ngIf="isLoggedIn" style="margin:auto;" >
    
-    <mat-card>
+    <mat-card style="margin:auto;">
       <img src="https://esfot.epn.edu.ec/images/headers/logo_epn.svg" style="width:14%;"/>
       <img src="https://esfot.epn.edu.ec/images/headers/logo_esfot_buho.png" style="position:relative; width:13%; margin-left:86.5%; margin-top:-8.7%;"/>
       <h4 style="margin:auto; color:#203749;"><strong>Bienvenido a BOTICS  </strong></h4>
       <br>
      
       <img src="../assets/img/BOTICS.png" style="width:28%; margin:auto; position: relative;"/>
+      <br>
+      <br>
+      <h5 style="margin:auto; text-align: center; color:#1f2c36;">Continúa navegando en BOTICS, el sistema de gestión y administración de laboratorios. BOTICS te permite realizar diferentes actividades relacionadas con los laboratorios de la ESFOT.</h5>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
     </mat-card>
 
   </div>

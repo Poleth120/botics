@@ -15,6 +15,9 @@ const htmlToPdfmake = require("html-to-pdfmake");
   styleUrls: ['./report.component.css']
 })
 export class ReportComponent {
+
+
+
   constructor(private adminService: AdminService) {}
 
   @ViewChild('pdfTableC')
@@ -27,7 +30,7 @@ export class ReportComponent {
   searchTermH = '';
   @ViewChild(MatSort) sort!: MatSort;
 
-  longText = ''
+  longText = `Visualizar el reporte de las computadoras ingresadas. `;
   computers: any;
   history: any;
 

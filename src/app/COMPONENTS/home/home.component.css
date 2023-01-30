@@ -375,11 +375,7 @@ body{background: #eee;font-family: sans-serif;}
   }
 
 
-  /* footer */
-
-  footer{
-    
-  }
+  
 
   .form{
     display: flex;
@@ -519,16 +515,18 @@ body{background: #eee;font-family: sans-serif;}
   }
   
   .buttons {
-    min-width: 650px;
+    position:relative;
+    min-width: 65%;
     display: flex;
     justify-content: space-evenly;
-   
+    flex-wrap: wrap;
  
     
   }
   
   .buttons a {
-    flex-wrap: wrap;
+    
+    
     text-decoration: none;
     font-size: 28px;
     width: 60px;
