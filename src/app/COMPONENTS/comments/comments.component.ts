@@ -74,8 +74,8 @@ export class CommentsComponent {
     this.matDialog.open(DialogCommentComponent, {data: comment})
   }
 
-  commentResponse(id: number) {
-    const dialogReference = this.matDialog.open(DialogResponseComponent, {data: this.response})
+  commentResponse(id: number, subject: string) {
+    const dialogReference = this.matDialog.open(DialogResponseComponent, {data: {subject: 'Respuesta a '+subject, details: ''}})
     dialogReference.afterClosed().subscribe((result) => {
       if (result === undefined) {
         this.ngOnInit();

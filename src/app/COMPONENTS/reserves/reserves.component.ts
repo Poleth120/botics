@@ -81,12 +81,13 @@ export class ReservesComponent {
     this.matDialog.open(DialogReserveComponent, {data: reserve})
   }
 
-  reserveResponse(id: number) {
-    const dialogReference = this.matDialog.open(DialogResponseComponent, {data: this.response})
+  reserveResponse(id: number, labName: string) {
+    const dialogReference = this.matDialog.open(DialogResponseComponent, {data: {subject: 'Respuesta a '+labName, details: ''}})
     dialogReference.afterClosed().subscribe((result) => {
       if (result === undefined) {
         this.ngOnInit();
       } else {
+        console.log(result)
         this.internService.responseReserve(this.currentUser.id, id, result).subscribe((response) => {
           const alertReference = this.matDialog.open(AlertComponent, {data: response})
           alertReference.afterClosed().subscribe(() => {

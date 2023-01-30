@@ -79,8 +79,8 @@ export class TicketsComponent {
     this.matDialog.open(DialogTicketComponent, { data: ticket });
   }
 
-  ticketResponse(id: number) {
-    const dialogReference = this.matDialog.open(DialogResponseComponent, {data: this.response})
+  ticketResponse(id: number, subject: string) {
+    const dialogReference = this.matDialog.open(DialogResponseComponent, {data: {subject: 'Respuesta a '+subject, details: ''}})
     dialogReference.afterClosed().subscribe((result) => {
       if (result === undefined) {
         this.ngOnInit();

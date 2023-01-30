@@ -53,7 +53,7 @@
         <button mat-mini-fab color="primary" (click)="reserveDetails(element)">
           <mat-icon>comment</mat-icon>
         </button>
-        <button mat-mini-fab color="primary" (click)="reserveResponse(element.id)" *ngIf="(routes === '/intern-reserves') && !(element.state)">
+        <button mat-mini-fab color="primary" (click)="reserveResponse(element.id, element.labName)" *ngIf="(routes === '/intern-reserves') && !(element.state)">
           <mat-icon>reply</mat-icon>
         </button>
       </td>

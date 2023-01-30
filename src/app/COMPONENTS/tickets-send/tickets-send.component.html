@@ -12,13 +12,13 @@
                     <div class="form-group">
                       <label>Asunto</label>
                       <input class="form-control" type="text" name="Asunto" placeholder="Asunto del ticket"
-                        value="{{ data?.subject }}" [(ngModel)]="data.subject" required maxlength="30" minlength="3" #subject="ngModel">
+                        value="{{ data?.subject }}" [(ngModel)]="data.subject" required maxlength="60" minlength="3" #subject="ngModel">
                     </div>
                   </div>
                 </div>
                 <div class="alert-danger row" *ngIf="subject.errors">
                   <div *ngIf="subject.errors['required']">Debe ingresar un asunto.</div>
-                  <div *ngIf="subject.errors['minlength'] || subject.errors['maxlength']">El asunto debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+                  <div *ngIf="subject.errors['minlength'] || subject.errors['maxlength']">El asunto debe tener al menos 3 caracteres y no mas de 60 caracteres.</div>
                 </div>
                 <br>
                 <div class="row">

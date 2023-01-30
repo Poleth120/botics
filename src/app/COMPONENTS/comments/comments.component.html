@@ -54,14 +54,14 @@
         <button mat-mini-fab color="primary" (click)="commentDetails(element)">
           <mat-icon>comment</mat-icon>
         </button>
-        <button mat-mini-fab color="primary" (click)="commentResponse(element.id)" *ngIf="(routes === '/administrativo-comentarios-res') && !(element.state)">
+        <button mat-mini-fab color="primary" (click)="commentResponse(element.id, element.subject)" *ngIf="(routes === '/administrativo-comentarios-res') && !(element.state)">
           <mat-icon>reply</mat-icon>
         </button>
       </td>
-      
-     
+
+
     </ng-container>
-    
+
 
 
 

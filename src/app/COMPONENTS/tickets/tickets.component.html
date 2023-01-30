@@ -54,7 +54,7 @@
         <button mat-mini-fab color="primary" (click)="ticketDetails(element)">
           <mat-icon>chat</mat-icon>
         </button>
-        <button mat-mini-fab color="primary" (click)="ticketResponse(element.id)" *ngIf="(routes === '/pasante-tickets') && !(element.state)">
+        <button mat-mini-fab color="primary" (click)="ticketResponse(element.id, element.subject)" *ngIf="(routes === '/pasante-tickets') && !(element.state)">
           <mat-icon>reply</mat-icon>
         </button>
       </td>

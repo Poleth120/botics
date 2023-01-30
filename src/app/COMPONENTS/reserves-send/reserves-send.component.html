@@ -12,13 +12,13 @@
                     <div class="form-group">
                       <label>Nombre del laboratorio</label>
                       <input class="form-control" type="text" name="labName" placeholder="Laboratorio que se busca reservar"
-                        value="{{ data?.labName }}" [(ngModel)]="data.labName" required maxlength="30" minlength="3" #lab="ngModel">
+                        value="{{ data?.labName }}" [(ngModel)]="data.labName" required maxlength="60" minlength="3" #lab="ngModel">
                     </div>
                   </div>
                 </div>
                 <div class="alert-danger row" *ngIf="lab.errors">
                   <div *ngIf="lab.errors['required']">Debe ingresar el nombre del laboratorio a reservar.</div>
-                  <div *ngIf="lab.errors['minlength'] || lab.errors['maxlength']">El nombre de laboratorio debe tener al menos 3 caracteres y no mas de 30 caracteres.</div>
+                  <div *ngIf="lab.errors['minlength'] || lab.errors['maxlength']">El nombre de laboratorio debe tener al menos 3 caracteres y no mas de 60 caracteres.</div>
                 </div>
                 <br>
                 <div class="row">
