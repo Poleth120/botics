@@ -9,6 +9,14 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class LoginComponent implements OnInit{
 
+
+  visible:boolean=true;
+  changetype:boolean=true;
+  viewpass(){
+    this.visible=!this.visible;
+    this.changetype=!this.changetype;
+  }
+
   form: any = {
     username: null,
     password: null

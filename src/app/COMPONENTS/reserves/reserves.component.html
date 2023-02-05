@@ -50,10 +50,10 @@
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-mini-fab color="primary" (click)="reserveDetails(element)">
-          <mat-icon>comment</mat-icon>
+        <button mat-mini-fab color="primary" (click)="reserveDetails(element)" title="Visualizar">
+          <mat-icon >comment</mat-icon>
         </button>
-        <button mat-mini-fab color="primary" (click)="reserveResponse(element.id, element.labName)" *ngIf="(routes === '/intern-reserves') && !(element.state)">
+        <button mat-mini-fab color="primary" title="Responder la solicitud" (click)="reserveResponse(element.id, element.labName)" *ngIf="(routes === '/intern-reserves') && !(element.state)">
           <mat-icon>reply</mat-icon>
         </button>
       </td>

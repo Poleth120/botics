@@ -30,7 +30,7 @@
       <button mat-raised-button color="primary" (click)="downloadAsPDFC()">PDF</button>
     </div>
     <br>
-    <p>{{now}}</p>
+    <p>{{now | date: 'short'}}</p>
     <br>
 
     <div class="mat-elevation-z8" id="pdfTableC" #pdfTableC>
@@ -92,7 +92,7 @@
       <button mat-raised-button color="primary" (click)="downloadAsPDFH()">PDF</button>
     </div>
     <br>
-    <p>{{now}}</p>
+    <p>{{now | date: 'short'}}</p>
     <br>
 
     <div class="mat-elevation-z8" id="pdfTableH" #pdfTableH>
@@ -111,7 +111,7 @@
 
         <ng-container matColumnDef="Fecha">
           <th mat-header-cell *matHeaderCellDef> <strong>Fecha </strong></th>
-          <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'short'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Detalle">

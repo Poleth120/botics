@@ -51,10 +51,10 @@
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-mini-fab color="primary" (click)="ticketDetails(element)">
+        <button mat-mini-fab color="primary" title="Visualizar" (click)="ticketDetails(element)">
           <mat-icon>chat</mat-icon>
         </button>
-        <button mat-mini-fab color="primary" (click)="ticketResponse(element.id, element.subject)" *ngIf="(routes === '/pasante-tickets') && !(element.state)">
+        <button mat-mini-fab color="primary" title="Responder la solicitud"  (click)="ticketResponse(element.id, element.subject)" *ngIf="(routes === '/pasante-tickets') && !(element.state)">
           <mat-icon>reply</mat-icon>
         </button>
       </td>
