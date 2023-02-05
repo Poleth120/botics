@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertCComponent } from './alert-c.component';
+import { AlertCCComponent } from './alert-c.component';
 
-describe('AlertCComponent', () => {
-  let component: AlertCComponent;
-  let fixture: ComponentFixture<AlertCComponent>;
+describe('AlertCCComponent', () => {
+  let component: AlertCCComponent;
+  let fixture: ComponentFixture<AlertCCComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AlertCComponent ]
+      declarations: [ AlertCCComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AlertCComponent);
+    fixture = TestBed.createComponent(AlertCCComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
