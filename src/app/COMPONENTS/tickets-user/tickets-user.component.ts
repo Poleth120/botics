@@ -18,7 +18,7 @@ import { AlertComponent } from '../alert/alert.component';
 })
 export class TicketsUserComponent {
 
-  longText = `Visualizar y enviar tickets de asistencia de mi autoría.`;
+  longText = `Visualizar y enviar tickets de asistencia.`;
 
 
   constructor(private matDialog: MatDialog, private teacherService: TeacherService, private userService: TokenStorageService, private router: Router, private administrativeService: AdministrativeService) {
