@@ -27,7 +27,7 @@ import { RecuperarComponent } from './COMPONENTS/recuperar/recuperar.component';
 import { PasswrdComponent } from './COMPONENTS/passwrd/passwrd.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'inicio', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
@@ -57,7 +57,7 @@ const routes: Routes = [
   { path: 'lab-computadoras', component: ListCComponent },
   { path: 'restablecer-contraseña', component: RecuperarComponent},
   { path: 'auth/nueva-contraseña', component: PasswrdComponent},
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' }
 ];
 
 @NgModule({

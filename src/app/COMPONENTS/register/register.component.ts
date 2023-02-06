@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-
+registerD:any;
 
   visible:boolean=true;
   changetype:boolean=true;

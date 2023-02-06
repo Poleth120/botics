@@ -12,6 +12,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./recuperar.component.css']
 })
 export class RecuperarComponent {
+
+  recuperarD: any;
+
   visible:boolean=true;
   changetype:boolean=true;
   viewpass(){

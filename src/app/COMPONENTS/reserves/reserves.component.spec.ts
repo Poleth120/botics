@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-fdescribe('ReservesComponent', () => {
+describe('ReservesComponent', () => {
   let component: ReservesComponent;
   let fixture: ComponentFixture<ReservesComponent>;
 
@@ -34,7 +34,7 @@ fdescribe('ReservesComponent', () => {
     expect(component.reservesD).toEqual(undefined);
   });
 
-  fit('Crear reserva', () => {
+  it('Crear reserva', () => {
     fixture = TestBed.createComponent(ReservesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -8,7 +8,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-
+  loginD: any
 
   visible:boolean=true;
   changetype:boolean=true;
