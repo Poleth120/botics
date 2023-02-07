@@ -56,7 +56,7 @@ export class SidebarService {
           route: 'pasantes-listar'
         },
         {
-          title: 'Resgistrar',
+          title: 'Registrar',
           route: 'crear-nuevo-usuario'
         }
       ]
