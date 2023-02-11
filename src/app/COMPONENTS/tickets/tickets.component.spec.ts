@@ -29,4 +29,20 @@ describe('TicketsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('Should have all tickets', () => {
+    fixture = TestBed.createComponent(TicketsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    expect(component.ticketsD).toEqual(undefined);
+  });
+
+  it('Gestionar tickets de asistencia', () => {
+    fixture = TestBed.createComponent(TicketsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    expect(component.ticketsD).toEqual(undefined);
+  });
+
 });

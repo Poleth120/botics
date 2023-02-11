@@ -156,16 +156,16 @@
             <mat-radio-group aria-label="Select an option" [(ngModel)]="roles" [ngModelOptions]="{standalone: true}">
 
 <br>
-              <mat-radio-button value="administrativo">Pasante</mat-radio-button>
+              <mat-radio-button value="pasante">Pasante</mat-radio-button>
 
             </mat-radio-group>
-            
+
 
 
 
           <div class="form-group">
           <button class="btn btn-primary btn-block input" style=" border-radius: 40px;">
-            Resgistrar
+            Registrar
           </button>
         </div>
 
@@ -177,7 +177,24 @@
   </form>
 </div>
 
-  <div class="alert alert-success" *ngIf="isSuccessful">
-    Bienvenido, se ha registrado exitosamente!
-    Ahora puedes navegar en BOTICS
-  </div>
+<div class="alert alert-success" *ngIf="isSuccessful" style="margin:auto;" >
+
+  <mat-card style="margin:auto;">
+    <img src="https://esfot.epn.edu.ec/images/headers/logo_epn.svg" style="width:14%;"/>
+    <img src="https://esfot.epn.edu.ec/images/headers/logo_esfot_buho.png" style="position:relative; width:13%; margin-left:86.5%; margin-top:-8.7%;"/>
+    <h4 style="margin:auto; color:#203749;"><strong>Bienvenido, se ha registtrado exitosamente! </strong></h4>
+    <br>
+
+    <img src="../assets/img/BOTICS.png" style="width:28%; margin:auto; position: relative;"/>
+    <br>
+    <br>
+    <h4 style="margin:auto; text-align: center; color:#1f2c36;"><strong>Ahora puedes navegar en BOTICS 🙂.</strong></h4>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  </mat-card>
+
+</div>

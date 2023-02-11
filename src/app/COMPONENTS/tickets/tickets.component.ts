@@ -46,7 +46,7 @@ export class TicketsComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   searchTerm = '';
   @ViewChild(MatSort) sort!: MatSort;
-
+//pasante y administratdor
   ngOnInit(): void {
     this.response = {subject: '', details: ''}
     if (this.routes === '/pasante-tickets') {

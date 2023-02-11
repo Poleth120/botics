@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReservesSendComponent } from './reserves-send.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule,  } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,7 @@ describe('ReservesSendComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule, MatDialogModule, MatCardModule, MatPaginatorModule, FormsModule, MatTableModule, BrowserAnimationsModule, MatDialogRef],
+      imports: [HttpClientModule, MatDialogModule, MatCardModule, MatPaginatorModule, FormsModule, MatTableModule, BrowserAnimationsModule, ],
       declarations: [ ReservesSendComponent ]
     })
     .compileComponents();
@@ -28,5 +28,19 @@ describe('ReservesSendComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+   it('Should have all reserves', () => {
+    fixture = TestBed.createComponent(ReservesSendComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    expect(component.reservesuD).toEqual(undefined);
+  });
+
+  it('Solicitar reservas de laboratorios', () => {
+    fixture = TestBed.createComponent(ReservesSendComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    expect(component.reservesuD).toEqual(undefined);
   });
 });

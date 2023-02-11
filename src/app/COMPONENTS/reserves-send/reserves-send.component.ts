@@ -9,6 +9,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./reserves-send.component.scss']
 })
 export class ReservesSendComponent {
+
+  reservesuD:any;
   constructor(public dialogRef: MatDialogRef<ReservesSendComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
 
   }

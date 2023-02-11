@@ -65,7 +65,7 @@ export interface ComputerC {
 })
 export class ListCComponent implements OnInit, OnChanges  {
 
-
+  listcD:any;
   longText=''
 
   constructor(

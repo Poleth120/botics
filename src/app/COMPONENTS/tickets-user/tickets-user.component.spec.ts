@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import {FormsModule} from '@angular/forms';
 import { TicketsUserComponent } from './tickets-user.component';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -19,8 +19,8 @@ describe('TicketsUserComponent', () => {
   let fixture: ComponentFixture<TicketsUserComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [HttpClientModule, MatTableModule, MatDialogModule,   MatPaginatorModule,  MatSortModule, MatCardModule, BrowserAnimationsModule ],
+    await TestBed.configureTestingModule( {
+      imports: [ FormsModule,HttpClientModule, MatTableModule, MatDialogModule,   MatPaginatorModule,  MatSortModule, MatCardModule, BrowserAnimationsModule ],
       declarations: [ TicketsUserComponent ]
     })
     .compileComponents();
@@ -30,7 +30,7 @@ describe('TicketsUserComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Solicitar ticket', () => {
     expect(component).toBeTruthy();
   });
 
@@ -42,7 +42,7 @@ describe('TicketsUserComponent', () => {
     expect(component.ticketsD).toEqual(undefined);
   });
 
-  it('Solicitar ticket--profesor', () => {
+  it('Solicitar ticket', () => {
     fixture = TestBed.createComponent(TicketsUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

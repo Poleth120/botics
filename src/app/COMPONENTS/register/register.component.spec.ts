@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from "@angular/material/button";
 import { MatRadioModule } from '@angular/material/radio';
 
-fdescribe('RegisterComponent', () => {
+describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 
@@ -33,7 +33,7 @@ fdescribe('RegisterComponent', () => {
     expect(component.registerD).toEqual(undefined);
   });
 
-  fit('Registro', () => {
+  it('Registro', () => {
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

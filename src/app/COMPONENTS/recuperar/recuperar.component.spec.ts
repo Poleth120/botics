@@ -4,14 +4,17 @@ import { RecuperarComponent } from './recuperar.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {  HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import { ActivatedRoute, RouterModule } from '@angular/router';
 describe('RecuperarComponent', () => {
   let component: RecuperarComponent;
   let fixture: ComponentFixture<RecuperarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatDialogModule, HttpClientModule, FormsModule],
+      imports: [RouterModule, MatDialogModule, HttpClientModule, FormsModule],
+      providers: [{provide: ActivatedRoute,
+        useValue: { snapshot: {params: {id: '24fkzrw3487943uf358lovd'}}}}],
+
       declarations: [  RecuperarComponent ]
     })
     .compileComponents();

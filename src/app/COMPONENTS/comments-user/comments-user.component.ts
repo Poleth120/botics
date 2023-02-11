@@ -17,7 +17,7 @@ import { AlertComponent } from '../alert/alert.component';
   styleUrls: ['./comments-user.component.css']
 })
 export class CommentsUserComponent {
-
+  commentsuD:any;
 
   longText = `Visualizar y enviar comentarios y/o sugerencias  y a su vez visualizar las respuestas de cada una de ellas.`;
 

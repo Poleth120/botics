@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class CommentsSendComponent {
 
-  
+  commentsD:any;
 
   constructor(public dialogRef: MatDialogRef<CommentsSendComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 

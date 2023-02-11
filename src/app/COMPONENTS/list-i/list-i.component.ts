@@ -15,6 +15,10 @@ import { AlertCComponent } from './alert-c/alert-c.component';
   styleUrls: ['./list-i.component.css']
 })
 export class ListIComponent {
+
+  internD:any;
+
+
   constructor(private adminService: AdminService, private matDialog: MatDialog) {}
   longText = `Visualizar una lista de los pasantes que han sido registrados y puedes habilitar o deshabilitar alguno de ellos, según se requiera:`;
 

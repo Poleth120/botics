@@ -16,7 +16,7 @@ const htmlToPdfmake = require("html-to-pdfmake");
 })
 export class ReportComponent {
 
-
+reportD:any;
 
   constructor(private adminService: AdminService) {}
 

@@ -19,7 +19,7 @@ import { AlertComponent } from '../alert/alert.component';
 export class TicketsUserComponent {
 
   longText = `Visualizar y enviar tickets de asistencia.`;
-
+//administrativo
 
   constructor(private matDialog: MatDialog, private teacherService: TeacherService, private userService: TokenStorageService, private router: Router, private administrativeService: AdministrativeService) {
     this.routes = this.router.url

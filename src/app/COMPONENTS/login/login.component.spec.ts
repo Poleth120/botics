@@ -39,4 +39,21 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
     expect(component.loginD).toEqual(undefined);
   });
+
+  it('Should have all logout ', () => {
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    expect(component.logoutD).toEqual(undefined);
+  });
+
+
+  it('Cerrar sesión', () => {
+    fixture = TestBed.createComponent(LoginComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    expect(component.logoutD).toEqual(undefined);
+  });
+
+
 });

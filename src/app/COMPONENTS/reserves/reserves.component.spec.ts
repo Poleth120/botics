@@ -34,7 +34,7 @@ describe('ReservesComponent', () => {
     expect(component.reservesD).toEqual(undefined);
   });
 
-  it('Crear reserva', () => {
+  it('Gestionar reservas', () => {
     fixture = TestBed.createComponent(ReservesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class ProfileComponent {
   constructor(private profileService: ProfileService, private matDialog: MatDialog
   ) {}
-
+  profileD: any;
   profile: any;
   profileInfo: any;
   filesss!: File;

@@ -7,6 +7,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./tickets-send.component.css']
 })
 export class TicketsSendComponent {
+  ticketsD:any;
+ticketspD:any;
   constructor(public dialogRef: MatDialogRef<TicketsSendComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   onNoClick() {
