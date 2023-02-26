@@ -23,7 +23,6 @@ export class ProfileService {
 
   httpOptionsF = {
     headers: new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
       Authorization: 'Bearer ' + this.tokens,
       'Bypass-Tunnel-Reminder': 'njkjjk',
     }),
@@ -42,11 +41,9 @@ export class ProfileService {
   }
 
   updateAvatar(avatar: any): Observable<any> {
-    const formData = new FormData();
-    formData.append('avatar', avatar);
     return this.http.put(
       PROFILE_API + 'update/avatar',
-      formData,
+      avatar,
       this.httpOptionsF
     );
   }

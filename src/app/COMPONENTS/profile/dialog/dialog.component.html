@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Actualizar foto de perfil</h1>
+<div mat-dialog-content>
+  <input class="form-control" type="file"
+  (change)="onChange($event)">
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cerrar</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="data" type="submit">Guardar</button>
+</div>

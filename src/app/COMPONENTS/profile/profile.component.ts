@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
 import { AlertComponent } from '../alert/alert.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogPComponent } from './dialog/dialogP.component';
 
 @Component({
   selector: 'app-profile',
@@ -15,10 +16,6 @@ export class ProfileComponent {
   profile: any;
   profileInfo: any;
   filesss!: File;
-
-  onChange(event: any) {
-    this.filesss = event.target.files[0];
-  }
 
   ngOnInit(): void {
     this.profileService.getProfile().subscribe((data) => {
@@ -46,28 +43,24 @@ export class ProfileComponent {
   }
 
   updateAvatarProfile() {
-    this.filesss.arrayBuffer().then((binary) => {
-      console.log(binary)
-    })
-    
-    this.profileService.updateAvatar(this.filesss).subscribe((response) => {
-      const alertReference = this.matDialog.open(AlertComponent, {data: response})
-      alertReference.afterClosed().subscribe(() => {
-        this.ngOnInit();
-      })
-    },
-    err => {
-      console.log(err)
-      const alertReference = this.matDialog.open(AlertComponent, {data: err})
-    })
-    
-    /*
-    this.filesss.arrayBuffer().then((binary) => {
-      this.profileService.updateAvatar(binary).subscribe(() => {
+    const dialogReference = this.matDialog.open(DialogPComponent, {data: this.filesss});
+    dialogReference.afterClosed().subscribe((result) => {
+      if (result === undefined) {
         this.ngOnInit()
-      })
+      } else {
+        const formData = new FormData()
+        formData.append('avatar', result)
+        this.profileService.updateAvatar(formData).subscribe((response) => {
+          const alertReference = this.matDialog.open(AlertComponent, {data: response})
+          alertReference.afterClosed().subscribe(() => {
+            window.location.reload();
+          })
+        },
+        err => {
+          console.log(err)
+          const alertReference = this.matDialog.open(AlertComponent, {data: err})
+        })
+      }
     })
-    */
-
   }
 }

@@ -44,7 +44,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { DialogComponent } from './COMPONENTS/list-c/dialog/dialog.component';
 import { DialogSaveComponent } from './COMPONENTS/list-c/dialog-save/dialog-save.component';
 import { DialogLabComponent } from './COMPONENTS/list-c/dialog-lab/dialog-lab.component';
-
+import { DialogPComponent } from './COMPONENTS/profile/dialog/dialogP.component';
 import { DialogChangeComponent } from './COMPONENTS/list-c/dialog-change/dialog-change.component';
 
 import { ListUserComponent } from './COMPONENTS/list-user/list-user.component';
@@ -74,6 +74,7 @@ import { AlertCComponent } from './COMPONENTS/list-i/alert-c/alert-c.component';
 import { RecuperarComponent } from './COMPONENTS/recuperar/recuperar.component';
 import { PasswrdComponent } from './COMPONENTS/passwrd/passwrd.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { DialogSuccessComponent } from './COMPONENTS/login/dialog-success/dialog-success.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -121,6 +122,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RecuperarComponent,
     PasswrdComponent,
     SpinnerComponent,
+    DialogPComponent,
+    DialogSuccessComponent
   ],
   imports: [
     BrowserModule,

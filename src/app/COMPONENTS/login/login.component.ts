@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { DialogSuccessComponent } from './dialog-success/dialog-success.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -27,16 +30,17 @@ export class LoginComponent implements OnInit{
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private matDialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
+      this.router.navigateByUrl('/profile')
     }
   }
 
-  onSubmit(): void {
+  onSubmit() {
     const { username, password } = this.form;
 
     this.authService.login(username, password).subscribe({
@@ -47,7 +51,17 @@ export class LoginComponent implements OnInit{
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+
+        const dialogReference = this.matDialog.open(DialogSuccessComponent);
+        dialogReference.afterOpened().subscribe(() => {
+
+        })
+        dialogReference.afterClosed().subscribe(() => {
+          this.router.navigateByUrl('/profile').then(() => {
+            this.reload()
+          })
+
+        })
       },
       error: err => {
         this.errorMessage = err.error.detail;
@@ -56,7 +70,7 @@ export class LoginComponent implements OnInit{
     });
   }
 
-  reloadPage(): void {
-    window.location.reload();
+  async reload() {
+    await window.location.reload()
   }
 }
