@@ -9,7 +9,7 @@
       <form class="formulario" *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
         novalidate>
         <div class="texto-formulario">
-          <h3><strong>Bienvenido de nuevo</strong></h3>
+          <h3 style="text-align:center;"><strong>Bienvenido de nuevo</strong></h3>
           <h6 style="text-align:center;">Crea una cuenta nueva</h6>
         </div>
 
@@ -106,13 +106,18 @@
             <mat-radio-button value="administrativo">Administrativo</mat-radio-button>
             <mat-radio-button value="profesor">Docente</mat-radio-button>
           </mat-radio-group>
+          <div class="alert-danger" *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors['required']">El rol es obligatorio</div>
+
+          </div>
         </div>
 
-
+<br>
         <div class="form-group">
           <button class="btn btn-primary btn-block input" style=" border-radius: 40px;">
             Registrarse
           </button>
+
         </div>
 
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
