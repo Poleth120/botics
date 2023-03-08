@@ -13,8 +13,7 @@
                 <div class="widget-49">
                   <div class="widget-49-title-wrapper">
                     <div class="widget-49-meeting-info">
-                      <span class="widget-49-pro-title"><mat-slide-toggle color="primary" [checked]="data?.state"
-                          disabled></mat-slide-toggle></span>
+                      <span class="widget-49-pro-title"><p *ngIf="data?.state">El ticket ha sido atendido: Si</p><p *ngIf="!data?.state">El ticket ha sido atendido: No</p></span>
                       <span class="widget-49-meeting-time">{{ data?.createdAt | date: 'short' }}</span>
                     </div>
                   </div>
